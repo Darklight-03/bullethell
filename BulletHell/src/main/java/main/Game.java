@@ -1,11 +1,10 @@
 package main;
 
-public class Game
-{
+public class Game {
+	
 	public int Gamestate;
 
-	public Game()
-	{
+	public Game() {
 
 	}
 }

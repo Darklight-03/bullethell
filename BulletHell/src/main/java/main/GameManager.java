@@ -3,20 +3,22 @@ package main;
 import reference.Config;
 import graphics.Panel;
 
-public class GameManager
-{
-	
+public class GameManager implements Runnable{
+
 	private Panel p;
-	private Config c;
 	public int GameState;
-	
+
 	/*
 	 * 
 	 */
-	public GameManager(Config c){
-		this.c = c;
-		p = new Panel();
-		GameState =  c.MainMenu;
+	public GameManager() {
+		GameState = Config.MAIN_MENU;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

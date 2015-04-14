@@ -5,19 +5,18 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Config
-{
+public class Config {
 	PrintWriter writer;
 	Scanner scan, lineScanner;
 
 	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
-	static final String NAME = "Bullet Hell";
-	public final boolean USE_DIALOGS = true;
-	public final int MAIN_MENU = 0;
-	public final int PAUSED = 1;
-	public final int PLAYING = 2;
-	public final int DEAD = 3;
+	public static final String NAME = "Bullet Hell";
+	public static final boolean USE_DIALOGS = true;
+	public static final int MAIN_MENU = 0;
+	public static final int PAUSED = 1;
+	public static final int PLAYING = 2;
+	public static final int DEAD = 3;
 
 	public String SAVELOCATION = "Config.txt", temp;
 	public static int width, height;
@@ -29,8 +28,7 @@ public class Config
 	 * config file. If anything needs to be added to that file, make sure to add
 	 * it to both the load and save methods in order for it to work
 	 */
-	public Config()
-	{
+	public Config() {
 		buttons = new ArrayList<Character>();
 		load();
 		// save();
@@ -40,10 +38,8 @@ public class Config
 	 * use the read method in order to read all of the data from
 	 * Config.txt
 	 */
-	public boolean load()
-	{
-		try
-		{
+	public boolean load() {
+		try {
 			scan = new Scanner(new File(SAVELOCATION));
 
 			loadLocation();
@@ -52,8 +48,7 @@ public class Config
 
 			loadButtons();
 
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -64,10 +59,8 @@ public class Config
 	 * use the save method in order to write all of the settings to the
 	 * Config.txt
 	 */
-	public boolean save()
-	{
-		try
-		{
+	public boolean save() {
+		try {
 			writer = new PrintWriter(SAVELOCATION + "", "UTF-8");
 			saveLocation();
 
@@ -75,8 +68,7 @@ public class Config
 
 			saveButtons();
 
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -84,53 +76,49 @@ public class Config
 		return true;
 	}
 
-	public void loadLocation()
-	{
+	public void loadLocation() {
 		Scanner scanner = new Scanner(scan.nextLine());
 		lineScanner = scanner.useDelimiter(":");
 		lineScanner.next();
 		SAVELOCATION = lineScanner.next().trim();
+		scanner.close();
 	}
 
-	public void loadResolution()
-	{
+	public void loadResolution() {
 		Scanner scanner = new Scanner(scan.nextLine());
-		lineScanner = scanner.useDelimiter(":,");
+		lineScanner = scanner.useDelimiter("[:,]");
 		lineScanner.next();
 		width = Integer.parseInt(lineScanner.next().trim());
 		height = Integer.parseInt(lineScanner.next().trim());
+		scanner.close();
 	}
 
-	public void loadButtons()
-	{
-		scan.next();
-		dropBombs = scan.next().trim().charAt(0);
+	public void loadButtons() {
+		lineScanner = scan.useDelimiter("[:\n]");
 
-		scan.next();
-		switchWeapon = scan.next().trim().charAt(0);
+		lineScanner.next();
+		dropBombs = lineScanner.next().trim().charAt(0);
 
-		scan.next();
-		extraKeyOne = scan.next().trim().charAt(0);
+		lineScanner.next();
+		switchWeapon = lineScanner.next().trim().charAt(0);
 
-		scan.next();
-		extraKeyTwo = scan.next().trim().charAt(0);
+		lineScanner.next();
+		extraKeyOne = lineScanner.next().trim().charAt(0);
 
-		System.out.println(dropBombs + " " + switchWeapon);
+		lineScanner.next();
+		extraKeyTwo = lineScanner.next().trim().charAt(0);
 
 	}
 
-	public void saveLocation()
-	{
+	public void saveLocation() {
 		writer.println("Config Location: " + SAVELOCATION);
 	}
 
-	public void saveResolution()
-	{
+	public void saveResolution() {
 		writer.println("Resolution: " + width + ", " + height);
 	}
 
-	public void saveButtons()
-	{
+	public void saveButtons() {
 		writer.println("Drop bombs: ");
 		writer.println("Switch Weapons: ");
 		writer.println("Extra button one: ");
