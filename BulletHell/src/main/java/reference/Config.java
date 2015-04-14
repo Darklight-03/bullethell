@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Config
 {
 	PrintWriter writer;
-	Scanner scan;
+	Scanner scan,lineScanner;
 
 	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
@@ -32,7 +32,7 @@ public class Config
 	{
 		buttons = new ArrayList<Character>();
 		load();
-		save();
+	//	save();
 	}
 
 	/*
@@ -43,11 +43,13 @@ public class Config
 	{
 		try
 		{
-			scan = new Scanner(new File(SAVELOCATION)).useDelimiter("[,:\n]+");
+			scan = new Scanner(new File(SAVELOCATION));
 
 			loadLocation();
 
 			loadResolution();
+			
+			loadButtons();
 
 		} catch (Exception e)
 		{
@@ -83,15 +85,19 @@ public class Config
 
 	public void loadLocation()
 	{
-		scan.next();
-		SAVELOCATION = scan.next().trim();
+		Scanner scanner = new Scanner(scan.nextLine());
+		lineScanner = scanner.useDelimiter(":");
+		lineScanner.next();
+		SAVELOCATION = lineScanner.next().trim();
 	}
 
 	public void loadResolution()
 	{
-		scan.next();
-		width = Integer.parseInt(scan.next().trim());
-		height = Integer.parseInt(scan.next().trim());
+		Scanner scanner = new Scanner(scan.nextLine());
+		lineScanner = scanner.useDelimiter(":,");
+		lineScanner.next();
+		width = Integer.parseInt(lineScanner.next().trim());
+		height = Integer.parseInt(lineScanner.next().trim());
 	}
 
 	public void loadButtons()
@@ -107,6 +113,8 @@ public class Config
 		
 		scan.next();
 		extraKeyTwo = scan.next().trim().charAt(0);
+		
+		System.out.println(dropBombs+" "+ switchWeapon);
 		
 	}
 
