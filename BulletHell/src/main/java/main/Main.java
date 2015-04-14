@@ -1,8 +1,18 @@
 package main;
 
+import java.awt.Frame;
+
+import reference.Config;
+
 public class Main
 {
-	public static void main(String[] args){
-		
+	/*
+	 * Bullet Hell
+	 * Created by Bo Corman and Andrew Kennedy
+	 */
+	public static void main(String[] args)
+	{
+		new Frame();
+		new Config();
 	}
 }
