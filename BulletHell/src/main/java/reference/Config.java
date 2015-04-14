@@ -12,15 +12,14 @@ public class Config
 
 	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
-	public static final String NAME = "Minesweeper v2";
-	public final boolean USE_DIALOGS = true;
-	public final int MainMenu = 0;
-	public final int Paused = 1;
-	public final int Playing = 2;
-	public final int Dead = 3;
+	public static final String NAME = "Bullet Hell";
+	public static final int MainMenu = 0;
+	public static final int Paused = 1;
+	public static final int Playing = 2;
+	public static final int Dead = 3;
 
 	public String SAVELOCATION = "Config.txt", temp;
-	public int width, height;
+	public static int width, height;
 	private ArrayList<Character> buttons;
 	public char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo, moveUp, moveDown, moveLeft, moveRight;
 
@@ -46,12 +45,9 @@ public class Config
 		{
 			scan = new Scanner(new File(SAVELOCATION)).useDelimiter("[,:\n]+");
 
-			scan.next();
-			SAVELOCATION = scan.next().trim();
+			loadLocation();
 
-			scan.next();
-			width = Integer.parseInt(scan.next().trim());
-			height = Integer.parseInt(scan.next().trim());
+			loadResolution();
 
 		} catch (Exception e)
 		{
@@ -70,19 +66,11 @@ public class Config
 		try
 		{
 			writer = new PrintWriter(SAVELOCATION + "", "UTF-8");
+			saveLocation();
 
-			writer.println("Config Location: " + SAVELOCATION);
-			writer.println("Resolution: " + width + ", " + height);
-			
-			writer.println("Drop bombs: ");
-			writer.println("Switch Weapons: ");
-			writer.println("Extra button one: ");
-			writer.println("Extra button two: ");
-			writer.println("Move up: ");
-			writer.println("Move down: ");
-			writer.println("Move left: " );
-			writer.println("Move Right: ");
-			
+			saveResolution();
+
+			saveButtons();
 
 		} catch (Exception e)
 		{
@@ -92,4 +80,56 @@ public class Config
 		writer.close();
 		return true;
 	}
+
+	public void loadLocation()
+	{
+		scan.next();
+		SAVELOCATION = scan.next().trim();
+	}
+
+	public void loadResolution()
+	{
+		scan.next();
+		width = Integer.parseInt(scan.next().trim());
+		height = Integer.parseInt(scan.next().trim());
+	}
+
+	public void loadButtons()
+	{
+		scan.next();
+		dropBombs = scan.next().trim().charAt(0);
+		
+		scan.next();
+		switchWeapon = scan.next().trim().charAt(0);
+		
+		scan.next();
+		extraKeyOne = scan.next().trim().charAt(0);
+		
+		scan.next();
+		extraKeyTwo = scan.next().trim().charAt(0);
+		
+	}
+
+	public void saveLocation()
+	{
+		writer.println("Config Location: " + SAVELOCATION);
+	}
+
+	public void saveResolution()
+	{
+		writer.println("Resolution: " + width + ", " + height);
+	}
+
+	public void saveButtons()
+	{
+		writer.println("Drop bombs: ");
+		writer.println("Switch Weapons: ");
+		writer.println("Extra button one: ");
+		writer.println("Extra button two: ");
+		writer.println("Move up: ");
+		writer.println("Move down: ");
+		writer.println("Move left: ");
+		writer.println("Move Right: ");
+	}
+
 }

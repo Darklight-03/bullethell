@@ -1,9 +1,9 @@
 Config Location: Config.txt
 Resolution: 600, 900
-Drop bombs: 
-Switch Weapons: 
-Extra button one: 
-Extra button two: 
+Drop bombs: z
+Switch Weapons: x 
+Extra button one: c 
+Extra button two: v
 Move up: 
 Move down: 
 Move left: 
