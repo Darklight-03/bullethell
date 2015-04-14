@@ -1,13 +1,9 @@
 package util;
 
 import reference.*;
-
+@SuppressWarnings(value ={ "all" })
 public class Log
 {
-	Config c;
-	public Log(Config c){
-		this.c = c;
-	}
 	public static void log(String logLevel, String text)
 	{
 		if(Config.LOGGING==true)
