@@ -14,10 +14,10 @@ public class Config
 	public static final boolean LOGGING = true;
 	public static final String NAME = "Minesweeper v2";
 	public final boolean USE_DIALOGS = true;
-	public final int MainMenu = 0;
-	public final int Paused = 1;
-	public final int Playing = 2;
-	public final int Dead = 3;
+	public final int MAIN_MENU = 0;
+	public final int PAUSED = 1;
+	public final int PLAYING = 2;
+	public final int DEAD = 3;
 
 	public String SAVELOCATION = "Config.txt", temp;
 	public int width, height;
