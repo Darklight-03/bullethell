@@ -2,6 +2,7 @@ package reference;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Config
@@ -16,7 +17,8 @@ public class Config
 
 	public String SAVELOCATION = "Config.txt", temp;
 	public int width, height;
-	public char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo;
+	private ArrayList<Character> buttons;
+	public char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo, moveUp, moveDown, moveLeft, moveRight;
 
 	/*
 	 * This file is made in order to store all of the settings in an editable
@@ -25,7 +27,9 @@ public class Config
 	 */
 	public Config()
 	{
+		buttons = new ArrayList<Character>();
 		load();
+		save();
 	}
 
 	/*
@@ -65,6 +69,16 @@ public class Config
 
 			writer.println("Config Location: " + SAVELOCATION);
 			writer.println("Resolution: " + width + ", " + height);
+			
+			writer.println("Drop bombs: ");
+			writer.println("Switch Weapons: ");
+			writer.println("Extra button one: ");
+			writer.println("Extra button two: ");
+			writer.println("Move up: ");
+			writer.println("Move down: ");
+			writer.println("Move left: " );
+			writer.println("Move Right: ");
+			
 
 		} catch (Exception e)
 		{
