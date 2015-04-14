@@ -1,33 +1,71 @@
 package reference;
 
+import java.io.File;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Config
 {
 	PrintWriter writer;
+	Scanner scan;
 
 	public final int MainMenu = 0;
 	public final int Paused = 1;
 	public final int Playing = 2;
 	public final int Dead = 3;
+	
+	public String SAVELOCATION = "Config.txt",temp;
+	public int width, height;
 
-	/*
-	 * use the config constructor in order to read all of the data from
-	 * Config.txt
-	 */
 	public Config()
 	{
-
+		load();
 	}
 
 	/*
-	 * use the save method in order to write all of the settings to the Config.txt
+	 * use the read method in order to read all of the data from
+	 * Config.txt
 	 */
-	public boolean save() throws Exception
+	public boolean load()
 	{
-		writer = new PrintWriter("Config.txt", "UTF-8");
+		try
+		{
+			scan = new Scanner(new File(SAVELOCATION)).useDelimiter("[,:\n]+");
+			
+			scan.next();
+			SAVELOCATION = scan.next().trim();
+			
+			scan.next();
+			width = Integer.parseInt(scan.next().trim());
+			height =  Integer.parseInt(scan.next().trim());
+			
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
-		writer.println("testing");
+	/*
+	 * use the save method in order to write all of the settings to the
+	 * Config.txt
+	 */
+	public boolean save()
+	{
+		try
+		{
+			writer = new PrintWriter(SAVELOCATION+"", "UTF-8");
+			
+			writer.println("Config Location: " + SAVELOCATION);
+			writer.println("Resolution: "+ width+", "+height);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 		writer.close();
 		return true;
 	}

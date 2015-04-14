@@ -1,0 +1,2 @@
+Config Location: Config.txt
+Resolution: 600, 900
