@@ -13,10 +13,16 @@ public class Config
 	public final int Paused = 1;
 	public final int Playing = 2;
 	public final int Dead = 3;
-	
-	public String SAVELOCATION = "Config.txt",temp;
-	public int width, height;
 
+	public String SAVELOCATION = "Config.txt", temp;
+	public int width, height;
+	public char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo;
+
+	/*
+	 * This file is made in order to store all of the settings in an editable
+	 * config file. If anything needs to be added to that file, make sure to add
+	 * it to both the load and save methods in order for it to work
+	 */
 	public Config()
 	{
 		load();
@@ -31,15 +37,14 @@ public class Config
 		try
 		{
 			scan = new Scanner(new File(SAVELOCATION)).useDelimiter("[,:\n]+");
-			
+
 			scan.next();
 			SAVELOCATION = scan.next().trim();
-			
+
 			scan.next();
 			width = Integer.parseInt(scan.next().trim());
-			height =  Integer.parseInt(scan.next().trim());
-			
-			
+			height = Integer.parseInt(scan.next().trim());
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -56,11 +61,11 @@ public class Config
 	{
 		try
 		{
-			writer = new PrintWriter(SAVELOCATION+"", "UTF-8");
-			
+			writer = new PrintWriter(SAVELOCATION + "", "UTF-8");
+
 			writer.println("Config Location: " + SAVELOCATION);
-			writer.println("Resolution: "+ width+", "+height);
-			
+			writer.println("Resolution: " + width + ", " + height);
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
