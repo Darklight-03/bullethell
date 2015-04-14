@@ -16,7 +16,7 @@ public class GameManager
 	public GameManager(Config c){
 		this.c = c;
 		p = new Panel();
-		GameState =  c.MainMenu;
+		GameState =  c.MAIN_MENU;
 	}
 
 }
