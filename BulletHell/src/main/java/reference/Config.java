@@ -1,6 +1,6 @@
 package reference;
 
-public class temp
+public class Config
 {
 
 }
