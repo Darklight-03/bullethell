@@ -8,15 +8,16 @@ import java.util.Scanner;
 public class Config
 {
 	PrintWriter writer;
-	Scanner scan,lineScanner;
+	Scanner scan, lineScanner;
 
 	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
-	public static final String NAME = "Bullet Hell";
-	public static final int MainMenu = 0;
-	public static final int Paused = 1;
-	public static final int Playing = 2;
-	public static final int Dead = 3;
+	static final String NAME = "Bullet Hell";
+	public final boolean USE_DIALOGS = true;
+	public final int MAIN_MENU = 0;
+	public final int PAUSED = 1;
+	public final int PLAYING = 2;
+	public final int DEAD = 3;
 
 	public String SAVELOCATION = "Config.txt", temp;
 	public static int width, height;
@@ -32,7 +33,7 @@ public class Config
 	{
 		buttons = new ArrayList<Character>();
 		load();
-	//	save();
+		// save();
 	}
 
 	/*
@@ -48,7 +49,7 @@ public class Config
 			loadLocation();
 
 			loadResolution();
-			
+
 			loadButtons();
 
 		} catch (Exception e)
@@ -104,18 +105,18 @@ public class Config
 	{
 		scan.next();
 		dropBombs = scan.next().trim().charAt(0);
-		
+
 		scan.next();
 		switchWeapon = scan.next().trim().charAt(0);
-		
+
 		scan.next();
 		extraKeyOne = scan.next().trim().charAt(0);
-		
+
 		scan.next();
 		extraKeyTwo = scan.next().trim().charAt(0);
-		
-		System.out.println(dropBombs+" "+ switchWeapon);
-		
+
+		System.out.println(dropBombs + " " + switchWeapon);
+
 	}
 
 	public void saveLocation()
