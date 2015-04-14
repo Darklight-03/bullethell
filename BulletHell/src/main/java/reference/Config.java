@@ -10,9 +10,9 @@ public class Config
 	PrintWriter writer;
 	Scanner scan;
 
-	public final boolean DEBUG_MODE = false;
-	public final boolean LOGGING = true;
-	public final String NAME = "Minesweeper v2";
+	public static final boolean DEBUG_MODE = false;
+	public static final boolean LOGGING = true;
+	public static final String NAME = "Minesweeper v2";
 	public final boolean USE_DIALOGS = true;
 	public final int MainMenu = 0;
 	public final int Paused = 1;
