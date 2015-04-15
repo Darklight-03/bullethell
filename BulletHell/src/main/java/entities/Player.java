@@ -13,7 +13,7 @@ public class Player extends EntityBase {
 		height = getImage().getHeight();
 	}
 	
-	//Moves the player in the direction specified -- 
+	//Moves the player in the direction specified -- param: "up", "down", "left", "right"
 	public void move(String direction){
 //		System.out.println(x+",  "+y);  TODO remove this when the movements are finallized
 		switch(direction){
