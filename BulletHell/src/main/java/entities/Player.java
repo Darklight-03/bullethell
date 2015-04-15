@@ -18,19 +18,19 @@ public class Player extends EntityBase {
 //		System.out.println(x+",  "+y);  TODO remove this when the movements are finallized
 		switch(direction){
 		case "up":
-			if(isInBounds(x,y-Config.moveSpeed))
+			if(isInBounds(x,y-Config.moveSpeed-(height/2)))
 			y-=Config.moveSpeed;
 			break;
 		case "down":
-			if(isInBounds(x,y+Config.moveSpeed))
+			if(isInBounds(x,y+Config.moveSpeed+(height/2)))
 			y+=Config.moveSpeed;
 			break;
 		case "left":
-			if(isInBounds(x-Config.moveSpeed,y))
+			if(isInBounds(x-Config.moveSpeed-(width/2),y))
 			x-=Config.moveSpeed;
 			break;
 		case "right":
-			if(isInBounds(x+Config.moveSpeed,y))
+			if(isInBounds(x+Config.moveSpeed+(width/2),y))
 			x+=Config.moveSpeed;
 			break;
 			
