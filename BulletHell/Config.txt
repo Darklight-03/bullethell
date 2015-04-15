@@ -11,5 +11,5 @@ Move down: 40
 Move left: 37
 Move Right: 39
 
-Move speed: 1
+Move speed: 1.0
 

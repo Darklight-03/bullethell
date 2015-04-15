@@ -15,7 +15,7 @@ public class EntityBase {
 	 * This is going to be the base for all of the game's entities
 	 */
 	public double x, y;
-	private  BufferedImage image;
+	private BufferedImage image;
 	protected final String NAME = "entityBase";
 
 	public EntityBase(String imageName) {
@@ -27,7 +27,7 @@ public class EntityBase {
 	}
 
 	public int getX() {
-		return (int)x;
+		return (int) x;
 	}
 
 	public void setX(int x) {
@@ -35,24 +35,25 @@ public class EntityBase {
 	}
 
 	public int getY() {
-		return (int)y;
+		return (int) y;
 	}
 
 	public void setY(int y) {
 		this.y = y;
 	}
 
-	public boolean isInBounds(){
-		if(x<0||x>Config.width||y<0||y>Config.height)
-		return false;
-		else return true;
+	public boolean isInBounds(int x, int y) {
+		if (x < 0 || x > Config.width || y < 0 || y > Config.height)
+			return false;
+		else
+			return true;
 	}
-	
+
 	public BufferedImage getImage() {
 		return image;
 	}
 
-	public  void setImage(BufferedImage image) {
+	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
 
