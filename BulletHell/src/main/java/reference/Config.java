@@ -19,7 +19,8 @@ public class Config {
 	public static final long TIME_BETWEEN_UPDATES = 5, TIME_BETWEEN_FRAMES = 5;
 
 	private String SAVELOCATION = "Config.txt", temp;
-	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39, moveSpeed = 1;
+	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39;
+	public static double moveSpeed = 1.3;
 	public static char dropBombs = 'z', switchWeapon = 'x', extraKeyOne = 'c', extraKeyTwo = 'v';
 
 	/*
@@ -202,7 +203,7 @@ public class Config {
 				Scanner scanner = new Scanner(scan.nextLine());
 				lineScanner = scanner.useDelimiter(":");
 				lineScanner.next();
-				moveSpeed = Integer.parseInt(lineScanner.next().trim());
+				moveSpeed = Double.parseDouble(lineScanner.next().trim());
 
 				return true;
 			default:

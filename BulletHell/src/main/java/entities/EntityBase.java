@@ -13,7 +13,7 @@ public class EntityBase {
 	/*
 	 * This is going to be the base for all of the game's entities
 	 */
-	public  int x, y;
+	public double x, y;
 	private  BufferedImage image;
 	protected final String NAME = "entityBase";
 
@@ -26,7 +26,7 @@ public class EntityBase {
 	}
 
 	public int getX() {
-		return x;
+		return (int)x;
 	}
 
 	public void setX(int x) {
@@ -34,7 +34,7 @@ public class EntityBase {
 	}
 
 	public int getY() {
-		return y;
+		return (int)y;
 	}
 
 	public void setY(int y) {
