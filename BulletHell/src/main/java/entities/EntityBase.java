@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import reference.Config;
 import util.Log;
 
 public class EntityBase {
@@ -42,8 +43,9 @@ public class EntityBase {
 	}
 
 	public boolean isInBounds(){
-		//TODO finish this method
-		return true;
+		if(x<0||x>Config.width||y<0||y>Config.height)
+		return false;
+		else return true;
 	}
 	
 	public BufferedImage getImage() {
