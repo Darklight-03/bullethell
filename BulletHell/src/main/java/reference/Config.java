@@ -19,7 +19,7 @@ public class Config {
 	public static final long TIME_BETWEEN_UPDATES = 5, TIME_BETWEEN_FRAMES = 5;
 
 	private String SAVELOCATION = "Config.txt", temp;
-	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39, moveSpeed = 5;
+	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39, moveSpeed = 1;
 	public static char dropBombs = 'z', switchWeapon = 'x', extraKeyOne = 'c', extraKeyTwo = 'v';
 
 	/*
