@@ -1,6 +1,0 @@
-BranchProjectTracker__C\:\\Users\\elitefroggy\\Documents\\Doc's\\projects\\labs\\csrepo\\.git_291ef7a8adbd06762bdad72301209978682a1c1e=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<projects branch\="291ef7a8adbd06762bdad72301209978682a1c1e">\r\n<project>\\HungryQueue</project>\r\n</projects>
-BranchProjectTracker__C\:\\Users\\elitefroggy\\Documents\\Doc's\\projects\\labs\\csrepo\\.git_master=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<projects branch\="master">\r\n<project>\\Heap</project>\r\n<project>\\HungryQueue</project>\r\n</projects>
-commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>removed all class files (i think) (good idea?)</message>\r\n<message>Added Heap, probably finished(untested)</message>\r\n<message>Added HungryQueue (Complete?)</message>\r\n<message>Full retard, forgot to uncomment stuff&\#x0A;fixed</message>\r\n<message>Finished Priority Queue</message>\r\n</messages>
-eclipse.preferences.version=1
-resourcehistory_graph_split=500,500
-resourcehistory_rev_split=700,300

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename package &apos;Graphics&apos; to &apos;graphics&apos;&#x0D;&#x0A;- Original project: &apos;BulletHell&apos;&#x0D;&#x0A;- Original element: &apos;BulletHell/src/main/java/Graphics&apos;&#x0D;&#x0A;- Renamed element: &apos;BulletHell/src/main/java/graphics&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;Graphics&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;Graphics" name="graphics" qualified="false" references="true" stamp="1428972033269" textual="false" version="1.0"/>
-</session>
