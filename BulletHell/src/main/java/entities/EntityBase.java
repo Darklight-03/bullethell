@@ -1,5 +1,6 @@
 package entities;
 
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +33,14 @@ public class EntityBase {
 
 	public void setX(int x) {
 		this.x = x;
+	}
+
+	public int drawX() {
+		return (int) x - image.getWidth();
+	}
+
+	public int drawY() {
+		return (int) y - image.getHeight();
 	}
 
 	public int getY() {
