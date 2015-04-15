@@ -42,7 +42,7 @@ public class EntityBase {
 		this.y = y;
 	}
 
-	public boolean isInBounds(int x, int y) {
+	public boolean isInBounds(double x, double y) {
 		if (x < 0 || x > Config.width || y < 0 || y > Config.height)
 			return false;
 		else
