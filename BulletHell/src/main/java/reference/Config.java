@@ -14,15 +14,13 @@ public class Config {
 	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
 	public static final String NAME = "Bullet Hell";
-	public static final boolean USE_DIALOGS = true;
-	public static final int MAIN_MENU = 0;
-	public static final int PAUSED = 1;
-	public static final int PLAYING = 2;
-	public static final int DEAD = 3;
+	public static final boolean USE_DIALOGS = true; // TODO implement later
+	public static final int MAIN_MENU = 0,PAUSED = 1,PLAYING = 2,DEAD = 3;
+	public static final long TIME_BETWEEN_UPDATES = 5, TIME_BETWEEN_FRAMES = 5;
 
 	private String SAVELOCATION = "Config.txt", temp;
-	public static int width, height, moveUp, moveDown, moveLeft, moveRight;
-	public static char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo;
+	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39, moveSpeed = 2;
+	public static char dropBombs = 'z', switchWeapon = 'x', extraKeyOne = 'c', extraKeyTwo = 'v';
 
 	/*
 	 * This file is made in order to store all of the settings in an editable
@@ -31,7 +29,7 @@ public class Config {
 	 */
 	public Config() {
 		load();
-		// save();
+		save();
 	}
 
 	/*
@@ -43,10 +41,16 @@ public class Config {
 			scan = new Scanner(new File(SAVELOCATION));
 
 			if (!location("load")) Log.error("Failed to load the save location for the Config.txt file");
+			space("load");
 
 			if (!resolution("load")) Log.error("Failed to load the resolution");
+			space("load");
 
 			if (!buttons("load")) Log.error("Failed to load the button configuration");
+			space("load");
+
+			if (!playerData("load")) Log.error("Failed to load the PlayerData");
+			space("load");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,19 +64,36 @@ public class Config {
 	public void save() {
 		try {
 			writer = new PrintWriter(SAVELOCATION + "", "UTF-8");
+
 			if (!location("save")) Log.error("Failed to save the save location for the Config.txt file");
+			space("save");
 
 			if (!resolution("save")) Log.error("Failed to save the resolution");
+			space("save");
 
 			if (!buttons("save")) Log.error("Failed to save the button configuration");
+			space("save");
+
+			if (!playerData("save")) Log.error("Failed to save the PlayerData");
+			space("save");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		writer.close();
 	}
-	
-	
+
+	public void space(String saveOrLoad) {
+		switch (saveOrLoad) {
+		case "save":
+			writer.println();
+			break;
+		case "load":
+			scan.nextLine();
+			break;
+		}
+
+	}
 
 	public boolean location(String saveOrLoad) {
 		try {
@@ -165,6 +186,29 @@ public class Config {
 				return false;
 			}
 		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	
+	public boolean playerData(String saveOrLoad) {
+		try {
+			switch (saveOrLoad) {
+			case "save":
+				writer.println("Move speed: " + moveSpeed);
+				return true;
+			case "load":
+				scan.nextLine();
+				Scanner scanner = new Scanner(scan.nextLine());
+				lineScanner = scanner.useDelimiter(":");
+				lineScanner.next();
+				moveSpeed = Integer.parseInt(lineScanner.next().trim());
+
+				return true;
+			default:
+				return false;
+			}
+		} catch (Exception e) {
 			return false;
 		}
 	}
