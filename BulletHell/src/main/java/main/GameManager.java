@@ -32,6 +32,7 @@ public class GameManager implements Runnable {
 
 	public void setPlayer(Player player) {
 		this.player = player;
+
 	}
 
 }

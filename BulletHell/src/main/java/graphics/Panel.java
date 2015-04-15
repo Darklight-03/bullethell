@@ -136,7 +136,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	}
 
 	public void checkForMovement() {
-		System.out.println(moveUpDepressed);
 		if(moveUpDepressed) gM.getPlayer().move("up");
 		if(moveDownDepressed) gM.getPlayer().move("down");
 		if(moveLeftDepressed) gM.getPlayer().move("left");
