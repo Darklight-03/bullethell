@@ -39,7 +39,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().getX(), gM.getPlayer().getY(), null);
+		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 
 		switch (gM.GameState) {
 
@@ -136,10 +136,10 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	}
 
 	public void checkForMovement() {
-		if(moveUpDepressed) gM.getPlayer().move("up");
-		if(moveDownDepressed) gM.getPlayer().move("down");
-		if(moveLeftDepressed) gM.getPlayer().move("left");
-		if(moveRightDepressed) gM.getPlayer().move("right");
+		if (moveUpDepressed) gM.getPlayer().move("up");
+		if (moveDownDepressed) gM.getPlayer().move("down");
+		if (moveLeftDepressed) gM.getPlayer().move("left");
+		if (moveRightDepressed) gM.getPlayer().move("right");
 	}
 
 	public void setButtons() {
