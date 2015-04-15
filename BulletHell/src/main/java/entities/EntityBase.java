@@ -13,13 +13,13 @@ public class EntityBase {
 	/*
 	 * This is going to be the base for all of the game's entities
 	 */
-	public int x, y;
-	public BufferedImage image;
+	public  int x, y;
+	private  BufferedImage image;
 	protected final String NAME = "entityBase";
 
 	public EntityBase(String imageName) {
 		try {
-			image = ImageIO.read(new File(imageName));
+			setImage(ImageIO.read(new File(imageName)));
 		} catch (IOException e) {
 			Log.error("Could not load image" + NAME);
 		}
@@ -39,6 +39,14 @@ public class EntityBase {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public BufferedImage getImage() {
+		return image;
+	}
+
+	public  void setImage(BufferedImage image) {
+		this.image = image;
 	}
 
 }
