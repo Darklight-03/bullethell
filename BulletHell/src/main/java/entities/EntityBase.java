@@ -41,6 +41,11 @@ public class EntityBase {
 		this.y = y;
 	}
 
+	public boolean isInBounds(){
+		//TODO finish this method
+		return true;
+	}
+	
 	public BufferedImage getImage() {
 		return image;
 	}
