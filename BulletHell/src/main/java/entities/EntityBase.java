@@ -36,11 +36,11 @@ public class EntityBase {
 	}
 
 	public int drawX() {
-		return (int) x - image.getWidth();
+		return (int) x - image.getWidth()/2;
 	}
 
 	public int drawY() {
-		return (int) y - image.getHeight();
+		return (int) y - image.getHeight()/2;
 	}
 
 	public int getY() {
