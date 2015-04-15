@@ -31,18 +31,23 @@ public class Panel extends JPanel implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println(e.getKeyChar()+"   "+ e.getKeyCode());
+	//	System.out.println(e.getKeyChar()+"   "+ e.getKeyCode());
 		//TODO get this working with the arrow keys
+		switch(e.getKeyChar()){
+		
+		}
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-
+		System.out.println(e.getKeyCode());
+		switch(e.getKeyCode()){
+			
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-
 	}
 
 	public void addNotify() {

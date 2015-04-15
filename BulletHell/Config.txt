@@ -4,7 +4,7 @@ Drop bombs: z
 Switch Weapons: x 
 Extra button one: c
 Extra button two: v
-Move up: 
-Move down: 
-Move left: 
-Move Right: 
+Move up: 38
+Move down: 40
+Move left: 37
+Move Right: 39

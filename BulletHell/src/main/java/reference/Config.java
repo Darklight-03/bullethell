@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import util.Log;
+
 public class Config {
 	PrintWriter writer;
 	Scanner scan, lineScanner;
@@ -18,10 +20,9 @@ public class Config {
 	public static final int PLAYING = 2;
 	public static final int DEAD = 3;
 
-	public String SAVELOCATION = "Config.txt", temp;
-	public static int width, height;
-	private ArrayList<Character> buttons;
-	public char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo, moveUp, moveDown, moveLeft, moveRight;
+	private String SAVELOCATION = "Config.txt", temp;
+	public static int width, height, moveUp, moveDown, moveLeft, moveRight;
+	public static char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo;
 
 	/*
 	 * This file is made in order to store all of the settings in an editable
@@ -29,7 +30,6 @@ public class Config {
 	 * it to both the load and save methods in order for it to work
 	 */
 	public Config() {
-		buttons = new ArrayList<Character>();
 		load();
 		// save();
 	}
@@ -38,95 +38,135 @@ public class Config {
 	 * use the read method in order to read all of the data from
 	 * Config.txt
 	 */
-	public boolean load() {
+	public void load() {
 		try {
 			scan = new Scanner(new File(SAVELOCATION));
 
-			loadLocation();
+			if (!location("load")) Log.error("Failed to load the save location for the Config.txt file");
 
-			loadResolution();
+			if (!resolution("load")) Log.error("Failed to load the resolution");
 
-			loadButtons();
+			if (!buttons("load")) Log.error("Failed to load the button configuration");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
 		}
-		return true;
 	}
 
 	/*
 	 * use the save method in order to write all of the settings to the
 	 * Config.txt
 	 */
-	public boolean save() {
+	public void save() {
 		try {
 			writer = new PrintWriter(SAVELOCATION + "", "UTF-8");
-			saveLocation();
+			if (!location("save")) Log.error("Failed to save the save location for the Config.txt file");
 
-			saveResolution();
+			if (!resolution("save")) Log.error("Failed to save the resolution");
 
-			saveButtons();
+			if (!buttons("save")) Log.error("Failed to save the button configuration");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
 		}
 		writer.close();
-		return true;
+	}
+	
+	
+
+	public boolean location(String saveOrLoad) {
+		try {
+			switch (saveOrLoad) {
+			case "save":
+				writer.println("Config Location: " + SAVELOCATION);
+				return true;
+			case "load":
+				Scanner scanner = new Scanner(scan.nextLine());
+				lineScanner = scanner.useDelimiter(":");
+				lineScanner.next();
+				SAVELOCATION = lineScanner.next().trim();
+				scanner.close();
+				return true;
+			default:
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
-	public void loadLocation() {
-		Scanner scanner = new Scanner(scan.nextLine());
-		lineScanner = scanner.useDelimiter(":");
-		lineScanner.next();
-		SAVELOCATION = lineScanner.next().trim();
-		scanner.close();
+	public boolean resolution(String saveOrLoad) {
+		try {
+			switch (saveOrLoad) {
+			case "save":
+				writer.println("Resolution: " + width + ", " + height);
+				return true;
+			case "load":
+				Scanner scanner = new Scanner(scan.nextLine());
+				lineScanner = scanner.useDelimiter("[:,]");
+				lineScanner.next();
+				width = Integer.parseInt(lineScanner.next().trim());
+				height = Integer.parseInt(lineScanner.next().trim());
+				scanner.close();
+				return true;
+			default:
+				return false;
+			}
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
-	public void loadResolution() {
-		Scanner scanner = new Scanner(scan.nextLine());
-		lineScanner = scanner.useDelimiter("[:,]");
-		lineScanner.next();
-		width = Integer.parseInt(lineScanner.next().trim());
-		height = Integer.parseInt(lineScanner.next().trim());
-		scanner.close();
-	}
+	public boolean buttons(String saveOrLoad) {
+		try {
+			switch (saveOrLoad) {
+			case "save":
+				writer.println("Drop bombs: " + dropBombs);
+				writer.println("Switch Weapons: " + switchWeapon);
+				writer.println("Extra button one: " + extraKeyOne);
+				writer.println("Extra button two: " + extraKeyTwo);
+				writer.println("Move up: " + moveUp);
+				writer.println("Move down: " + moveDown);
+				writer.println("Move left: " + moveLeft);
+				writer.println("Move Right: " + moveRight);
+				return true;
+			case "load":
+				lineScanner = scan.useDelimiter("[:\n]");
 
-	public void loadButtons() {
-		lineScanner = scan.useDelimiter("[:\n]");
+				lineScanner.next();
+				dropBombs = lineScanner.next().trim().charAt(0);
 
-		lineScanner.next();
-		dropBombs = lineScanner.next().trim().charAt(0);
+				lineScanner.next();
+				switchWeapon = lineScanner.next().trim().charAt(0);
 
-		lineScanner.next();
-		switchWeapon = lineScanner.next().trim().charAt(0);
+				lineScanner.next();
+				extraKeyOne = lineScanner.next().trim().charAt(0);
 
-		lineScanner.next();
-		extraKeyOne = lineScanner.next().trim().charAt(0);
+				lineScanner.next();
+				extraKeyTwo = lineScanner.next().trim().charAt(0);
 
-		lineScanner.next();
-		extraKeyTwo = lineScanner.next().trim().charAt(0);
+				lineScanner.next();
+				temp = lineScanner.next();
+				moveUp = Integer.parseInt(temp.trim());
 
-	}
+				lineScanner.next();
+				temp = lineScanner.next();
+				moveDown = Integer.parseInt(temp.trim());
 
-	public void saveLocation() {
-		writer.println("Config Location: " + SAVELOCATION);
-	}
+				lineScanner.next();
+				temp = lineScanner.next();
+				moveLeft = Integer.parseInt(temp.trim());
 
-	public void saveResolution() {
-		writer.println("Resolution: " + width + ", " + height);
-	}
-
-	public void saveButtons() {
-		writer.println("Drop bombs: ");
-		writer.println("Switch Weapons: ");
-		writer.println("Extra button one: ");
-		writer.println("Extra button two: ");
-		writer.println("Move up: ");
-		writer.println("Move down: ");
-		writer.println("Move left: ");
-		writer.println("Move Right: ");
+				lineScanner.next();
+				temp = lineScanner.next();
+				moveRight = Integer.parseInt(temp.trim());
+				return true;
+			default:
+				return false;
+			}
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 }
