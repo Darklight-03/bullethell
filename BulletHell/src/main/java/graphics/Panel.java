@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -39,6 +40,8 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	}
 
 	public void paint(Graphics g) {
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 
 		switch (gM.GameState) {
