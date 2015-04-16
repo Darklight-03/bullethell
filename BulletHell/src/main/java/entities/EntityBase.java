@@ -25,6 +25,10 @@ public class EntityBase {
 			Log.error("Could not load image" + NAME);
 		}
 	}
+	
+	public void update(){
+		
+	}
 
 	public int getX() {
 		return (int) x;
