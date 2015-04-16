@@ -36,11 +36,11 @@ public class EntityBase {
 	}
 
 	public int drawX() {
-		return (int) x - image.getWidth()/2;
+		return (int) x - image.getWidth() / 2;
 	}
 
 	public int drawY() {
-		return (int) y - image.getHeight()/2;
+		return (int) y - image.getHeight() / 2;
 	}
 
 	public int getY() {
@@ -56,6 +56,20 @@ public class EntityBase {
 			return false;
 		else
 			return true;
+	}
+
+	public boolean isInBounds(double currentX, double currentY, double moveX, double moveY, double width, double height) {
+		if (moveX > 0) {
+			if (!isInBounds(currentX + moveX + width / 2, currentY)) return false;
+		} else if (moveX < 0) {
+			if (!isInBounds(currentX - moveX - width / 2, currentY)) return false;
+		}
+		if (moveY > 0) {
+			if (!isInBounds(currentX, currentY + moveY + height / 2)) return false;
+		} else if (moveY < 0) {
+			if (!isInBounds(currentX, currentY - moveY - height / 2)) return false;
+		}
+		return true;
 	}
 
 	public BufferedImage getImage() {

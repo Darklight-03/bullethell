@@ -55,7 +55,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_FRAMES);
 				repaint();
-				checkForMovement();
+				gM.getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed);
 			} catch (InterruptedException e) {
 				Log.error("Failed at repainting");
 			}
@@ -136,13 +136,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			break;
 		}
 
-	}
-
-	public void checkForMovement() {
-		if (moveUpDepressed) gM.getPlayer().move("up");
-		if (moveDownDepressed) gM.getPlayer().move("down");
-		if (moveLeftDepressed) gM.getPlayer().move("left");
-		if (moveRightDepressed) gM.getPlayer().move("right");
 	}
 
 	public void setButtons() {
