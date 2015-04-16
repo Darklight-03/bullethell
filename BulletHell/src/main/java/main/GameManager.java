@@ -2,11 +2,9 @@ package main;
 
 import entities.Player;
 import reference.Config;
-import graphics.Panel;
 
 public class GameManager implements Runnable {
 
-	private Panel p;
 	public Player player;
 
 	public int GameState;

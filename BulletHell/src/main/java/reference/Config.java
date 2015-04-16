@@ -2,7 +2,6 @@ package reference;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import util.Log;
@@ -20,7 +19,7 @@ public class Config {
 
 	private String SAVELOCATION = "Config.txt", temp;
 	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39;
-	public static double moveSpeed = 1.3;
+	public static double moveSpeed = 1.5;
 	public static char dropBombs = 'z', switchWeapon = 'x', extraKeyOne = 'c', extraKeyTwo = 'v';
 
 	/*

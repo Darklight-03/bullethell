@@ -24,14 +24,14 @@ public class Player extends EntityBase {
 
 		}
 		if (down) {
-			if (this.y + height / 2 < Config.height-.5) y += Config.moveSpeed;
+			if (this.y + height / 2 < Config.height-.75) y += Config.moveSpeed;
 		}
 		if (left) {
 			if (this.x - width / 2 > 0) x -= Config.moveSpeed;
 
 		}
 		if (right) {
-			if (this.x + width / 2 < Config.width-.5) x += Config.moveSpeed;
+			if (this.x + width / 2 < Config.width-.76) x += Config.moveSpeed;
 		}
 
 		if (x != 0 && y != 0) {
