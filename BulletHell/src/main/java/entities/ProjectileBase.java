@@ -1,15 +1,16 @@
 package entities;
 
-public class ProjectileBase extends EntityBase implements Runnable {
+public class ProjectileBase extends EntityBase{
 
-	public ProjectileBase(String imageName, double angle, double speed) {
+	double angle, speed;
+	
+	public ProjectileBase(String imageName, double angle, double speed,int startX, int startY) {
 		super(imageName);
+		this.angle = angle;
+		this.speed = speed;
+		x = startX;
+		y = startY;
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

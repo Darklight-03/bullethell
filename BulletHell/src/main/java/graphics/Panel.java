@@ -44,6 +44,9 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 		g.drawImage(gM.getEntities().get(0).getImage(), gM.getEntities().get(0).drawX(), gM.getEntities().get(0).drawY(),null);
+		for(int i = 0; i< gM.getProjectiles().size();i++){
+			g.drawImage(gM.getProjectiles().get(i).getImage(),gM.getProjectiles().get(i).getX() , gM.getProjectiles().get(i).getY(), null);
+		}
 	}
 
 	@Override
@@ -63,7 +66,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		switch (gM.GameState) {
+		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:
@@ -93,7 +96,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// System.out.println(e.getKeyCode());
-		switch (gM.GameState) {
+		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:
@@ -120,7 +123,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		switch (gM.GameState) {
+		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:

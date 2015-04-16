@@ -6,6 +6,10 @@ public class Player extends EntityBase {
 
 	protected final String NAME = "Player";
 	int width, height;
+	public int weapon = 0;
+
+	// TODO add method to switch the weapon when the switchweapon method is
+	// called
 
 	public Player(String imageName) {
 		super(imageName);
@@ -24,21 +28,21 @@ public class Player extends EntityBase {
 
 		}
 		if (down) {
-			if (this.y + height / 2 < Config.height-.75) y += Config.moveSpeed;
+			if (this.y + height / 2 < Config.height - .75) y += Config.moveSpeed;
 		}
 		if (left) {
 			if (this.x - width / 2 > 0) x -= Config.moveSpeed;
 
 		}
 		if (right) {
-			if (this.x + width / 2 < Config.width-.76) x += Config.moveSpeed;
+			if (this.x + width / 2 < Config.width - .76) x += Config.moveSpeed;
 		}
 
 		if (x != 0 && y != 0) {
 			x /= Math.sqrt(2);
 			y /= Math.sqrt(2);
 		}
-		
+
 		if (isInBounds(this.x, this.y, x, y, width, height)) {
 			this.x += x;
 			this.y += y;
