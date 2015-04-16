@@ -44,9 +44,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 
-		switch (gM.GameState) {
-
-		}
 	}
 
 	@Override
@@ -65,21 +62,30 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// System.out.println(e.getKeyChar()+"   "+ e.getKeyCode());
-		// TODO get this working with the arrow keys
-		char c = e.getKeyChar();
-		if (c == dropBombs) {
+		switch (gM.GameState) {
+		case Config.MAIN_MENU:
+			break;
+		case Config.PAUSED:
+			break;
+		case Config.PLAYING:
+			char c = e.getKeyChar();
+			if (c == dropBombs) {
 
-		}
-		if (c == switchWeapon) {
+			}
+			if (c == switchWeapon) {
 
-		}
-		if (c == extraKeyOne) {
+			}
+			if (c == extraKeyOne) {
 
-		}
-		if (c == extraKeyOne) {
+			}
+			if (c == extraKeyOne) {
 
+			}
+			break;
+		case Config.DEAD:
+			break;
 		}
+		
 
 	}
 

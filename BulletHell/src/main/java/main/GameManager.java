@@ -29,7 +29,7 @@ public class GameManager implements Runnable {
 	 */
 	@Override
 	public void run() {
-		while(true){
+		while (true) {
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
 			} catch (InterruptedException e) {
@@ -45,6 +45,14 @@ public class GameManager implements Runnable {
 	public void setPlayer(Player player) {
 		this.player = player;
 
+	}
+
+	public ArrayList<ProjectileBase> getProjectiles() {
+		return projectiles;
+	}
+
+	public ArrayList<EntityBase> getEntities() {
+		return entities;
 	}
 
 }
