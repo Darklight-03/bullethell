@@ -6,7 +6,7 @@ public class BackgroundObject extends EntityBase
 {
 	public BackgroundObject(String imageName){
 		super(imageName);
-		y = -100;
+		y = -100+(Math.random()*-900);
 		x = Math.random()*Config.width;
 	}
 	public void update(){

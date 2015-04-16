@@ -22,7 +22,7 @@ public class GameManager implements Runnable {
 		GameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.jpg");
-		BackgroundObject bo = new BackgroundObject("placeHolderBackgroundObject");
+		BackgroundObject bo = new BackgroundObject("placeHolderBackgroundObject.jpg");
 		entities.add(bo);
 	}
 

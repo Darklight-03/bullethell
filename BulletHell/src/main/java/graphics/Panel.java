@@ -43,7 +43,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
-
+		g.drawImage(gM.getEntities().get(0).getImage(), gM.getEntities().get(0).drawX(), gM.getEntities().get(0).drawY(),null);
 	}
 
 	@Override
