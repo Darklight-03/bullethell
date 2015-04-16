@@ -63,6 +63,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	}
 
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// System.out.println(e.getKeyChar()+"   "+ e.getKeyCode());

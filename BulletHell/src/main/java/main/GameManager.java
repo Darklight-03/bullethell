@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
+import entities.BackgroundObject;
 import entities.EntityBase;
 import entities.Player;
 import entities.ProjectileBase;
@@ -21,6 +22,8 @@ public class GameManager implements Runnable {
 		GameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.jpg");
+		BackgroundObject bo = new BackgroundObject("placeHolderBackgroundObject");
+		entities.add(bo);
 	}
 
 	/*
@@ -32,9 +35,21 @@ public class GameManager implements Runnable {
 		while(true){
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
+				updateE();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	private void updateE(){
+		for(int i = 0;i<entities.size();i++){
+			entities.get(i).update();
+		}
+	}
+	private void updateP(){
+		for(int i = 0;i<projectiles.size();i++){
+			projectiles.get(i).update();
 		}
 	}
 
