@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -21,11 +22,13 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	GameManager gM;
 	private int moveUp, moveDown, moveLeft, moveRight;
 	private char dropBombs, switchWeapon, extraKeyOne, extraKeyTwo;
-	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false;;
+	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false;
+	private BufferedImage buffer;
 
 	public Panel() {
 		super();
 		setSize(new Dimension(Config.width, Config.height));
+		buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
 
 		setButtons();
 
@@ -40,13 +43,19 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	}
 
 	public void paint(Graphics g) {
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
-		g.drawImage(gM.getEntities().get(0).getImage(), gM.getEntities().get(0).drawX(), gM.getEntities().get(0).drawY(),null);
-		for(int i = 0; i< gM.getProjectiles().size();i++){
-			g.drawImage(gM.getProjectiles().get(i).getImage(),gM.getProjectiles().get(i).getX() , gM.getProjectiles().get(i).getY(), null);
+		Graphics bg = buffer.getGraphics();
+		bg.setColor(Color.WHITE);
+		bg.fillRect(0, 0, getWidth(), getHeight());
+
+		for (int i = 0; i < gM.getProjectiles().size(); i++) {
+			bg.drawImage(gM.getProjectiles().get(i).getImage(), gM.getProjectiles().get(i).getX(), gM.getProjectiles().get(i).getY(), null);
 		}
+		for (int i = 0; i < gM.getEntities().size(); i++) {
+			bg.drawImage(gM.getEntities().get(i).getImage(), gM.getEntities().get(i).getX(), gM.getEntities().get(i).getY(), null);
+		}
+
+		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
+		g.drawImage(buffer, 0, 0, null);
 	}
 
 	@Override
@@ -62,7 +71,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		}
 
 	}
-
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -89,7 +97,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		case Config.DEAD:
 			break;
 		}
-		
 
 	}
 
