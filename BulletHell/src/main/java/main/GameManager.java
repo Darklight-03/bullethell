@@ -14,6 +14,7 @@ public class GameManager implements Runnable {
 	public int GameState;
 	public ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
+	public ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
 
 	/*
 	 * 
@@ -22,8 +23,9 @@ public class GameManager implements Runnable {
 		GameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.jpg");
-		BackgroundObject bo = new BackgroundObject("placeHolderBackgroundObject.jpg");
-		entities.add(bo);
+		entities.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		
+		
 	}
 
 	/*
