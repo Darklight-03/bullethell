@@ -6,16 +6,16 @@ import entities.BackgroundObject;
 import entities.EntityBase;
 import entities.Player;
 import entities.projectiles.ProjectileBase;
-import entities.projectiles.Shot;
+import entities.projectiles.PlayerShot;
 import reference.Config;
 
 public class GameManager implements Runnable {
 
 	public Player player;
 	public int gameState;
-	public ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
-	public ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
-	public ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
+	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
+	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
+	public static ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
 
 	/*
 	 * 
@@ -52,7 +52,20 @@ public class GameManager implements Runnable {
 	private void updatePlayer(){
 		switch(player.weapon){
 		case 0:
-			projectiles.add(new Shot("placeholderProjectile.jpg",-90,5,player.getX(),player.getY()));
+			switch(player.powerLevel){
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			
+			}
+			projectiles.add(new PlayerShot("placeholderProjectile.jpg",-90,5,player.getX(),player.getY()));
 			break;
 		case 1:
 			break;
