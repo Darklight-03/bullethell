@@ -52,7 +52,7 @@ public class GameManager implements Runnable {
 	private void updatePlayer(){
 		switch(player.weapon){
 		case 0:
-			projectiles.add(new Shot("placeholderProjectile.jpg",90,5,player.getX(),player.getY()));
+			projectiles.add(new Shot("placeholderProjectile.jpg",-90,5,player.getX(),player.getY()));
 			break;
 		case 1:
 			break;
@@ -66,7 +66,8 @@ public class GameManager implements Runnable {
 	}
 	private void updateP(){
 		for(int i = 0;i<projectiles.size();i++){
-			projectiles.get(i).update();
+			if(!projectiles.get(i).update())
+				projectiles.remove(i);
 		}
 	}
 

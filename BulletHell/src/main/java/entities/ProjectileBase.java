@@ -11,6 +11,13 @@ public class ProjectileBase extends EntityBase{
 		x = startX;
 		y = startY;
 	}
+	
+	public boolean update(){
+		if(!isInBounds(x,y)){
+			return false;
+		}
+		return true;
+	}
 
 
 }

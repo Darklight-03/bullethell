@@ -26,8 +26,8 @@ public class EntityBase {
 		}
 	}
 	
-	public void update(){
-		
+	public boolean update(){
+		return true;
 	}
 
 	public int getX() {
