@@ -4,7 +4,7 @@ import main.GameManager;
 import entities.projectiles.PlayerShot;
 import reference.Config;
 
-public class Player extends EntityBase {
+public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
@@ -20,17 +20,23 @@ public class Player extends EntityBase {
 		x = Config.width / 2;
 		y = Config.height / 2;
 		powerLevel = 0;
+		
+		Thread t = new Thread(this);
+		t.start();
 	}
-	
-	public void attack(){
-		switch(weapon){
+
+	public void attack() {
+		// TODO make a method in the PlayerShot and PlayerLaser to call, and
+		// then that class will determine what to do based on the player's power
+		// level
+		switch (weapon) {
 		case 0:
-			GameManager.projectiles.add(new PlayerShot("placeholderProjectile.jpg",-90,5,x,y));
+			GameManager.projectiles.add(new PlayerShot("placeholderProjectile.jpg", -90, 5, x, y));
 			break;
 		case 1:
 			break;
 		}
-		
+
 	}
 
 	// Moves the player in the direction specified --
@@ -62,12 +68,27 @@ public class Player extends EntityBase {
 			this.y += y;
 		}
 	}
-	
-	public void increasePower(){
+
+	public void increasePower() {
 		powerLevel++;
 	}
-	public void losePower(){
+
+	public void losePower() {
 		powerLevel = 0;
+	}
+
+	@Override
+	public void run() {
+		while(GameManager.gameState == Config.PLAYING){
+			try {
+				Thread.sleep(50);
+				attack();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 }
