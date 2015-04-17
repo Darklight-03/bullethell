@@ -1,11 +1,11 @@
 package entities.projectiles;
 
 
-public class Shot extends ProjectileBase{
+public class PlayerShot extends ProjectileBase{
 
 	
 	
-	public Shot(String imageName, double angle, double speed,int startX,int startY) {
+	public PlayerShot(String imageName, double angle, double speed,double startX,double startY) {
 		super(imageName, angle, speed,startX,startY);
 		// TODO Auto-generated constructor stub
 	}

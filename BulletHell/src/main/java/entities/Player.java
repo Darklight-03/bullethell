@@ -1,12 +1,14 @@
 package entities;
 
+import main.GameManager;
+import entities.projectiles.PlayerShot;
 import reference.Config;
 
 public class Player extends EntityBase {
 
 	protected final String NAME = "Player";
 	int width, height;
-	public int weapon = 0;
+	public int weapon = 0, powerLevel;
 
 	// TODO add method to switch the weapon when the switchweapon method is
 	// called
@@ -17,6 +19,18 @@ public class Player extends EntityBase {
 		height = getImage().getHeight();
 		x = Config.width / 2;
 		y = Config.height / 2;
+		powerLevel = 0;
+	}
+	
+	public void attack(){
+		switch(weapon){
+		case 0:
+			GameManager.projectiles.add(new PlayerShot("placeholderProjectile.jpg",-90,5,x,y));
+			break;
+		case 1:
+			break;
+		}
+		
 	}
 
 	// Moves the player in the direction specified --
@@ -47,6 +61,13 @@ public class Player extends EntityBase {
 			this.x += x;
 			this.y += y;
 		}
+	}
+	
+	public void increasePower(){
+		powerLevel++;
+	}
+	public void losePower(){
+		powerLevel = 0;
 	}
 
 }
