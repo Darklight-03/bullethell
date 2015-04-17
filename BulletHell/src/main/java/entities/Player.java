@@ -31,11 +31,7 @@ public class Player extends EntityBase implements Runnable {
 		// level
 		switch (weapon) {
 		case 0:
-<<<<<<< HEAD
 			GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg",-90,5,x,y));
-=======
-			GameManager.projectiles.add(new PlayerShot("placeholderProjectile.jpg", -90, 5, x, y));
->>>>>>> 4194221c6ab7f2cca6ba7001cc45c73246d7edb1
 			break;
 		case 1:
 			break;
