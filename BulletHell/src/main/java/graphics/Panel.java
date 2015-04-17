@@ -43,8 +43,12 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
+
 		for(int i = 0;i<gM.getEntities().size();i++){
 			g.drawImage(gM.getEntities().get(i).getImage(), gM.getEntities().get(i).drawX(), gM.getEntities().get(i).drawY(),null);
+		}
+		for(int p = 0; p< gM.getProjectiles().size();p++){
+			g.drawImage(gM.getProjectiles().get(p).getImage(),gM.getProjectiles().get(p).getX() , gM.getProjectiles().get(p).getY(), null);
 		}
 	}
 
@@ -65,7 +69,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		switch (gM.GameState) {
+		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:
@@ -95,7 +99,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// System.out.println(e.getKeyCode());
-		switch (gM.GameState) {
+		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:
@@ -122,7 +126,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		switch (gM.GameState) {
+		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:

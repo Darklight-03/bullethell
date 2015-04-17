@@ -6,12 +6,13 @@ import entities.BackgroundObject;
 import entities.EntityBase;
 import entities.Player;
 import entities.ProjectileBase;
+import entities.projectiles.Shot;
 import reference.Config;
 
 public class GameManager implements Runnable {
 
 	public Player player;
-	public int GameState;
+	public int gameState;
 	public ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
 	public ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
@@ -20,7 +21,7 @@ public class GameManager implements Runnable {
 	 * 
 	 */
 	public GameManager() {
-		GameState = Config.PLAYING; // TODO change this to start out as main
+		gameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.jpg");
 		entities.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
@@ -37,10 +38,24 @@ public class GameManager implements Runnable {
 		while (true) {
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
+				if(gameState == Config.PLAYING){
+				updatePlayer();
 				updateE();
+				updateP();
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	private void updatePlayer(){
+		switch(player.weapon){
+		case 0:
+			projectiles.add(new Shot("placeholderProjectile.jpg",90,5,player.getX(),player.getY()));
+			break;
+		case 1:
+			break;
 		}
 	}
 	

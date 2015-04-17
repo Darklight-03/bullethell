@@ -1,4 +1,6 @@
-package entities;
+package entities.projectiles;
+
+import entities.ProjectileBase;
 
 public class Laser extends ProjectileBase{
 
