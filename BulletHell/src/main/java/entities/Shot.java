@@ -9,9 +9,10 @@ public class Shot extends ProjectileBase{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void update(){
-		x += speed*Math.cos(angle);
-		y += speed*Math.sin(angle);
+	public boolean update(){
+		x += speed*Math.cos(Math.toRadians(angle));
+		y += speed*Math.sin(Math.toRadians(angle));
+		return super.update();
 	}
 	
 }
