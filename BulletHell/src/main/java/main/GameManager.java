@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import entities.BackgroundObject;
 import entities.EntityBase;
 import entities.Player;
-import entities.ProjectileBase;
-import entities.Shot;
+import entities.projectiles.ProjectileBase;
+import entities.projectiles.Shot;
 import reference.Config;
 
 public class GameManager implements Runnable {
@@ -15,6 +15,7 @@ public class GameManager implements Runnable {
 	public int gameState;
 	public ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
+	public ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
 
 	/*
 	 * 
@@ -23,8 +24,9 @@ public class GameManager implements Runnable {
 		gameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.jpg");
-		BackgroundObject bo = new BackgroundObject("placeHolderBackgroundObject.jpg");
-		entities.add(bo);
+		entities.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		
+		
 	}
 
 	/*

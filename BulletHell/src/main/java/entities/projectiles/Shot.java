@@ -1,4 +1,5 @@
-package entities;
+package entities.projectiles;
+
 
 public class Shot extends ProjectileBase{
 
@@ -8,7 +9,7 @@ public class Shot extends ProjectileBase{
 		super(imageName, angle, speed,startX,startY);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public boolean update(){
 		x += speed*Math.cos(Math.toRadians(angle));
 		y += speed*Math.sin(Math.toRadians(angle));
