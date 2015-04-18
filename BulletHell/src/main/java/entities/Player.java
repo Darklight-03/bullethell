@@ -54,16 +54,7 @@ public class Player extends EntityBase implements Runnable {
 
 				break;
 			case 4:
-	/*			GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -90, 7, x - 10, y));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -90, 7, x + 10, y));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -20, 7, x - 7, y));
-
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -160, 7, x + 7, y));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -36, 7, x - 7, y));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -72, 7, x + 7, y));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -108, 7, x - 7, y));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -144, 7, x + 7, y));
-	*/			break;
+				break;
 			}
 			break;
 		case 1:
