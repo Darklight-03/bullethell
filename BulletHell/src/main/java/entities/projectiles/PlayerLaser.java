@@ -8,21 +8,7 @@ public class PlayerLaser extends ProjectileBase {
 		super(imageName, angle, speed, startX, startY);
 		// TODO Auto-generated constructor stub
 	}
-
-	public void shoot(int powerLevel) {
-		switch(powerLevel){
-		case 0:
-			break;
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		}
-	}
+	
 
 	public boolean update() {
 		x += speed * Math.cos(Math.toRadians(angle));

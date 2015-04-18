@@ -2,13 +2,15 @@ package entities;
 
 import main.GameManager;
 import entities.projectiles.PlayerShot;
+import graphics.Panel;
 import reference.Config;
 
 public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
-	public int weapon = 0, powerLevel;
+	public int weapon = 0, powerLevel = 0;
+	private Thread t;
 
 	// TODO add method to switch the weapon when the switchweapon method is
 	// called
@@ -19,10 +21,13 @@ public class Player extends EntityBase implements Runnable {
 		height = getImage().getHeight();
 		x = Config.width / 2;
 		y = Config.height / 2;
-		powerLevel = 0;
-		
-		Thread t = new Thread(this);
+
+		t = new Thread(this);
 		t.start();
+	}
+	
+	public Thread getThread(){
+		return t;
 	}
 
 	public void attack() {
@@ -31,9 +36,50 @@ public class Player extends EntityBase implements Runnable {
 		// level
 		switch (weapon) {
 		case 0:
-			GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg",-90,5,x,y));
+			switch (powerLevel) {
+			case 0:
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", -90, 5, x - 7, y));
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", -90, 5, x + 7, y));
+				break;
+			case 1:
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -90, 4, x - 10, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -90, 4, x + 10, y));
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", -100, 4, x - 7, y));
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", -80, 4, x + 7, y));
+				break;
+			case 2:
+
+				break;
+			case 3:
+
+				break;
+			case 4:
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -90, 7, x - 10, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -90, 7, x + 10, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -20, 7, x - 7, y));
+
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -160, 7, x + 7, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -36, 7, x - 7, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -72, 7, x + 7, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -108, 7, x - 7, y));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", -144, 7, x + 7, y));
+				break;
+			}
+
 			break;
 		case 1:
+			switch (powerLevel) {
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
 			break;
 		}
 
@@ -79,10 +125,12 @@ public class Player extends EntityBase implements Runnable {
 
 	@Override
 	public void run() {
-		while(GameManager.gameState == Config.PLAYING){
+		while (GameManager.gameState == Config.PLAYING) {
 			try {
 				Thread.sleep(50);
-				attack();
+				if (Panel.playerShoots) {
+					attack();
+				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

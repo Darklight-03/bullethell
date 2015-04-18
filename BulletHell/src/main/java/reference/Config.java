@@ -20,7 +20,7 @@ public class Config {
 	private String SAVELOCATION = "Config.txt", temp;
 	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39;
 	public static double moveSpeed = 1.5,scrollSpeed = 2;
-	public static char dropBombs = 'z', switchWeapon = 'x', extraKeyOne = 'c', extraKeyTwo = 'v';
+	public static char shoot = 'z', dropBombs = 'x', switchWeapons = 'c', extraKeyOne = 'v';
 
 	/*
 	 * This file is made in order to store all of the settings in an editable
@@ -142,10 +142,10 @@ public class Config {
 		try {
 			switch (saveOrLoad) {
 			case "save":
+				writer.println("Shoot weapon: " + shoot);
 				writer.println("Drop bombs: " + dropBombs);
-				writer.println("Switch Weapons: " + switchWeapon);
+				writer.println("switchWeapons: " + switchWeapons);
 				writer.println("Extra button one: " + extraKeyOne);
-				writer.println("Extra button two: " + extraKeyTwo);
 				writer.println("Move up: " + moveUp);
 				writer.println("Move down: " + moveDown);
 				writer.println("Move left: " + moveLeft);
@@ -155,16 +155,16 @@ public class Config {
 				lineScanner = scan.useDelimiter("[:\n]");
 
 				lineScanner.next();
+				shoot = lineScanner.next().trim().charAt(0);
+
+				lineScanner.next();
 				dropBombs = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
-				switchWeapon = lineScanner.next().trim().charAt(0);
+				switchWeapons = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
 				extraKeyOne = lineScanner.next().trim().charAt(0);
-
-				lineScanner.next();
-				extraKeyTwo = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
 				temp = lineScanner.next();

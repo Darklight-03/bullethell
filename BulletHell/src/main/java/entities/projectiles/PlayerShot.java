@@ -9,21 +9,6 @@ public class PlayerShot extends ProjectileBase {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void shoot(int powerLevel) {
-		switch(powerLevel){
-		case 0:
-			break;
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		}
-	}
-
 	public boolean update() {
 		x += speed * Math.cos(Math.toRadians(angle));
 		y += speed * Math.sin(Math.toRadians(angle));
