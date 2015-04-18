@@ -1,4 +1,6 @@
-package entities.projectiles;
+package entities.projectiles.player;
+
+import entities.projectiles.ProjectileBase;
 
 public class PlayerShot extends ProjectileBase {
 
