@@ -1,7 +1,9 @@
 package entities.projectiles;
 
+public class PlayerShot extends ProjectileBase {
 
-public class PlayerShot extends ProjectileBase{
+	public int size = 0;
+
 
 	
 	
@@ -12,5 +14,5 @@ public class PlayerShot extends ProjectileBase{
 	public PlayerShot(String imageName, double angle, double speed, double x, double y, double ax0, double ay0, boolean toUseAnglesPutABooleanHereThatIsTrue){
 		super(imageName, angle, speed, x, y, ax0, ay0, toUseAnglesPutABooleanHereThatIsTrue);
 	}
-	
+
 }
