@@ -12,4 +12,5 @@ Move left: 37
 Move Right: 39
 
 Move speed: 1.5
+Scroll speed: 2.0
 

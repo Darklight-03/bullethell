@@ -196,6 +196,7 @@ public class Config {
 			switch (saveOrLoad) {
 			case "save":
 				writer.println("Move speed: " + moveSpeed);
+				writer.println("Scroll speed: " + scrollSpeed);
 				return true;
 			case "load":
 				scan.nextLine();
@@ -203,6 +204,11 @@ public class Config {
 				lineScanner = scanner.useDelimiter(":");
 				lineScanner.next();
 				moveSpeed = Double.parseDouble(lineScanner.next().trim());
+				
+				scanner = new Scanner(scan.nextLine());
+				lineScanner = scanner.useDelimiter(":");
+				lineScanner.next();
+				scrollSpeed = Double.parseDouble(lineScanner.next().trim());
 
 				return true;
 			default:
