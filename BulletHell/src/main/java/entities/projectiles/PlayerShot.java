@@ -5,15 +5,12 @@ public class PlayerShot extends ProjectileBase{
 
 	
 	
-	public PlayerShot(String imageName, double angle, double speed,double startX,double startY) {
-		super(imageName, angle, speed,startX,startY);
-		// TODO Auto-generated constructor stub
+	public PlayerShot(String imageName, double x, double y, double vx0, double vy0, double ax0, double ay0){
+		super(imageName, x, y, vx0, vy0, ax0, ay0);
 	}
 	
-	public boolean update(){
-		x += speed*Math.cos(Math.toRadians(angle));
-		y += speed*Math.sin(Math.toRadians(angle));
-		return super.update();
+	public PlayerShot(String imageName, double angle, double speed, double x, double y, double ax0, double ay0, boolean toUseAnglesPutABooleanHereThatIsTrue){
+		super(imageName, angle, speed, x, y, ax0, ay0, toUseAnglesPutABooleanHereThatIsTrue);
 	}
 	
 }
