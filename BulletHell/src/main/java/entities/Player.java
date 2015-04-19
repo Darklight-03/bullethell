@@ -32,32 +32,31 @@ public class Player extends EntityBase implements Runnable {
 	}
 
 	public void attack() {
-		// TODO Get a way to make each individual projectile fire at different rates
-		switch (weapon)
-		{
+		// TODO Get a way to make each individual projectile fire at different
+		// rates
+		switch (weapon) {
 		case 0:
-			switch (powerLevel)
-			{
+			switch (powerLevel) {
 			case 0:
 				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
 				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
 				break;
 			case 1:
 				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -1, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x+10, y, 0, -1, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x-7, y, -.5, 3, -.005, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x+7, y, .5, 3, .005, -.1));
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -1, 0, -.1));
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005, -.1));
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
 				break;
 			case 2:
 				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -4, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x+10, y, 0, -4, 0, -.1));
-				
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x-7, y, -.5, 3, -.005, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x+7, y, .5, 3, .005, -.1));
-				
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -4, 0, -.1));
+
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005, -.1));
+				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
+
 				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x+10, y, 1, -4, 0, -.1));
-				
+				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 1, -4, 0, -.1));
+
 				break;
 			case 3:
 
@@ -67,8 +66,7 @@ public class Player extends EntityBase implements Runnable {
 			}
 			break;
 		case 1:
-			switch (powerLevel)
-			{
+			switch (powerLevel) {
 			case 0:
 				break;
 			case 1:
@@ -86,20 +84,25 @@ public class Player extends EntityBase implements Runnable {
 	}
 
 	// Moves the player in the direction specified --
-	public void move(boolean up, boolean down, boolean left, boolean right) {
-		double x = 0, y = 0;
+	public void move(boolean up, boolean down, boolean left, boolean right, boolean shouldMoveSlow) {
+		double x = 0, y = 0, speed;
+
+		if (shouldMoveSlow)
+			speed = Config.slowMoveSpeed;
+		else
+			speed = Config.moveSpeed;
 
 		if (up) {
-			if (this.y - height / 2 > 0) y -= Config.moveSpeed;
+			if (this.y - height / 2 > 0) y -= speed;
 		}
 		if (down) {
-			if (this.y + height / 2 < Config.height - .75) y += Config.moveSpeed;
+			if (this.y + height / 2 < Config.height - .75) y += speed;
 		}
 		if (left) {
-			if (this.x - width / 2 > 0) x -= Config.moveSpeed;
+			if (this.x - width / 2 > 0) x -= speed;
 		}
 		if (right) {
-			if (this.x + width / 2 < Config.width - .76) x += Config.moveSpeed;
+			if (this.x + width / 2 < Config.width - .76) x += speed;
 		}
 
 		if (x != 0 && y != 0) {
@@ -118,19 +121,18 @@ public class Player extends EntityBase implements Runnable {
 	}
 
 	public void losePower() {
-		powerLevel = 0; //TODO this is too harsh
+		powerLevel = 0; // TODO this is too harsh, like your mother
 	}
 
 	@Override
 	public void run() {
 		while (GameManager.gameState == Config.PLAYING) {
 			try {
-				Thread.sleep(200/(powerLevel+1));
+				Thread.sleep(200 / (powerLevel + 1));
 				if (Panel.playerShoots) {
 					attack();
 				}
-			}
-			catch (InterruptedException e) {
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

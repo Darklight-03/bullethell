@@ -20,9 +20,9 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	Thread game;
 	GameManager gM;
-	private int moveUp, moveDown, moveLeft, moveRight;
+	private int moveUp, moveDown, moveLeft, moveRight,moveSlow;
 	private char shoot, dropBombs, switchWeapons, extraKeyOne;
-	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, moveSlow = false;
+	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, shouldMoveSlow = false;
 	public static boolean playerShoots = false;
 	private BufferedImage buffer;
 
@@ -57,6 +57,10 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		}
 
 		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
+		if(shouldMoveSlow){
+			bg.setColor(Config.hitBoxColor);
+			bg.fillRect(gM.getPlayer().getX()-4, gM.getPlayer().getY()-4, 8, 8);
+		}
 		g.drawImage(buffer, 0, 0, null);
 	}
 
@@ -66,7 +70,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_FRAMES);
 				repaint();
-				gM.getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed);
+				gM.getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,shouldMoveSlow);
 			} catch (InterruptedException e) {
 				Log.error("Failed at repainting");
 			}
@@ -102,7 +106,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// System.out.println(e.getKeyCode());
+//		System.out.println(e.getKeyCode());
 		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
@@ -115,11 +119,12 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			if (e.getKeyCode() == 27) {
 				pauseGame();
 			}
-			if(e.getKeyChar() == shoot){
+			if (e.getKeyChar() == shoot) {
+				System.out.println(playerShoots);
 				playerShoots = true;
 			}
-			if (e.getKeyCode() == 16) {
-				moveSlow = true;
+			if (e.getKeyCode() == moveSlow) {
+				shouldMoveSlow = true;
 			}
 			if (e.getKeyCode() == moveUp) {
 				moveUpDepressed = true;
@@ -142,14 +147,17 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		switch (gM.gameState) {
+		switch (GameManager.gameState) {
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:
 			break;
 		case Config.PLAYING:
-			if(e.getKeyChar() == shoot){
+			if (e.getKeyChar() == shoot) {
 				playerShoots = false;
+			}
+			if (e.getKeyCode() == moveSlow) {
+				shouldMoveSlow = false;
 			}
 			if (e.getKeyCode() == moveUp) {
 				moveUpDepressed = false;
@@ -169,14 +177,15 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		}
 
 	}
-	
-	public void pauseGame(){
+
+	public void pauseGame() {
 		GameManager.gameState = Config.PAUSED;
 		playerShoots = false;
 		moveUpDepressed = false;
 		moveDownDepressed = false;
 		moveLeftDepressed = false;
 		moveRightDepressed = false;
+		shouldMoveSlow = false;
 	}
 
 	public void setButtons() {
@@ -184,6 +193,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		moveDown = Config.moveDown;
 		moveLeft = Config.moveLeft;
 		moveRight = Config.moveRight;
+		moveSlow = Config.moveSlow;
 		shoot = Config.shoot;
 		dropBombs = Config.dropBombs;
 		switchWeapons = Config.switchWeapons;
