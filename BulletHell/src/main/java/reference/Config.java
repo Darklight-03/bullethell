@@ -1,5 +1,6 @@
 package reference;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -14,13 +15,15 @@ public class Config {
 	public static final boolean LOGGING = true;
 	public static final String NAME = "Bullet Hell";
 	public static final boolean USE_DIALOGS = true; // TODO implement later
-	public static final int MAIN_MENU = 0,PAUSED = 1,PLAYING = 2,DEAD = 3,PLAYER_UPS = 100;
+	public static final int MAIN_MENU = 0, PAUSED = 1, PLAYING = 2, DEAD = 3, PLAYER_UPS = 100;
 	public static final long TIME_BETWEEN_UPDATES = 5, TIME_BETWEEN_FRAMES = 5;
 
 	private String SAVELOCATION = "Config.txt", temp;
-	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39;
-	public static double moveSpeed = 1.5,scrollSpeed = 2;
+	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39,
+			moveSlow = 16;
+	public static double moveSpeed = 1.5, slowMoveSpeed, scrollSpeed = 2;
 	public static char shoot = 'z', dropBombs = 'x', switchWeapons = 'c', extraKeyOne = 'v';
+	public static Color hitBoxColor = Color.RED;
 
 	/*
 	 * This file is made in order to store all of the settings in an editable
@@ -52,7 +55,8 @@ public class Config {
 			if (!playerData("load")) Log.error("Failed to load the PlayerData");
 			space("load");
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -77,14 +81,16 @@ public class Config {
 			if (!playerData("save")) Log.error("Failed to save the PlayerData");
 			space("save");
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		writer.close();
 	}
 
 	public void space(String saveOrLoad) {
-		switch (saveOrLoad) {
+		switch (saveOrLoad)
+		{
 		case "save":
 			writer.println();
 			break;
@@ -97,7 +103,8 @@ public class Config {
 
 	public boolean location(String saveOrLoad) {
 		try {
-			switch (saveOrLoad) {
+			switch (saveOrLoad)
+			{
 			case "save":
 				writer.println("Config Location: " + SAVELOCATION);
 				return true;
@@ -111,14 +118,16 @@ public class Config {
 			default:
 				return false;
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return false;
 		}
 	}
 
 	public boolean resolution(String saveOrLoad) {
 		try {
-			switch (saveOrLoad) {
+			switch (saveOrLoad)
+			{
 			case "save":
 				writer.println("Resolution: " + width + ", " + height);
 				return true;
@@ -133,14 +142,16 @@ public class Config {
 			default:
 				return false;
 			}
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			return false;
 		}
 	}
 
 	public boolean buttons(String saveOrLoad) {
 		try {
-			switch (saveOrLoad) {
+			switch (saveOrLoad)
+			{
 			case "save":
 				writer.println("Shoot weapon: " + shoot);
 				writer.println("Drop bombs: " + dropBombs);
@@ -185,18 +196,22 @@ public class Config {
 			default:
 				return false;
 			}
-		} catch (NumberFormatException e) {
+		}
+		catch (NumberFormatException e) {
 			return false;
 		}
 	}
 
-	
 	public boolean playerData(String saveOrLoad) {
 		try {
-			switch (saveOrLoad) {
+			switch (saveOrLoad)
+			{
 			case "save":
 				writer.println("Move speed: " + moveSpeed);
+				writer.println("Slow move speed: " + slowMoveSpeed);
 				writer.println("Scroll speed: " + scrollSpeed);
+				writer.println("RGB value for hitBox: " + hitBoxColor.getRed() + ", " + hitBoxColor.getGreen() + ", "
+						+ hitBoxColor.getBlue() + ", " + hitBoxColor.getAlpha());
 				return true;
 			case "load":
 				scan.nextLine();
@@ -204,17 +219,30 @@ public class Config {
 				lineScanner = scanner.useDelimiter(":");
 				lineScanner.next();
 				moveSpeed = Double.parseDouble(lineScanner.next().trim());
-				
+
+				scanner = new Scanner(scan.nextLine());
+				lineScanner = scanner.useDelimiter(":");
+				lineScanner.next();
+				slowMoveSpeed = Double.parseDouble(lineScanner.next().trim());
+
 				scanner = new Scanner(scan.nextLine());
 				lineScanner = scanner.useDelimiter(":");
 				lineScanner.next();
 				scrollSpeed = Double.parseDouble(lineScanner.next().trim());
+				scanner = new Scanner(scan.nextLine());
+				lineScanner = scanner.useDelimiter(":");
+				lineScanner.next();
+				scanner = new Scanner(lineScanner.next()).useDelimiter(",");
+				hitBoxColor = new Color(Integer.parseInt(scanner.next().trim()),
+						Integer.parseInt(scanner.next().trim()), Integer.parseInt(scanner.next().trim()),
+						Integer.parseInt(scanner.next().trim()));
 
 				return true;
 			default:
 				return false;
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return false;
 		}
 	}
