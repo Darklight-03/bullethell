@@ -40,9 +40,9 @@ public class Player extends EntityBase implements Runnable {
 			switch (powerLevel)
 			{
 			case 0:
-				if (count % (Config.PLAYER_UPS / 5) == 0) {
+				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
-				}if (count % (Config.PLAYER_UPS / 5) == 0) {
+				}if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
 				}
 				break;

@@ -13,6 +13,8 @@ public class GameManager implements Runnable {
 
 	public Player player;
 	public static int gameState;
+	private int moveUp, moveDown, moveLeft, moveRight,moveSlow;
+	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, shouldMoveSlow = false;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
@@ -45,10 +47,6 @@ public class GameManager implements Runnable {
 	public void run() {
 		while (true) {
 			try {
-<<<<<<< HEAD
-				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
-				if (gameState == Config.PLAYING) {
-=======
 				Thread.sleep(1000 / Config.UPS);
 
 				if (gameState == Config.PLAYING) {
@@ -56,10 +54,13 @@ public class GameManager implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
->>>>>>> reworked thread -- needs testing
+					if(GameManager.count%((Config.UPS*Config.GAME_SPEED)/100)==0){
+					getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,shouldMoveSlow);
+					}
 					updatePlayer();
 					updateE();
 					updateP();
+					
 				}
 			}
 			catch (InterruptedException e) {
@@ -72,14 +73,11 @@ public class GameManager implements Runnable {
 
 	}
 
-<<<<<<< HEAD
 	/*
 	 * This method will call update() on both all of the entities and all of the
 	 * background objects, and remove any background objects who scrolled of the
 	 * edge of the screen.
 	 */
-=======
->>>>>>> reworked thread -- needs testing
 	private void updateE() {
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).update();
@@ -89,7 +87,6 @@ public class GameManager implements Runnable {
 		}
 	}
 
-<<<<<<< HEAD
 	/*
 	 * This method will call update() on all of the projectiles on the screen,
 	 * and remove any that have traversed off the edge
@@ -102,11 +99,6 @@ public class GameManager implements Runnable {
 			catch (Exception e) {
 				Log.error("failed to update a projectile");
 			}
-=======
-	private void updateP() {
-		for (int i = 0; i < projectiles.size(); i++) {
-			if (!projectiles.get(i).update()) projectiles.remove(i);
->>>>>>> reworked thread -- needs testing
 		}
 	}
 
@@ -153,8 +145,34 @@ public class GameManager implements Runnable {
 		return entities;
 	}
 
+
 	public ArrayList<BackgroundObject> getBackGroundObjects() {
 		return backGroundObjects;
+	}
+
+	public void shouldMoveSlow(boolean b) {
+		shouldMoveSlow = b;
+		
+	}
+
+	public void moveUpDepressed(boolean b) {
+		moveUpDepressed = b;
+		
+	}
+
+	public void moveDownDepressed(boolean b) {
+		moveDownDepressed = b;
+		
+	}
+
+	public void moveLeftDepressed(boolean b) {
+		moveLeftDepressed = b;
+		
+	}
+
+	public void moveRightDepressed(boolean b) {
+		moveRightDepressed = b;
+		
 	}
 
 }
