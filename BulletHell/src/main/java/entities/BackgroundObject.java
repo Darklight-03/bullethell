@@ -1,5 +1,6 @@
 package entities;
 
+import main.GameManager;
 import reference.Config;
 
 public class BackgroundObject extends EntityBase {
@@ -13,10 +14,12 @@ public class BackgroundObject extends EntityBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		y = y + Config.scrollSpeed;
-		if (y > Config.height + 100) {
-			y = (Math.random() * -500) + 100;
-			x = Math.random() * Config.width;
+		if (GameManager.count % (Config.UPS / 100) == 0) {
+			y = y + Config.scrollSpeed;
+			if (y > Config.height + 100) {
+				y = (Math.random() * -500) + 100;
+				x = Math.random() * Config.width;
+			}
 		}
 		return super.update();
 	}

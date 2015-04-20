@@ -16,6 +16,8 @@ public class GameManager implements Runnable {
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
+	public static int count;
+
 
 	/*
 	 * This should be the class that controls almost every aspect of the game.
@@ -43,8 +45,18 @@ public class GameManager implements Runnable {
 	public void run() {
 		while (true) {
 			try {
+<<<<<<< HEAD
 				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
 				if (gameState == Config.PLAYING) {
+=======
+				Thread.sleep(1000 / Config.UPS);
+
+				if (gameState == Config.PLAYING) {
+					count++;
+					if (count > 999999999) {
+						count = 0;
+					}
+>>>>>>> reworked thread -- needs testing
 					updatePlayer();
 					updateE();
 					updateP();
@@ -60,11 +72,14 @@ public class GameManager implements Runnable {
 
 	}
 
+<<<<<<< HEAD
 	/*
 	 * This method will call update() on both all of the entities and all of the
 	 * background objects, and remove any background objects who scrolled of the
 	 * edge of the screen.
 	 */
+=======
+>>>>>>> reworked thread -- needs testing
 	private void updateE() {
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).update();
@@ -74,6 +89,7 @@ public class GameManager implements Runnable {
 		}
 	}
 
+<<<<<<< HEAD
 	/*
 	 * This method will call update() on all of the projectiles on the screen,
 	 * and remove any that have traversed off the edge
@@ -86,6 +102,11 @@ public class GameManager implements Runnable {
 			catch (Exception e) {
 				Log.error("failed to update a projectile");
 			}
+=======
+	private void updateP() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			if (!projectiles.get(i).update()) projectiles.remove(i);
+>>>>>>> reworked thread -- needs testing
 		}
 	}
 

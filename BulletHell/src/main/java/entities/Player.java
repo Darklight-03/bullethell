@@ -10,7 +10,7 @@ public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
-	public int weapon = 0, powerLevel = 2;
+	public int weapon = 0, powerLevel = 0;
 	private Thread t;
 	boolean now = true;
 	long count = 0;
@@ -42,6 +42,7 @@ public class Player extends EntityBase implements Runnable {
 			case 0:
 				if (count % (Config.PLAYER_UPS / 5) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
+				}if (count % (Config.PLAYER_UPS / 5) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
 				}
 				break;
