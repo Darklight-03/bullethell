@@ -15,8 +15,9 @@ public class Config {
 	public static final boolean LOGGING = true;
 	public static final String NAME = "Bullet Hell";
 	public static final boolean USE_DIALOGS = true; // TODO implement later
+	public static double GAME_SPEED = 1;
 	public static final int MAIN_MENU = 0, PAUSED = 1, PLAYING = 2, DEAD = 3, PLAYER_UPS = 100;
-	public static final long UPS = 1000, TIME_BETWEEN_FRAMES = 5;
+	public static final long UPS = 1000, FPS = 1000;
 
 	private String SAVELOCATION = "Config.txt", temp;
 	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39,

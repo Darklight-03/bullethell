@@ -12,6 +12,8 @@ public class GameManager implements Runnable {
 
 	public Player player;
 	public static int gameState;
+	private int moveUp, moveDown, moveLeft, moveRight,moveSlow;
+	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, shouldMoveSlow = false;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
@@ -43,9 +45,13 @@ public class GameManager implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
+					if(GameManager.count%((Config.UPS*Config.GAME_SPEED)/100)==0){
+					getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,shouldMoveSlow);
+					}
 					updatePlayer();
 					updateE();
 					updateP();
+					
 				}
 			}
 			catch (InterruptedException e) {
@@ -85,6 +91,31 @@ public class GameManager implements Runnable {
 
 	public ArrayList<EntityBase> getEntities() {
 		return entities;
+	}
+
+	public void shouldMoveSlow(boolean b) {
+		shouldMoveSlow = b;
+		
+	}
+
+	public void moveUpDepressed(boolean b) {
+		moveUpDepressed = b;
+		
+	}
+
+	public void moveDownDepressed(boolean b) {
+		moveDownDepressed = b;
+		
+	}
+
+	public void moveLeftDepressed(boolean b) {
+		moveLeftDepressed = b;
+		
+	}
+
+	public void moveRightDepressed(boolean b) {
+		moveRightDepressed = b;
+		
 	}
 
 }
