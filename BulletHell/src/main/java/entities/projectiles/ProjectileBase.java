@@ -1,5 +1,7 @@
 package entities.projectiles;
 
+import reference.Config;
+import main.GameManager;
 import util.Log;
 import entities.EntityBase;
 
@@ -48,10 +50,14 @@ public class ProjectileBase extends EntityBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
+		if(GameManager.count%(Config.UPS/100)==0){
 		x = x + vx;
 		y = y + vy;
 		vx = vx + ax;
 		vy = vy + ay;
+		}
+		//System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
+		
 
 		return true;
 	}

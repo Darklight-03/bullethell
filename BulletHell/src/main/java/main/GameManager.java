@@ -15,6 +15,7 @@ public class GameManager implements Runnable {
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
+	public static int count;
 
 	/*
 	 * 
@@ -24,8 +25,7 @@ public class GameManager implements Runnable {
 									// menu, it's like this for testing
 		player = new Player("placeHolder.png");
 		entities.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		
-		
+
 	}
 
 	/*
@@ -36,31 +36,37 @@ public class GameManager implements Runnable {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
-				if(gameState == Config.PLAYING){
-				updatePlayer();
-				updateE();
-				updateP();
+				Thread.sleep(1000 / Config.UPS);
+
+				if (gameState == Config.PLAYING) {
+					count++;
+					if (count > 999999999) {
+						count = 0;
+					}
+					updatePlayer();
+					updateE();
+					updateP();
 				}
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	private void updatePlayer(){
-		
+
+	private void updatePlayer() {
+
 	}
-	
-	private void updateE(){
-		for(int i = 0;i<entities.size();i++){
+
+	private void updateE() {
+		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).update();
 		}
 	}
-	private void updateP(){
-		for(int i = 0;i<projectiles.size();i++){
-			if(!projectiles.get(i).update())
-				projectiles.remove(i);
+
+	private void updateP() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			if (!projectiles.get(i).update()) projectiles.remove(i);
 		}
 	}
 
