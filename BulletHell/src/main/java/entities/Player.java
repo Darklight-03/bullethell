@@ -12,6 +12,7 @@ public class Player extends EntityBase implements Runnable {
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	boolean now = true;
+	long count = 0;
 
 	// TODO add method to switch the weapon when the switchweapon method is
 	// called
@@ -38,25 +39,34 @@ public class Player extends EntityBase implements Runnable {
 		case 0:
 			switch (powerLevel) {
 			case 0:
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
+				if (count % (Config.PLAYER_UPS / 5) == 0) {
+					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
+					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
+				}
 				break;
 			case 1:
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -1, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -1, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
+				if (count % (Config.PLAYER_UPS / 8) == 0) {
+					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -1, 0, -.1));
+					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -1, 0, -.1));
+				}
+				if (count % (Config.PLAYER_UPS / 50) == 0) {
+					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005, -.1));
+					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
+				}
 				break;
 			case 2:
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -4, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -4, 0, -.1));
-
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005, -.1));
-				GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
-
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0, -.1));
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 1, -4, 0, -.1));
-
+				if (count % (Config.PLAYER_UPS / 12) == 0) {
+					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -4, 0, -.1));
+					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -4, 0, -.1));
+				}
+				if (count % (Config.PLAYER_UPS / 50) == 0) {
+					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005, -.1));
+					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
+				}
+				if (count % (Config.PLAYER_UPS / 12) == 0) {
+					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0, -.1));
+					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 1, -4, 0, -.1));
+				}
 				break;
 			case 3:
 
@@ -80,7 +90,6 @@ public class Player extends EntityBase implements Runnable {
 			}
 			break;
 		}
-
 	}
 
 	// Moves the player in the direction specified --
@@ -129,19 +138,19 @@ public class Player extends EntityBase implements Runnable {
 		while (true) {
 
 			try {
-				Thread.sleep(200 / (powerLevel + 1));
-				if (GameManager.gameState == Config.PLAYING) {
 
-					if (Panel.playerShoots) {
-						attack();
-					}
+				Thread.sleep(1000 / Config.PLAYER_UPS);
+				count++;
+				if (count > 999999999) {
+					count = 0;
+				}
+				if (Panel.playerShoots) {
+					attack();
 				}
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 
 			}
 		}
-
 	}
 }
