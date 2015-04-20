@@ -120,7 +120,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				pauseGame();
 			}
 			if (e.getKeyChar() == shoot) {
-				System.out.println(playerShoots);
 				playerShoots = true;
 			}
 			if (e.getKeyCode() == moveSlow) {

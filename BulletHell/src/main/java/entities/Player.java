@@ -126,18 +126,22 @@ public class Player extends EntityBase implements Runnable {
 
 	@Override
 	public void run() {
-		while (GameManager.gameState == Config.PLAYING) {
+		while (true) {
+
 			try {
 				Thread.sleep(200 / (powerLevel + 1));
-				if (Panel.playerShoots) {
-					attack();
+				if (GameManager.gameState == Config.PLAYING) {
+
+					if (Panel.playerShoots) {
+						attack();
+					}
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+
 			}
 		}
 
 	}
-
 }
