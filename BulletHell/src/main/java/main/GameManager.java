@@ -14,7 +14,7 @@ public class GameManager implements Runnable {
 	public static int gameState;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
-	public static ArrayList<BackgroundObject> backgroundObjects = new ArrayList<BackgroundObject>();
+	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 
 	/*
 	 * 
@@ -23,9 +23,11 @@ public class GameManager implements Runnable {
 		gameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.png");
-		entities.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		
-		
+		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+
 	}
 
 	/*
@@ -37,31 +39,54 @@ public class GameManager implements Runnable {
 		while (true) {
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
-				if(gameState == Config.PLAYING){
-				updatePlayer();
-				updateE();
-				updateP();
+				if (gameState == Config.PLAYING) {
+					updatePlayer();
+					updateE();
+					updateP();
 				}
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	private void updatePlayer(){
-		
+
+	private void updatePlayer() {
+
 	}
-	
-	private void updateE(){
-		for(int i = 0;i<entities.size();i++){
+
+	private void updateE() {
+		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).update();
 		}
-	}
-	private void updateP(){
-		for(int i = 0;i<projectiles.size();i++){
-			if(!projectiles.get(i).update())
-				projectiles.remove(i);
+		for (int i = 0; i < backGroundObjects.size(); i++) {
+			if (!backGroundObjects.get(i).update()) backGroundObjects.remove(i);
 		}
+	}
+
+	private void updateP() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			if (!projectiles.get(i).update()) projectiles.remove(i);
+		}
+	}
+
+	public static EntityBase findNearestEnemy(EntityBase e) {
+		// TODO change this to use the entities arraylist once the testing is
+		// complete
+		double distance = 0, temp;
+		int posToReturn = -1;
+		for (int i = 0; i < backGroundObjects.size(); i++) {
+
+			temp = Math.sqrt(Math.pow(e.getY() - backGroundObjects.get(i).getY(), 2)
+					+ Math.pow(e.getX() - backGroundObjects.get(i).getX(), 2));
+			if (temp > distance) {
+				distance = temp;
+				posToReturn = i;
+			}
+
+		}
+		if (posToReturn != -1) return backGroundObjects.get(posToReturn);
+		else return null;
 	}
 
 	public Player getPlayer() {
@@ -79,6 +104,10 @@ public class GameManager implements Runnable {
 
 	public ArrayList<EntityBase> getEntities() {
 		return entities;
+	}
+
+	public ArrayList<BackgroundObject> getBackGroundObjects() {
+		return backGroundObjects;
 	}
 
 }

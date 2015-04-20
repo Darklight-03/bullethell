@@ -2,19 +2,29 @@ package entities;
 
 import reference.Config;
 
-public class BackgroundObject extends EntityBase
-{
-	public BackgroundObject(String imageName){
+public class BackgroundObject extends EntityBase {
+	public BackgroundObject(String imageName) {
 		super(imageName);
-		y = -100+(Math.random()*-900);
-		x = Math.random()*Config.width;
+		y = -100 + (Math.random() * -900);
+		x = Math.random() * Config.width;
 	}
-	public boolean update(){
+
+	public boolean update() {
+		if (!isInBounds(x, y)) {
+			return false;
+		}
 		y = y + Config.scrollSpeed;
-		if(y>Config.height+100){
-			y = (Math.random()*-500)+100;
-			x = Math.random()*Config.width;
+		if (y > Config.height + 100) {
+			y = (Math.random() * -500) + 100;
+			x = Math.random() * Config.width;
 		}
 		return super.update();
+	}
+	
+	public boolean isInBounds(double x, double y) {
+		if (x < -100 || x > Config.width+100 ||  y > Config.height+100)
+			return false;
+		else
+			return true;
 	}
 }

@@ -20,7 +20,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	Thread game;
 	GameManager gM;
-	private int moveUp, moveDown, moveLeft, moveRight,moveSlow;
+	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private char shoot, dropBombs, switchWeapons, extraKeyOne;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, shouldMoveSlow = false;
 	public static boolean playerShoots = false;
@@ -55,11 +55,14 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		for (int i = 0; i < gM.getEntities().size(); i++) {
 			bg.drawImage(gM.getEntities().get(i).getImage(), gM.getEntities().get(i).drawX(), gM.getEntities().get(i).drawY(), null);
 		}
+		for (int i = 0; i < gM.getBackGroundObjects().size(); i++) {
+			bg.drawImage(gM.getBackGroundObjects().get(i).getImage(), gM.getBackGroundObjects().get(i).drawX(), gM.getBackGroundObjects().get(i).drawY(), null);
+		}
 
 		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
-		if(shouldMoveSlow){
+		if (shouldMoveSlow) {
 			bg.setColor(Config.hitBoxColor);
-			bg.fillRect(gM.getPlayer().getX()-4, gM.getPlayer().getY()-4, 8, 8);
+			bg.fillRect(gM.getPlayer().getX() - 4, gM.getPlayer().getY() - 4, 8, 8);
 		}
 		g.drawImage(buffer, 0, 0, null);
 	}
@@ -70,7 +73,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			try {
 				Thread.sleep(Config.TIME_BETWEEN_FRAMES);
 				repaint();
-				gM.getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,shouldMoveSlow);
+				gM.getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed, shouldMoveSlow);
 			} catch (InterruptedException e) {
 				Log.error("Failed at repainting");
 			}
@@ -106,7 +109,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-//		System.out.println(e.getKeyCode());
+		// System.out.println(e.getKeyCode());
 		switch (gM.gameState) {
 		case Config.MAIN_MENU:
 			break;
