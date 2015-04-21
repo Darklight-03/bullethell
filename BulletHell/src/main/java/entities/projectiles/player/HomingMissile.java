@@ -24,8 +24,8 @@ public class HomingMissile extends ProjectileBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		vx = vx + ax;
-		vy = vy + ay;
+		vx = vx + ax/5;
+		vy = vy + ay/5;
 		if (target == null) {
 			target = GameManager.findNearestEnemy(this);
 			x = x + vx;
@@ -33,9 +33,11 @@ public class HomingMissile extends ProjectileBase {
 		}
 		else {
 			double changeInX = target.getX() - x, changeInY = target.getY() - y;
-			double angleInDegrees = Math.atan(changeInX / changeInY) * 180 / Math.PI;
-			x += vx * Math.cos(Math.toRadians(angleInDegrees));
-			y += vy * Math.sin(Math.toRadians(angleInDegrees));
+			ay =  changeInY/2000;
+			ax = changeInX/2000;
+			x += vx;
+			y += vy;
+			
 		}
 
 		return true;

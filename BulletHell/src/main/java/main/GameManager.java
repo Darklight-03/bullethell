@@ -7,6 +7,7 @@ import entities.EntityBase;
 import entities.Player;
 import entities.projectiles.ProjectileBase;
 import reference.Config;
+import util.Log;
 
 public class GameManager implements Runnable {
 
@@ -66,20 +67,24 @@ public class GameManager implements Runnable {
 
 	private void updateP() {
 		for (int i = 0; i < projectiles.size(); i++) {
-			if (!projectiles.get(i).update()) projectiles.remove(i);
+			try {
+				if (!projectiles.get(i).update()) projectiles.remove(i);
+			}
+			catch (Exception e) {
+				Log.error("failed to update a projectile");
+			}
 		}
 	}
 
 	public static EntityBase findNearestEnemy(EntityBase e) {
 		// TODO change this to use the entities arraylist once the testing is
 		// complete
-		double distance = 0, temp;
+		double distance = Integer.MAX_VALUE, temp;
 		int posToReturn = -1;
 		for (int i = 0; i < backGroundObjects.size(); i++) {
-
 			temp = Math.sqrt(Math.pow(e.getY() - backGroundObjects.get(i).getY(), 2)
 					+ Math.pow(e.getX() - backGroundObjects.get(i).getX(), 2));
-			if (temp > distance) {
+			if (temp < distance) {
 				distance = temp;
 				posToReturn = i;
 			}
