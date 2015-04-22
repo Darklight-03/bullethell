@@ -76,8 +76,8 @@ public class Player extends EntityBase implements Runnable {
 					 * .add(new PlayerShot("PlaceholderProjectile.jpg", x + 7,
 					 * y, .5, 3, .005, -.1));
 					 */
-					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x - 7, y, -.7, -1, 0, -.05));
-					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x + 7, y, .7, -1, 0, -.05));
+					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x - 7, y, -.4, -1, 0, -.05));
+					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x + 7, y, .4, -1, 0, -.05));
 				}
 				if (count % (Config.PLAYER_UPS / 12) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0,

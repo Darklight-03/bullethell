@@ -10,6 +10,8 @@ public class HomingMissile extends ProjectileBase {
 	EntityBase target;
 
 	public HomingMissile(String imageName, double x, double y, double vx0, double vy0, double ax0, double ay0) {
+		// TODO possibly make is so that the bullets fired from the right side
+		// of the ship won't be able to cross the center of the ship
 		super(imageName, x, y, vx0, vy0, ax0, ay0);
 		this.x = x;
 		this.y = y;
@@ -21,23 +23,28 @@ public class HomingMissile extends ProjectileBase {
 	}
 
 	public boolean update() {
-		if (!isInBounds(x, y)) {
+		if (!isInBounds(x, y) || hasHitTarget) {
 			return false;
 		}
-		vx = vx + ax/5;
-		vy = vy + ay/5;
+		vx = vx + ax / 5;
+		vy = vy + ay / 5;
 		if (target == null) {
 			target = GameManager.findNearestEnemy(this);
 			x = x + vx;
 			y = y + vy;
 		}
+		else if (target.getY() > y + 15) {
+			target = null;
+			// TODO remove when hitboxes are working
+			hasHitTarget = true;
+		}
 		else {
 			double changeInX = target.getX() - x, changeInY = target.getY() - y;
-			ay =  changeInY/2000;
-			ax = changeInX/2000;
+			ay = changeInY / 700;
+			ax = changeInX / 400;
 			x += vx;
 			y += vy;
-			
+
 		}
 
 		return true;

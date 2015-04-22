@@ -88,6 +88,12 @@ public class Config {
 		writer.close();
 	}
 
+	/*
+	 * Just allows for blank lines to be placed in between lines in the config
+	 * file, in order to make it easier to read. It will either write a blank
+	 * line, or scan the next line(which should be blank) depending on the
+	 * String passed to the method.
+	 */
 	public void space(String saveOrLoad) {
 		switch (saveOrLoad)
 		{

@@ -6,6 +6,7 @@ import entities.EntityBase;
 public class ProjectileBase extends EntityBase {
 
 	double ay, ax, vx, vy, angle, speed;
+	protected boolean hasHitTarget = false;
 
 	/*
 	 * this constructor accepts the directory of the image, starting x position,
@@ -30,7 +31,8 @@ public class ProjectileBase extends EntityBase {
 	 * differentiate the two constructors(the boolean should always be set to
 	 * true
 	 */
-	public ProjectileBase(String imageName, double angle, double speed, double x, double y, double ax0, double ay0, boolean toUseAnglesPutABooleanHereThatIsTrue) {
+	public ProjectileBase(String imageName, double angle, double speed, double x, double y, double ax0, double ay0,
+			boolean toUseAnglesPutABooleanHereThatIsTrue) {
 		super(imageName);
 		if (!toUseAnglesPutABooleanHereThatIsTrue)
 			Log.warn("Something attempted to create a projectile that didn't use angles, but is using angles!! (remove the false at the end of the parameters.)");
@@ -44,6 +46,13 @@ public class ProjectileBase extends EntityBase {
 		this.vy = Math.sin(Math.toRadians(angle));
 	}
 
+	/*
+	 * This method overrides the update() method in the EntityBase class, and
+	 * makes it more suitable for projectiles: it gives them a constant
+	 * acceleration in both the x and the y axis, which will not end up
+	 * changing. The projectile will continue accelerating in a straight line
+	 * until it goes off of the screen
+	 */
 	public boolean update() {
 		if (!isInBounds(x, y)) {
 			return false;

@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import reference.Config;
 
 /*
- * 
+ * Frame for the project, not too much else to say here
  */
 public class Frame extends JFrame {
 
