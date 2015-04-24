@@ -54,7 +54,7 @@ public class GameManager implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
-					if(GameManager.count%((Config.UPS*Config.GAME_SPEED)/100)==0){
+					if(GameManager.count%((Config.UPS*Config.GAME_SPEED)/400)==0){
 					getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,shouldMoveSlow);
 					}
 					updatePlayer();
