@@ -7,7 +7,7 @@ public class ProjectileBase extends EntityBase {
 
 	double ay, ax, vx, vy, angle, speed;
 	protected boolean hasHitTarget = false;
-
+	protected final String NAME = "ProjectileBase";
 	/*
 	 * this constructor accepts the directory of the image, starting x position,
 	 * starting y position, starting x velocity, starting y velocity,
@@ -63,6 +63,10 @@ public class ProjectileBase extends EntityBase {
 		vy = vy + ay;
 
 		return true;
+	}
+	
+	public String toString(){
+		return NAME+":  "+x+", "+y;
 	}
 
 }

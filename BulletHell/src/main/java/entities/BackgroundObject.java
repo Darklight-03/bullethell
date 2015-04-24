@@ -3,6 +3,9 @@ package entities;
 import reference.Config;
 
 public class BackgroundObject extends EntityBase {
+	
+	protected final String NAME = "BackgroundObject";
+	
 	public BackgroundObject(String imageName) {
 		super(imageName);
 		y = -100 + (Math.random() * -900);
@@ -26,5 +29,9 @@ public class BackgroundObject extends EntityBase {
 			return false;
 		else
 			return true;
+	}
+	
+	public String toString(){
+		return NAME+":  "+x+", "+y;
 	}
 }

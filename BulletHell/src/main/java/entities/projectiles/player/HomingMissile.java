@@ -6,6 +6,7 @@ import entities.projectiles.ProjectileBase;
 
 public class HomingMissile extends ProjectileBase {
 
+	protected final  String NAME = "Homing Missile";
 	double vx, vy, ax, ay;
 	EntityBase target;
 
@@ -48,6 +49,10 @@ public class HomingMissile extends ProjectileBase {
 		}
 
 		return true;
+	}
+	
+	public String toString(){
+		return NAME+":  "+x+", "+y;
 	}
 
 }

@@ -1,7 +1,10 @@
 package entities.enemies;
 
-public class BasicEnemy1 {
-	public BasicEnemy1(){
-		
+import entities.EntityBase;
+
+public class BasicEnemy1 extends EntityBase{
+	
+	public BasicEnemy1(String imageName){
+		super(imageName);
 	}
 }

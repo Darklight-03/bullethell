@@ -4,6 +4,7 @@ package entities.projectiles;
 
 public class PlayerLaser extends ProjectileBase {
 
+protected final String Name = "PlayerLaser";
 
 public class PlayerLaser extends ProjectileBase{ //TODO implement a LaserBase
 	public int size = 0;
@@ -18,6 +19,10 @@ public class PlayerLaser extends ProjectileBase{ //TODO implement a LaserBase
 		x += speed * Math.cos(Math.toRadians(angle));
 		y += speed * Math.sin(Math.toRadians(angle));
 		return super.update();
+	}
+	
+	public String toString(){
+		return NAME+":  "+x+", "+y;
 	}
 
 }
