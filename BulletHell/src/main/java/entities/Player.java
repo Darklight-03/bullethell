@@ -10,7 +10,7 @@ public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
-	public int weapon = 0, powerLevel = 2;
+	public int weapon = 0, powerLevel = 0;
 	private Thread t;
 	boolean now = true;
 	long count = 0;

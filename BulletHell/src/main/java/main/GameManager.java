@@ -16,6 +16,7 @@ public class GameManager implements Runnable {
 	private int moveUp, moveDown, moveLeft, moveRight,moveSlow;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, shouldMoveSlow = false;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
+
 	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
@@ -46,7 +47,7 @@ public class GameManager implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			try {
+			try{
 				Thread.sleep(1000 / Config.UPS);
 
 				if (gameState == Config.PLAYING) {
@@ -68,6 +69,8 @@ public class GameManager implements Runnable {
 			}
 		}
 	}
+
+		
 
 	private void updatePlayer() {
 
@@ -128,6 +131,8 @@ public class GameManager implements Runnable {
 		else return null;
 	}
 
+		
+
 	public Player getPlayer() {
 		return player;
 	}
@@ -149,7 +154,6 @@ public class GameManager implements Runnable {
 	public ArrayList<BackgroundObject> getBackGroundObjects() {
 		return backGroundObjects;
 	}
-
 	public void shouldMoveSlow(boolean b) {
 		shouldMoveSlow = b;
 		
@@ -172,7 +176,6 @@ public class GameManager implements Runnable {
 
 	public void moveRightDepressed(boolean b) {
 		moveRightDepressed = b;
-		
 	}
 
 }

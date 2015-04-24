@@ -99,6 +99,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 						shouldMoveSlow);
 			}
 			catch (InterruptedException e) {
+				repaint();
 				Log.error("Failed at repainting");
 			}
 		}
