@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entities.BackgroundObject;
 import entities.EntityBase;
 import entities.Player;
+import entities.enemies.TestingEnemy;
 import entities.projectiles.ProjectileBase;
 import reference.Config;
 import util.Log;
@@ -14,7 +15,7 @@ public class GameManager implements Runnable {
 	public Player player;
 	public static int gameState;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
-	public static ArrayList<EntityBase> entities = new ArrayList<EntityBase>();
+	public static ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 
 	/*
@@ -28,10 +29,7 @@ public class GameManager implements Runnable {
 		player = new Player("placeHolder.png");
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300,450));
 
 	}
 
@@ -66,8 +64,8 @@ public class GameManager implements Runnable {
 	 * edge of the screen.
 	 */
 	private void updateE() {
-		for (int i = 0; i < entities.size(); i++) {
-			entities.get(i).update();
+		for (int i = 0; i < enemies.size(); i++) {
+			enemies.get(i).update();
 		}
 		for (int i = 0; i < backGroundObjects.size(); i++) {
 			if (!backGroundObjects.get(i).update()) backGroundObjects.remove(i);
@@ -129,7 +127,7 @@ public class GameManager implements Runnable {
 	}
 
 	public ArrayList<EntityBase> getEntities() {
-		return entities;
+		return enemies;
 	}
 
 	public ArrayList<BackgroundObject> getBackGroundObjects() {
