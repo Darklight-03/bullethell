@@ -14,9 +14,13 @@ public class GameManager implements Runnable {
 
 	public Player player;
 	public static int gameState;
+	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
+	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
+			moveRightDepressed = false, shouldMoveSlow = false;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
+	public static int count;
 
 	/*
 	 * This should be the class that controls almost every aspect of the game.
@@ -27,6 +31,7 @@ public class GameManager implements Runnable {
 		gameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
 		player = new Player("placeHolder.png");
+		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .05, .05));
@@ -41,11 +46,21 @@ public class GameManager implements Runnable {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(Config.TIME_BETWEEN_UPDATES);
+				Thread.sleep(1000 / Config.UPS);
+
 				if (gameState == Config.PLAYING) {
+					count++;
+					if (count > 999999999) {
+						count = 0;
+					}
+					if (GameManager.count % ((Config.UPS * Config.GAME_SPEED) / 400) == 0) {
+						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
+								shouldMoveSlow);
+					}
 					updatePlayer();
 					updateE();
 					updateP();
+
 				}
 			}
 			catch (InterruptedException e) {
@@ -132,6 +147,30 @@ public class GameManager implements Runnable {
 
 	public ArrayList<BackgroundObject> getBackGroundObjects() {
 		return backGroundObjects;
+	}
+
+	public void shouldMoveSlow(boolean b) {
+		shouldMoveSlow = b;
+
+	}
+
+	public void moveUpDepressed(boolean b) {
+		moveUpDepressed = b;
+
+	}
+
+	public void moveDownDepressed(boolean b) {
+		moveDownDepressed = b;
+
+	}
+
+	public void moveLeftDepressed(boolean b) {
+		moveLeftDepressed = b;
+
+	}
+
+	public void moveRightDepressed(boolean b) {
+		moveRightDepressed = b;
 	}
 
 }
