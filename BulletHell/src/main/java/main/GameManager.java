@@ -114,17 +114,17 @@ public class GameManager implements Runnable {
 		// complete, right now it uses the background objects
 		double distance = Integer.MAX_VALUE, temp;
 		int posToReturn = -1;
-		for (int i = 0; i < backGroundObjects.size(); i++) {
-			if (backGroundObjects.get(i).getY() < e.getY()) {
-				temp = Math.sqrt(Math.pow(e.getY() - backGroundObjects.get(i).getY(), 2)
-						+ Math.pow(e.getX() - backGroundObjects.get(i).getX(), 2));
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies.get(i).getY() < e.getY()) {
+				temp = Math.sqrt(Math.pow(e.getY() - enemies.get(i).getY(), 2)
+						+ Math.pow(e.getX() - enemies.get(i).getX(), 2));
 				if (temp < distance) {
 					distance = temp;
 					posToReturn = i;
 				}
 			}
 		}
-		if (posToReturn != -1) return backGroundObjects.get(posToReturn);
+		if (posToReturn != -1) return enemies.get(posToReturn);
 		else return null;
 	}
 

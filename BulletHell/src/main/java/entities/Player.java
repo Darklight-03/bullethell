@@ -10,7 +10,7 @@ public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
-	public int weapon = 0, powerLevel = 0;
+	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	boolean now = true;
 	long count = 0;
@@ -68,15 +68,6 @@ public class Player extends EntityBase implements Runnable {
 							-.1));
 				}
 				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
-					/*
-					 * GameManager.projectiles.add(new
-					 * PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3,
-					 * -.005,
-					 * -.1));
-					 * GameManager.projectiles
-					 * .add(new PlayerShot("PlaceholderProjectile.jpg", x + 7,
-					 * y, .5, 3, .005, -.1));
-					 */
 					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x - 7, y, -.4, -1, 0, -.05));
 					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x + 7, y, .4, -1, 0, -.05));
 				}
