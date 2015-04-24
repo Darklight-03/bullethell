@@ -270,5 +270,10 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		super.addNotify();
 		requestFocus();
 	}
+	
+
+	public GameManager getGM() {
+		return gM;
+	}
 
 }
