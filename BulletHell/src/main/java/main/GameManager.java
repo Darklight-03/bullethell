@@ -126,7 +126,7 @@ public class GameManager implements Runnable {
 		return projectiles;
 	}
 
-	public ArrayList<EntityBase> getEntities() {
+	public ArrayList<EntityBase> getEnemies() {
 		return enemies;
 	}
 

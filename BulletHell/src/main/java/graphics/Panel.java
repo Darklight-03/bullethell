@@ -58,20 +58,20 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		Graphics bg = buffer.getGraphics();
 		bg.setColor(Color.WHITE);
 		bg.fillRect(0, 0, getWidth(), getHeight());
-
+		for (int i = 0; i < gM.getBackGroundObjects().size(); i++) {
+			bg.drawImage(gM.getBackGroundObjects().get(i).getImage(), gM.getBackGroundObjects().get(i).drawX(), gM
+					.getBackGroundObjects().get(i).drawY(), null);
+		}
+		for (int i = 0; i < gM.getEnemies().size(); i++) {
+			bg.drawImage(gM.getEnemies().get(i).getImage(), gM.getEnemies().get(i).drawX(), gM.getEnemies().get(i)
+					.drawY(), null);
+		}
 		for (int i = 0; i < gM.getProjectiles().size(); i++) {
 			bg.drawImage(gM.getProjectiles().get(i).getImage(), gM.getProjectiles().get(i).drawX(), gM.getProjectiles()
 					.get(i).drawY(), null);
 
 		}
-		for (int i = 0; i < gM.getEntities().size(); i++) {
-			bg.drawImage(gM.getEntities().get(i).getImage(), gM.getEntities().get(i).drawX(), gM.getEntities().get(i)
-					.drawY(), null);
-		}
-		for (int i = 0; i < gM.getBackGroundObjects().size(); i++) {
-			bg.drawImage(gM.getBackGroundObjects().get(i).getImage(), gM.getBackGroundObjects().get(i).drawX(), gM
-					.getBackGroundObjects().get(i).drawY(), null);
-		}
+		
 
 		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 		if (shouldMoveSlow) {
