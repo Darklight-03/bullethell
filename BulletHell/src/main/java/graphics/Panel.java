@@ -89,7 +89,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(Config.TIME_BETWEEN_FRAMES);
+				Thread.sleep(1000/Config.FPS);
 				repaint();
 				// TODO make is so that the player.move() method is not called
 				// in the panel, or at least in the thread that handles
@@ -99,6 +99,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 						shouldMoveSlow);
 			}
 			catch (InterruptedException e) {
+				repaint();
 				Log.error("Failed at repainting");
 			}
 		}
@@ -168,19 +169,19 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				playerShoots = true;
 			}
 			if (e.getKeyCode() == moveSlow) {
-				shouldMoveSlow = true;
+				gM.shouldMoveSlow(true);
 			}
 			if (e.getKeyCode() == moveUp) {
-				moveUpDepressed = true;
+				gM.moveUpDepressed(true);
 			}
 			if (e.getKeyCode() == moveDown) {
-				moveDownDepressed = true;
+				gM.moveDownDepressed(true);
 			}
 			if (e.getKeyCode() == moveLeft) {
-				moveLeftDepressed = true;
+				gM.moveLeftDepressed(true);
 			}
 			if (e.getKeyCode() == moveRight) {
-				moveRightDepressed = true;
+				gM.moveRightDepressed(true);
 			}
 			break;
 		case Config.DEAD:
@@ -211,19 +212,19 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				playerShoots = false;
 			}
 			if (e.getKeyCode() == moveSlow) {
-				shouldMoveSlow = false;
+				gM.shouldMoveSlow(false);
 			}
 			if (e.getKeyCode() == moveUp) {
-				moveUpDepressed = false;
+				gM.moveUpDepressed(false);
 			}
 			if (e.getKeyCode() == moveDown) {
-				moveDownDepressed = false;
+				gM.moveDownDepressed(false);
 			}
 			if (e.getKeyCode() == moveLeft) {
-				moveLeftDepressed = false;
+				gM.moveLeftDepressed(false);
 			}
 			if (e.getKeyCode() == moveRight) {
-				moveRightDepressed = false;
+				gM.moveRightDepressed(false);
 			}
 			break;
 		case Config.DEAD:
