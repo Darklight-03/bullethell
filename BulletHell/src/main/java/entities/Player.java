@@ -10,7 +10,7 @@ public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
-	public int weapon = 0, powerLevel = 0;
+	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	boolean now = true;
 	long count = 0;
@@ -47,13 +47,13 @@ public class Player extends EntityBase implements Runnable {
 				}
 				break;
 			case 1:
-				if (count % (Config.PLAYER_UPS / 8) == 0) {
+				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 8) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -1, 0,
 							-.1));
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -1, 0,
 							-.1));
 				}
-				if (count % (Config.PLAYER_UPS / 50) == 0) {
+				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 50) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005,
 							-.1));
 					GameManager.projectiles
@@ -61,13 +61,13 @@ public class Player extends EntityBase implements Runnable {
 				}
 				break;
 			case 2:
-				if (count % (Config.PLAYER_UPS / 12) == 0) {
+				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 12) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -4, 0,
 							-.1));
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -4, 0,
 							-.1));
 				}
-				if (count % (Config.PLAYER_UPS / 50) == 0) {
+				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
 					/*
 					 * GameManager.projectiles.add(new
 					 * PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3,
@@ -80,7 +80,7 @@ public class Player extends EntityBase implements Runnable {
 					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x - 7, y, -.4, -1, 0, -.05));
 					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x + 7, y, .4, -1, 0, -.05));
 				}
-				if (count % (Config.PLAYER_UPS / 12) == 0) {
+				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 12) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0,
 							-.1));
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 1, -4, 0,
