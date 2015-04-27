@@ -59,7 +59,7 @@ public class ProjectileBase extends EntityBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if(GameManager.count%((Config.UPS*Config.GAME_SPEED)/100)==0){
+		if(GameManager.count%(int)((Config.UPS*Config.GAME_SPEED)/100)==0){
 		x = x + vx;
 		y = y + vy;
 		vx = vx + ax;

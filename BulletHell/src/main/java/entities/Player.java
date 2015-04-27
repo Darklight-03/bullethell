@@ -41,20 +41,20 @@ public class Player extends EntityBase implements Runnable {
 			switch (powerLevel)
 			{
 			case 0:
-				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
+				if (count % (int)(Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
-				}if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
+				}if (count % (int)(Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
 				}
 				break;
 			case 1:
-				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 8) == 0) {
+				if (count % (int)(Config.PLAYER_UPS*Config.GAME_SPEED / 8) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -1, 0,
 							-.1));
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -1, 0,
 							-.1));
 				}
-				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 50) == 0) {
+				if (count % (int)(Config.PLAYER_UPS*Config.GAME_SPEED / 50) == 0) {
 					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005,
 							-.1));
 					GameManager.projectiles
@@ -62,18 +62,18 @@ public class Player extends EntityBase implements Runnable {
 				}
 				break;
 			case 2:
-				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 12) == 0) {
+				if (count % (int)(Config.PLAYER_UPS*Config.GAME_SPEED / 12) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -4, 0,
 							-.1));
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -4, 0,
 							-.1));
 				}
-				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
+				if (count % (int)(Config.PLAYER_UPS*Config.GAME_SPEED / 5) == 0) {
 					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x - 7, y, -.4, -1, 0, -.05));
 					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x + 7, y, .4, -1, 0, -.05));
 				}
-				Log.info(count%((Config.PLAYER_UPS*Config.GAME_SPEED)/12)+"");
-				if (count % (Config.PLAYER_UPS*Config.GAME_SPEED / 12) == 0) {
+				Log.info(count%((int)((Config.PLAYER_UPS*Config.GAME_SPEED)/12))+"");
+				if (count%((int)((Config.PLAYER_UPS*Config.GAME_SPEED)/12)) == 0) {
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0,
 							-.1));
 					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 1, -4, 0,
