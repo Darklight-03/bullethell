@@ -22,7 +22,7 @@ public class TestingEnemy extends EntityBase {
 	}
 
 	public boolean update() {
-		if (GameManager.count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+		if (GameManager.count % (int)((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			if (isAtDestination) {
 				int i = rand.nextInt(100);
 				if (i < 10) {

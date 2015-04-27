@@ -15,6 +15,7 @@ public class EntityBase {
 	 * This is going to be the base for all of the game's entities
 	 */
 	public double x, y;
+	public double ay, ax, vx, vy;
 	private BufferedImage image;
 	protected final String NAME = "entityBase";
 
@@ -27,7 +28,15 @@ public class EntityBase {
 	}
 	
 	public boolean update(){
+		physUpdate();
 		return true;
+	}
+	
+	public void physUpdate(){
+		x = x + vx;
+		y = y + vy;
+		vx = vx + ax;
+		vy = vy + ay;
 	}
 
 	public int getX() {
