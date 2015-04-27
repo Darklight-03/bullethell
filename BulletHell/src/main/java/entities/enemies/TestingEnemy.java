@@ -3,6 +3,7 @@ package entities.enemies;
 import java.util.Random;
 
 import reference.Config;
+import main.GameManager;
 import main.Main;
 import entities.EntityBase;
 
@@ -21,44 +22,49 @@ public class TestingEnemy extends EntityBase {
 	}
 
 	public boolean update() {
-		if (isAtDestination) {
-			int i = rand.nextInt(100);
-			if (i < 10) {
-				destinationX = Main.f.getPanel().getGM().getPlayer().getX();
-				destinationY = rand.nextInt(Config.height - 300);
+		if (GameManager.count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+			if (isAtDestination) {
+				int i = rand.nextInt(100);
+				if (i < 10) {
+					destinationX = Main.f.getPanel().getGM().getPlayer().getX();
+					destinationY = rand.nextInt(Config.height - 300);
+				}
+				else if (i > 10 && i < 30) {
+					destinationY = 0;
+					destinationX = rand.nextInt(Config.width);
+				}
+				else if (i > 30 && i < 35) {
+					destinationY = Main.f.getPanel().getGM().getPlayer().getY();
+					destinationX = Main.f.getPanel().getGM().getPlayer().getX();
+				}
+				else {
+					destinationX = rand.nextInt(Config.width);
+					destinationY = rand.nextInt(Config.height - rand.nextInt(500));
+				}
+				System.out.println(destinationX + ", " + destinationY);
+				isAtDestination = false;
 			}
-			else if (i > 10 && i < 30) {
-				destinationY = 0;
-				destinationX = rand.nextInt(Config.width);
-			}
-			else if (i > 30 && i < 35) {
-				destinationY = Main.f.getPanel().getGM().getPlayer().getY();
-				destinationX = Main.f.getPanel().getGM().getPlayer().getX();
+			else if (closeToLocation(destinationX, destinationY)) {
+				isAtDestination = false;
 			}
 			else {
-				destinationX = rand.nextInt(Config.width);
-				destinationY = rand.nextInt(Config.height - rand.nextInt(500));
+				if (destinationX - x > 0) aX = Math.abs(aX);
+				else if (destinationX - x < 0) aX = Math.abs(aX) * -1;
+				if (destinationY - y > 0) aY = Math.abs(aY);
+				else if (destinationY - y < 0) aY = Math.abs(aY) * -1;
+				vX += aX;
+				vY += aY;
+				x += vX;
+				y += vY;
 			}
-			isAtDestination = false;
+			return false;
 		}
-		else if (closeToLocation(destinationX, destinationY)) {
-			isAtDestination = false;
-		}
-		else {
-			if (destinationX - x > 0) aX = Math.abs(aX);
-			else if (destinationX - x < 0) aX = Math.abs(aX)*-1;
-			if (destinationY - y > 0) aY =  Math.abs(aY);
-			else if (destinationY - y < 0) aY = Math.abs(aY)*-1;
-			vX += aX;
-			vY += aY;
-			x += vX;
-			y += vY;
-		}
-		return false;
+		return true;
 	}
 
 	private boolean closeToLocation(double x, double y) {
-		if (this.x > x - 6 && this.x < x + 6 && this.y > y - 6 && this.y < y + 6) return true;
+		double variance = 25;
+		if (this.x > x - variance && this.x < x + variance && this.y > y - variance && this.y < y + variance) return true;
 		else return false;
 	}
 

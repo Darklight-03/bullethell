@@ -1,12 +1,13 @@
 package entities.projectiles.player;
 
+import reference.Config;
 import main.GameManager;
 import entities.EntityBase;
 import entities.projectiles.ProjectileBase;
 
 public class HomingMissile extends ProjectileBase {
 
-	protected final  String NAME = "Homing Missile";
+	protected final String NAME = "Homing Missile";
 	double vx, vy, ax, ay;
 	EntityBase target;
 
@@ -24,35 +25,36 @@ public class HomingMissile extends ProjectileBase {
 	}
 
 	public boolean update() {
-		if (!isInBounds(x, y) || hasHitTarget) {
-			return false;
-		}
-		vx = vx + ax / 5;
-		vy = vy + ay / 5;
-		if (target == null) {
-			target = GameManager.findNearestEnemy(this);
-			x = x + vx;
-			y = y + vy;
-		}
-		else if (target.getY() > y + 15) {
-			target = null;
-			// TODO remove when hitboxes are working
-			hasHitTarget = true;
-		}
-		else {
-			double changeInX = target.getX() - x, changeInY = target.getY() - y;
-			ay = changeInY / 700;
-			ax = changeInX / 400;
-			x += vx;
-			y += vy;
+		if (GameManager.count % ((Config.UPS * Config.GAME_SPEED) / 50) == 0) {
+			if (!isInBounds(x, y) || hasHitTarget) {
+				return false;
+			}
+			vx = vx + ax / 5;
+			vy = vy + ay / 5;
+			if (target == null) {
+				target = GameManager.findNearestEnemy(this);
+				x = x + vx;
+				y = y + vy;
+			}
+			else if (target.getY() > y + 15) {
+				target = null;
+				// TODO remove when hitboxes are working
+				hasHitTarget = true;
+			}
+			else {
+				double changeInX = target.getX() - x, changeInY = target.getY() - y;
+				ay = changeInY / 700;
+				ax = changeInX / 400;
+				x += vx;
+				y += vy;
 
+			}
 		}
-
 		return true;
 	}
-	
-	public String toString(){
-		return NAME+":  "+x+", "+y;
+
+	public String toString() {
+		return NAME + ":  " + x + ", " + y;
 	}
 
 }
