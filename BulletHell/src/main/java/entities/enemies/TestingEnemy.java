@@ -10,7 +10,7 @@ import entities.EntityBase;
 public class TestingEnemy extends EntityBase {
 
 	private Random rand = new Random();
-	private Boolean isAtDestination = false;
+	private Boolean isAtDestination = true;
 	private double destinationX, destinationY, aX, aY, vX, vY;
 
 	public TestingEnemy(String imageName, int x, int y, double aX, double aY) {
@@ -41,11 +41,11 @@ public class TestingEnemy extends EntityBase {
 					destinationX = rand.nextInt(Config.width);
 					destinationY = rand.nextInt(Config.height - rand.nextInt(500));
 				}
-				System.out.println(destinationX + ", " + destinationY);
 				isAtDestination = false;
+				System.out.println(destinationX + ", " + destinationY);
 			}
 			else if (closeToLocation(destinationX, destinationY)) {
-				isAtDestination = false;
+				isAtDestination = true;
 			}
 			else {
 				if (destinationX - x > 0) aX = Math.abs(aX);
@@ -54,8 +54,14 @@ public class TestingEnemy extends EntityBase {
 				else if (destinationY - y < 0) aY = Math.abs(aY) * -1;
 				vX += aX;
 				vY += aY;
+				if(isInBounds(x+vX,y+vY)){
 				x += vX;
 				y += vY;
+				}
+				else{
+					vX = 0;
+					vY= 0;
+				}
 			}
 			return false;
 		}
@@ -63,7 +69,7 @@ public class TestingEnemy extends EntityBase {
 	}
 
 	private boolean closeToLocation(double x, double y) {
-		double variance = 25;
+		double variance = 100;
 		if (this.x > x - variance && this.x < x + variance && this.y > y - variance && this.y < y + variance) return true;
 		else return false;
 	}
