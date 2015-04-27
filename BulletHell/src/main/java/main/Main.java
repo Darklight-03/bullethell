@@ -10,9 +10,11 @@ public class Main {
 	 * Created by Bo Corman and Andrew Kennedy
 	 */
 
+	public static Frame f;
+	
 	public static void main(String[] args) {
 		
 		new Config();
-		new Frame();
+		f = new Frame();
 	}
 }

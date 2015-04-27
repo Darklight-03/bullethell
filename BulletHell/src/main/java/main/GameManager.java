@@ -14,13 +14,13 @@ public class GameManager implements Runnable {
 
 	public Player player;
 	public static int gameState;
-	private int moveUp, moveDown, moveLeft, moveRight,moveSlow;
-	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false, moveRightDepressed = false, shouldMoveSlow = false;
+	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
+	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
+			moveRightDepressed = false, shouldMoveSlow = false;
 	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
 	public static ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
-
 
 	/*
 	 * This should be the class that controls almost every aspect of the game.
@@ -32,12 +32,9 @@ public class GameManager implements Runnable {
 									// menu, it's like this for testing
 		player = new Player("placeHolder.png");
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300,450));
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
+		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .05, .05));
 
 	}
 
@@ -48,7 +45,7 @@ public class GameManager implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			try{
+			try {
 				Thread.sleep(1000 / Config.UPS);
 
 				if (gameState == Config.PLAYING) {
@@ -56,13 +53,14 @@ public class GameManager implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
-					if(GameManager.count%((Config.UPS*Config.GAME_SPEED)/400)==0){
-					getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,shouldMoveSlow);
+					if (GameManager.count % ((Config.UPS * Config.GAME_SPEED) / 400) == 0) {
+						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
+								shouldMoveSlow);
 					}
 					updatePlayer();
 					updateE();
 					updateP();
-					
+
 				}
 			}
 			catch (InterruptedException e) {
@@ -70,8 +68,6 @@ public class GameManager implements Runnable {
 			}
 		}
 	}
-
-		
 
 	private void updatePlayer() {
 
@@ -118,21 +114,19 @@ public class GameManager implements Runnable {
 		// complete, right now it uses the background objects
 		double distance = Integer.MAX_VALUE, temp;
 		int posToReturn = -1;
-		for (int i = 0; i < backGroundObjects.size(); i++) {
-			if (backGroundObjects.get(i).getY() < e.getY()) {
-				temp = Math.sqrt(Math.pow(e.getY() - backGroundObjects.get(i).getY(), 2)
-						+ Math.pow(e.getX() - backGroundObjects.get(i).getX(), 2));
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies.get(i).getY() < e.getY()) {
+				temp = Math.sqrt(Math.pow(e.getY() - enemies.get(i).getY(), 2)
+						+ Math.pow(e.getX() - enemies.get(i).getX(), 2));
 				if (temp < distance) {
 					distance = temp;
 					posToReturn = i;
 				}
 			}
 		}
-		if (posToReturn != -1) return backGroundObjects.get(posToReturn);
+		if (posToReturn != -1) return enemies.get(posToReturn);
 		else return null;
 	}
-
-		
 
 	public Player getPlayer() {
 		return player;
@@ -151,28 +145,28 @@ public class GameManager implements Runnable {
 		return enemies;
 	}
 
-
 	public ArrayList<BackgroundObject> getBackGroundObjects() {
 		return backGroundObjects;
 	}
+
 	public void shouldMoveSlow(boolean b) {
 		shouldMoveSlow = b;
-		
+
 	}
 
 	public void moveUpDepressed(boolean b) {
 		moveUpDepressed = b;
-		
+
 	}
 
 	public void moveDownDepressed(boolean b) {
 		moveDownDepressed = b;
-		
+
 	}
 
 	public void moveLeftDepressed(boolean b) {
 		moveLeftDepressed = b;
-		
+
 	}
 
 	public void moveRightDepressed(boolean b) {

@@ -12,6 +12,8 @@ import reference.Config;
  */
 public class Frame extends JFrame {
 
+	public Panel p = new Panel();
+	
 	public Frame() {
 		super("Frame");
 		setSize(Config.width, Config.height);
@@ -21,9 +23,13 @@ public class Frame extends JFrame {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, (dim.height / 2 - this.getSize().height / 2) - 25);
 
-		add(new Panel());
+		add(p);
 
 		setUndecorated(true);
 		setVisible(true);
+	}
+	
+	public Panel getPanel(){
+		return p;
 	}
 }
