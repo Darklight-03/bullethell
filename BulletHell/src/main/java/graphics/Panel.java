@@ -3,6 +3,7 @@ package graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Polygon;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -52,6 +53,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
@@ -65,13 +67,23 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		for (int i = 0; i < gM.getEnemies().size(); i++) {
 			bg.drawImage(gM.getEnemies().get(i).getImage(), gM.getEnemies().get(i).drawX(), gM.getEnemies().get(i)
 					.drawY(), null);
+			
+			bg.setColor(Color.GREEN);
+			bg.drawPolygon((Polygon)gM.getEnemies().get(i).getHitBox());
+			
 		}
 		for (int i = 0; i < gM.getProjectiles().size(); i++) {
 			bg.drawImage(gM.getProjectiles().get(i).getImage(), gM.getProjectiles().get(i).drawX(), gM.getProjectiles()
 					.get(i).drawY(), null);
 
+			if (Config.DEBUG_MODE) {
+				bg.setColor(Color.RED);
+				bg.fillRect((int) gM.getProjectiles().get(i).getHitBox().getX(), (int) gM.getProjectiles().get(i)
+						.getHitBox().getY(), (int) gM.getProjectiles().get(i).getHitBox().getWidth(), (int) gM
+						.getProjectiles().get(i).getHitBox().getHeight());
+			}
+
 		}
-		
 
 		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 		if (shouldMoveSlow) {
@@ -83,13 +95,14 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Runnable#run()
 	 */
 	@Override
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(1000/Config.FPS);
+				Thread.sleep(1000 / Config.FPS);
 				repaint();
 				// TODO make is so that the player.move() method is not called
 				// in the panel, or at least in the thread that handles
@@ -108,6 +121,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 * 
 	 * this method will handle the basic keys on the keyboard which only have to
@@ -142,6 +156,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 * 
 	 * Depending on what the gameState is, this will perform different actions
@@ -192,6 +207,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 * 
 	 * Depending on what the gameState is, this will perform different actions
@@ -271,7 +287,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		super.addNotify();
 		requestFocus();
 	}
-	
 
 	public GameManager getGM() {
 		return gM;

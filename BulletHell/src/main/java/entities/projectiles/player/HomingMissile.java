@@ -1,5 +1,7 @@
 package entities.projectiles.player;
 
+import java.awt.Rectangle;
+
 import reference.Config;
 import main.GameManager;
 import entities.EntityBase;
@@ -7,7 +9,7 @@ import entities.projectiles.ProjectileBase;
 
 public class HomingMissile extends ProjectileBase {
 
-	protected final String NAME = "Homing Missile";
+	protected final String NAME = "HomingMissile";
 	double vx, vy, ax, ay;
 	EntityBase target;
 
@@ -25,7 +27,7 @@ public class HomingMissile extends ProjectileBase {
 	}
 
 	public boolean update() {
-		if (GameManager.count % (int)((Config.UPS * Config.GAME_SPEED) / 50) == 0) {
+		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 50) == 0) {
 			if (!isInBounds(x, y) || hasHitTarget) {
 				return false;
 			}
@@ -50,6 +52,8 @@ public class HomingMissile extends ProjectileBase {
 
 			}
 		}
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight() /2 , this
+				.getImage().getWidth(), this.getImage().getHeight());
 		return true;
 	}
 

@@ -1,5 +1,7 @@
 package entities.projectiles;
 
+import java.awt.Rectangle;
+
 import reference.Config;
 import main.GameManager;
 import util.Log;
@@ -10,6 +12,8 @@ public class ProjectileBase extends EntityBase {
 	double ay, ax, vx, vy, angle, speed;
 	protected boolean hasHitTarget = false;
 	protected final String NAME = "ProjectileBase";
+	public Rectangle hitBox;
+
 	/*
 	 * this constructor accepts the directory of the image, starting x position,
 	 * starting y position, starting x velocity, starting y velocity,
@@ -23,6 +27,9 @@ public class ProjectileBase extends EntityBase {
 		this.vy = vy0;
 		this.ax = ax0;
 		this.ay = ay0;
+
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
+				.getImage().getWidth(), this.getImage().getHeight());
 	}
 
 	/*
@@ -46,6 +53,9 @@ public class ProjectileBase extends EntityBase {
 		this.ay = ay0;
 		this.vx = Math.cos(Math.toRadians(angle));
 		this.vy = Math.sin(Math.toRadians(angle));
+
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
+				.getImage().getWidth(), this.getImage().getHeight());
 	}
 
 	/*
@@ -59,20 +69,25 @@ public class ProjectileBase extends EntityBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if(GameManager.count%(int)((Config.UPS*Config.GAME_SPEED)/100)==0){
-		x = x + vx;
-		y = y + vy;
-		vx = vx + ax;
-		vy = vy + ay;
+		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+			x = x + vx;
+			y = y + vy;
+			vx = vx + ax;
+			vy = vy + ay;
 		}
-		//System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
-		
+		// System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight() / 2,
+				this.getImage().getWidth(), this.getImage().getHeight());
 
 		return true;
 	}
-	
-	public String toString(){
-		return NAME+":  "+x+", "+y;
+
+	public String toString() {
+		return NAME + ":  " + x + ", " + y;
+	}
+
+	public Rectangle getHitBox() {
+		return hitBox;
 	}
 
 }
