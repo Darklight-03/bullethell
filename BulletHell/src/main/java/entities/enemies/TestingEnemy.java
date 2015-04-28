@@ -1,5 +1,6 @@
 package entities.enemies;
 
+import java.awt.Polygon;
 import java.util.Random;
 
 import reference.Config;
@@ -12,6 +13,8 @@ public class TestingEnemy extends EntityBase {
 	private Random rand = new Random();
 	private Boolean isAtDestination = true;
 	private double destinationX, destinationY, aX, aY, vX, vY;
+	int[] xPoints;
+	int[] yPoints;
 
 	public TestingEnemy(String imageName, int x, int y, double aX, double aY) {
 		super(imageName);
@@ -19,10 +22,15 @@ public class TestingEnemy extends EntityBase {
 		this.y = y;
 		this.aX = aX;
 		this.aY = aY;
+		xPoints = new int[16];
+		yPoints = new int[16];
+
+		hitBox = new Polygon();
 	}
 
 	public boolean update() {
-		if (GameManager.count % (int)((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+		updateHitBox();
+		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			if (isAtDestination) {
 				int i = rand.nextInt(100);
 				if (i < 10) {
@@ -54,13 +62,13 @@ public class TestingEnemy extends EntityBase {
 				else if (destinationY - y < 0) aY = Math.abs(aY) * -1;
 				vX += aX;
 				vY += aY;
-				if(isInBounds(x+vX,y+vY)){
-				x += vX;
-				y += vY;
+				if (isInBounds(x + vX, y + vY)) {
+					x += vX;
+					y += vY;
 				}
-				else{
+				else {
 					vX = 0;
-					vY= 0;
+					vY = 0;
 				}
 			}
 			return false;
@@ -72,6 +80,32 @@ public class TestingEnemy extends EntityBase {
 		double variance = 100;
 		if (this.x > x - variance && this.x < x + variance && this.y > y - variance && this.y < y + variance) return true;
 		else return false;
+	}
+
+	private void updateHitBox() {
+		updateXPoints();
+		updateYPoints();
+		hitBox = new Polygon(xPoints, yPoints, 15);
+
+		
+		System.out.println("\n\n\n\n\n");
+		
+	}
+
+	private void updateXPoints() {
+		int radius = this.getImage().getWidth()/2;
+		for (int i = 1; i < 16; i++) {
+			xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI * 2)));
+			System.out.print((int) (x + radius * Math.cos((i * 24) / (Math.PI * 2)))+", ");
+		}
+	}
+
+	private void updateYPoints() {
+		int radius = this.getImage().getWidth()/2;
+		for (int i = 1; i < 16; i++) {
+			yPoints[i - 1] = (int) (y + radius * Math.cos((i * 24) / (Math.PI * 2)));
+			System.out.print((int) (y + radius * Math.cos((i * 24) / (Math.PI * 2)))+", ");
+		}
 	}
 
 }

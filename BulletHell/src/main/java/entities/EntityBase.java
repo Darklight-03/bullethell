@@ -1,5 +1,7 @@
 package entities;
 
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,22 +19,25 @@ public class EntityBase {
 	public double x, y;
 	public double ay, ax, vx, vy;
 	private BufferedImage image;
-	protected final String NAME = "entityBase";
+	protected final String NAME = "EntityBase";
+	public Shape hitBox;
 
 	public EntityBase(String imageName) {
 		try {
 			setImage(ImageIO.read(new File(imageName)));
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			Log.error("Could not load image" + NAME);
 		}
+		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 	}
-	
-	public boolean update(){
+
+	public boolean update() {
 		physUpdate();
 		return true;
 	}
-	
-	public void physUpdate(){
+
+	public void physUpdate() {
 		x = x + vx;
 		y = y + vy;
 		vx = vx + ax;
@@ -64,21 +69,21 @@ public class EntityBase {
 	}
 
 	public boolean isInBounds(double x, double y) {
-		if (x < -100 || x > Config.width+100 || y < -100 || y > Config.height+100)
-			return false;
-		else
-			return true;
+		if (x < -100 || x > Config.width + 100 || y < -100 || y > Config.height + 100) return false;
+		else return true;
 	}
 
 	public boolean isInBounds(double currentX, double currentY, double moveX, double moveY, double width, double height) {
 		if (moveX > 0) {
 			if (!isInBounds(currentX + moveX + width / 2, currentY)) return false;
-		} else if (moveX < 0) {
+		}
+		else if (moveX < 0) {
 			if (!isInBounds(currentX - moveX - width / 2, currentY)) return false;
 		}
 		if (moveY > 0) {
 			if (!isInBounds(currentX, currentY + moveY + height / 2)) return false;
-		} else if (moveY < 0) {
+		}
+		else if (moveY < 0) {
 			if (!isInBounds(currentX, currentY - moveY - height / 2)) return false;
 		}
 		return true;
@@ -90,6 +95,10 @@ public class EntityBase {
 
 	public void setImage(BufferedImage image) {
 		this.image = image;
+	}
+
+	public Shape getHitBox() {
+		return hitBox;
 	}
 
 }
