@@ -44,8 +44,8 @@ public class ProjectileBase extends EntityBase {
 		this.y = y;
 		this.ax = ax0;
 		this.ay = ay0;
-		this.vx = Math.cos(Math.toRadians(angle));
-		this.vy = Math.sin(Math.toRadians(angle));
+		this.vx = Math.cos(Math.toRadians(angle))*speed;
+		this.vy = Math.sin(Math.toRadians(angle))*speed;
 	}
 
 	/*
