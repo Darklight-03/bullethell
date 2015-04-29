@@ -13,8 +13,7 @@ public class TestingEnemy extends EntityBase {
 	private Random rand = new Random();
 	private Boolean isAtDestination = true;
 	private double destinationX, destinationY, aX, aY, vX, vY;
-	int[] xPoints;
-	int[] yPoints;
+	int[] xPoints, yPoints;
 
 	public TestingEnemy(String imageName, int x, int y, double aX, double aY) {
 		super(imageName);
@@ -87,24 +86,24 @@ public class TestingEnemy extends EntityBase {
 		updateYPoints();
 		hitBox = new Polygon(xPoints, yPoints, 15);
 
-		
 		System.out.println("\n\n\n\n\n");
-		
+
 	}
 
 	private void updateXPoints() {
-		int radius = this.getImage().getWidth()/2;
+		int radius = this.getImage().getWidth() / 2;
 		for (int i = 1; i < 16; i++) {
 			xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI * 2)));
-			System.out.print((int) (x + radius * Math.cos((i * 24) / (Math.PI * 2)))+", ");
+			System.out.print((int) (x + radius * Math.cos((i * 24) / (Math.PI * 2))) + ", ");
 		}
+		System.out.println();
 	}
 
 	private void updateYPoints() {
-		int radius = this.getImage().getWidth()/2;
+		int radius = this.getImage().getWidth() / 2;
 		for (int i = 1; i < 16; i++) {
 			yPoints[i - 1] = (int) (y + radius * Math.cos((i * 24) / (Math.PI * 2)));
-			System.out.print((int) (y + radius * Math.cos((i * 24) / (Math.PI * 2)))+", ");
+			System.out.print((int) (y + radius * Math.cos((i * 24) / (Math.PI * 2))) + ", ");
 		}
 	}
 
