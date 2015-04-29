@@ -69,7 +69,8 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 					.drawY(), null);
 			
 			bg.setColor(Color.GREEN);
-			bg.drawPolygon((Polygon)gM.getEnemies().get(i).getHitBox());
+			bg.fillPolygon((Polygon)gM.getEnemies().get(i).getHitBox());
+			bg.fillPolygon(gM.getEnemies().get(i).getArrays()[0], gM.getEnemies().get(i).getArrays()[1], 15);
 			
 		}
 		for (int i = 0; i < gM.getProjectiles().size(); i++) {

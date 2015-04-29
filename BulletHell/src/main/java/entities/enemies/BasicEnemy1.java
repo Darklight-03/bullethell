@@ -71,7 +71,6 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			double py = Main.f.getPanel().getGM().getPlayer().getY();
 			double dx = px - x;
 			double dy = py - y;
-			Log.info(Math.atan2(dy, dx) + "");
 			// Log.info(dx + "  " + dy);
 			// GameManager.projectiles.add(new
 			// PlayerShot("uglyPlaceholderProjectile.jpg", x, y, dx, dy, 0 ,
@@ -91,6 +90,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 		updateXPoints();
 		updateYPoints();
 		hitBox = new Polygon(xPoints, yPoints, 15);
+		System.out.println("\n\n\n");
 
 	}
 
@@ -98,23 +98,27 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	public void updateXPoints() {
 		int radius = this.getImage().getWidth() / 2;
 		for (int i = 1; i < 16; i++) {
-			xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI * 2)));
+			xPoints[i - 1] = (int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180));
+			System.out.print((int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180))+", ");
 		}
-
+		System.out.println();
 	}
 
 	@Override
 	public void updateYPoints() {
 		int radius = this.getImage().getWidth() / 2;
 		for (int i = 1; i < 16; i++) {
-			yPoints[i - 1] = (int) (y + radius * Math.cos((i * 24) / (Math.PI * 2)));
+			xPoints[i - 1] = (int) (x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180));
+			System.out.print((int)(x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180))+", ");
 		}
-
+		System.out.println();
 	}
 
 	@Override
 	public int[][] getArrays() {
-		// TODO Auto-generated method stub
-		return null;
+		int[][] a = new int[15][2];
+		a[0] = xPoints;
+		a[1] = yPoints;
+		return a;
 	}
 }
