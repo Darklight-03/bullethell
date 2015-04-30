@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import reference.Config;
 import main.GameManager;
+import main.Main;
 import util.Log;
 import entities.EntityBase;
 
@@ -75,8 +76,8 @@ public class ProjectileBase extends EntityBase {
 			vy = vy + ay;
 		}
 		// System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
-		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight() / 2,
-				this.getImage().getWidth(), this.getImage().getHeight());
+		hitBox = new Rectangle((int) x - (this.getImage().getWidth() / 2)+1, (int) y - (this.getImage().getHeight() / 2)+1,
+				this.getImage().getWidth()-1, this.getImage().getHeight()-1);
 
 		return true;
 	}

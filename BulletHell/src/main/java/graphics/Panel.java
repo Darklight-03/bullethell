@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -69,7 +70,8 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 					.drawY(), null);
 			
 			bg.setColor(Color.GREEN);
-			bg.drawPolygon((Polygon)gM.getEnemies().get(i).getHitBox());
+			Rectangle r = (Rectangle) gM.getEnemies().get(i).getHitBox();
+			bg.fillRect((int)r.getX(),(int)r.getY(),(int)r.getWidth(),(int)r.getHeight());
 			
 		}
 		for (int i = 0; i < gM.getProjectiles().size(); i++) {
@@ -88,7 +90,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
 		if (shouldMoveSlow) {
 			bg.setColor(Config.hitBoxColor);
-			bg.fillRect(gM.getPlayer().getX() - 4, gM.getPlayer().getY() - 4, 8, 8);
+			bg.fillRect((int)gM.getPlayer().getHitBox().getX(),(int)gM.getPlayer().getHitBox().getY(),(int)gM.getPlayer().getHitBox().getWidth(),(int)gM.getPlayer().getHitBox().getWidth());
 		}
 		g.drawImage(buffer, 0, 0, null);
 	}
@@ -185,6 +187,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			}
 			if (e.getKeyCode() == moveSlow) {
 				gM.shouldMoveSlow(true);
+				shouldMoveSlow=true;
 			}
 			if (e.getKeyCode() == moveUp) {
 				gM.moveUpDepressed(true);
@@ -229,6 +232,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			}
 			if (e.getKeyCode() == moveSlow) {
 				gM.shouldMoveSlow(false);
+				shouldMoveSlow = false;
 			}
 			if (e.getKeyCode() == moveUp) {
 				gM.moveUpDepressed(false);
