@@ -185,6 +185,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			}
 			if (e.getKeyCode() == moveSlow) {
 				gM.shouldMoveSlow(true);
+				shouldMoveSlow=true;
 			}
 			if (e.getKeyCode() == moveUp) {
 				gM.moveUpDepressed(true);
@@ -229,6 +230,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			}
 			if (e.getKeyCode() == moveSlow) {
 				gM.shouldMoveSlow(false);
+				shouldMoveSlow = false;
 			}
 			if (e.getKeyCode() == moveUp) {
 				gM.moveUpDepressed(false);

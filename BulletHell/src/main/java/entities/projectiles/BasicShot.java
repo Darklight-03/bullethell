@@ -2,6 +2,10 @@ package entities.projectiles;
 
 import java.awt.Rectangle;
 
+import reference.Config;
+import util.Log;
+import main.GameManager;
+import main.Main;
 import entities.projectiles.ProjectileBase;
 
 public class BasicShot extends ProjectileBase {
@@ -22,6 +26,27 @@ public class BasicShot extends ProjectileBase {
 	
 	public String toString(){
 		return NAME+":  "+x+", "+y;
+	}
+	
+	public boolean update() {
+		if (!isInBounds(x, y)) {
+			return false;
+		}
+		if(x+(this.getImage().getWidth()/4)>Main.f.getPanel().getGM().getPlayer().getX()-4&&x-(this.getImage().getWidth()/4)<Main.f.getPanel().getGM().getPlayer().getX()+4
+				&&y+(this.getImage().getWidth()/4)>Main.f.getPanel().getGM().getPlayer().getY()-4&&y-(this.getImage().getWidth()/4)<Main.f.getPanel().getGM().getPlayer().getY()+4){
+			Log.info("ded");
+		}
+		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+			x = x + vx;
+			y = y + vy;
+			vx = vx + ax;
+			vy = vy + ay;
+		}
+		// System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
+		hitBox = new Rectangle((int) x - (this.getImage().getWidth() / 4), (int) y - (this.getImage().getHeight() / 4),
+				this.getImage().getWidth()/2, this.getImage().getHeight()/2);
+
+		return true;
 	}
 
 }

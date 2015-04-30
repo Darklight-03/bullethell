@@ -36,6 +36,8 @@ public class GameManager implements Runnable {
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
 		enemies.add(new BasicEnemy1("EnemyPlaceholder.png",2,50,10,3));
+		enemies.add(new BasicEnemy1("EnemyPlaceholder.png",2,50,10,3));
+		
 //		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005, .005));
 
 	}

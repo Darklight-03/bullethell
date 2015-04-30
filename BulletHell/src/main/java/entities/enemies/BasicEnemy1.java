@@ -8,17 +8,20 @@ import reference.Config;
 import util.Log;
 import entities.EntityBase;
 import entities.PolygonHitBox;
+import entities.projectiles.BasicShot;
 import entities.projectiles.player.PlayerShot;
 
 public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	boolean left;
 	int RoF, bulletSpeed, Spread, bps, ct = 0;
 	int[] xPoints, yPoints;
+	int yMax=0;
 
 	public BasicEnemy1(String img, int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
 		super(img);
 		x = -100;
 		y = 300;
+		yMax = (int)(-1*((Math.random()*1000)+500));
 		this.bulletSpeed = bulletSpeed;
 		this.bps = bulletsPerShot;
 		this.RoF = RoF;
@@ -48,7 +51,8 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			physUpdate();
 		}
-		if (y < -1000 && left == true) {
+		if (y < yMax && left == true) {
+			yMax = (int)(-1*((Math.random()*1000)+500));
 			left = false;
 			vx = -2;
 			vy = 2;
@@ -57,7 +61,8 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			x = Config.width + 100;
 			y = 300;
 		}
-		if (y < -1000 && left == false) {
+		if (y < yMax && left == false) {
+			yMax = (int)(-1*((Math.random()*1000)+500));
 			left = true;
 			vx = 2;
 			vy = 2;
@@ -71,13 +76,13 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			double py = Main.f.getPanel().getGM().getPlayer().getY();
 			double dx = px - x;
 			double dy = py - y;
-			Log.info(Math.atan2(dy, dx) + "");
+		//	Log.info(Math.atan2(dy, dx) + "");
 			// Log.info(dx + "  " + dy);
 			// GameManager.projectiles.add(new
 			// PlayerShot("uglyPlaceholderProjectile.jpg", x, y, dx, dy, 0 ,
 			// 0));
 			while (bps > ct) {
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", Math.toDegrees(Math.atan2(
+				GameManager.projectiles.add(new BasicShot("uglyPlaceholderProjectile.jpg", Math.toDegrees(Math.atan2(
 						dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
 				ct++;
 			}
