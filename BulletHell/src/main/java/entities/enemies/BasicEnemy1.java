@@ -82,7 +82,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			// PlayerShot("uglyPlaceholderProjectile.jpg", x, y, dx, dy, 0 ,
 			// 0));
 			while (bps > ct) {
-				GameManager.projectiles.add(new BasicShot("uglyPlaceholderProjectile.jpg", Math.toDegrees(Math.atan2(
+				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math.atan2(
 						dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
 				ct++;
 			}
