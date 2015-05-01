@@ -115,14 +115,9 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			// PlayerShot("uglyPlaceholderProjectile.jpg", x, y, dx, dy, 0 ,
 			// 0));
 			while (bps > ct) {
-<<<<<<< HEAD
+
 				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
 						.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
-=======
-
-				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math.atan2(
-						dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
->>>>>>> 5fce1ff482a0e47e8c354c01e56b7236235e7548
 				ct++;
 			}
 			ct = 0;
@@ -134,11 +129,9 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	public void updateHitBox() {
 		updateXPoints();
 		updateYPoints();
-<<<<<<< HEAD
-		hitBox = new Polygon(xPoints, yPoints, 8);
-=======
+
 		hitBox = new Rectangle((int)x-18, (int)y-18, 36,36);
->>>>>>> 5fce1ff482a0e47e8c354c01e56b7236235e7548
+
 
 	}
 
