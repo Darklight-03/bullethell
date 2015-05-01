@@ -33,10 +33,7 @@ public class BasicShot extends ProjectileBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if(x+(this.getImage().getWidth()/4)>Main.f.getPanel().getGM().getPlayer().getX()-4&&x-(this.getImage().getWidth()/4)<Main.f.getPanel().getGM().getPlayer().getX()+4
-				&&y+(this.getImage().getWidth()/4)>Main.f.getPanel().getGM().getPlayer().getY()-4&&y-(this.getImage().getWidth()/4)<Main.f.getPanel().getGM().getPlayer().getY()+4){
-//			Log.info("ded");
-		}
+		
 		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			x = x + vx;
 			y = y + vy;
@@ -48,6 +45,7 @@ public class BasicShot extends ProjectileBase {
 				this.getImage().getWidth()/2, this.getImage().getHeight()/2);
 		if(hitBox.intersects((Rectangle)Main.f.getPanel().getGM().getPlayer().getHitBox()))
 			Log.info("ded");
+
 
 		return true;
 	}
