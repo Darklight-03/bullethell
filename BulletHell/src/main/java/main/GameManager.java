@@ -31,12 +31,12 @@ public class GameManager implements Runnable {
 	public GameManager() {
 		gameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
-		player = new Player("placeHolder.png");
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		backGroundObjects.add(new BackgroundObject("placeHolderBackgroundObject.jpg"));
-		enemies.add(new BasicEnemy1("EnemyPlaceholder.png",2,50,10,3));
-		enemies.add(new BasicEnemy1("EnemyPlaceholder.png",2,50,10,3));
+		player = new Player(Config.PLAYER_IMAGE);
+		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
+		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
+		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
+		enemies.add(new BasicEnemy1(Config.ENEMY_PLACEHOLDER,2,50,10,3));
+		enemies.add(new BasicEnemy1(Config.ENEMY_PLACEHOLDER,2,50,10,3));
 		
 //		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005, .005));
 
