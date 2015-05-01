@@ -15,13 +15,13 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	boolean left;
 	int RoF, bulletSpeed, Spread, bps, ct = 0;
 	int[] xPoints, yPoints;
-	int yMax=0;
+	int yMax = 0;
 
 	public BasicEnemy1(String img, int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
 		super(img);
 		x = -100;
 		y = 300;
-		yMax = (int)(-1*((Math.random()*1000)+500));
+		yMax = (int) (-1 * ((Math.random() * 1000) + 500));
 		this.bulletSpeed = bulletSpeed;
 		this.bps = bulletsPerShot;
 		this.RoF = RoF;
@@ -43,6 +43,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 		xPoints = new int[16];
 		yPoints = new int[16];
 		hitBox = new Polygon();
+		health = 100;
 
 	}
 
@@ -52,7 +53,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			physUpdate();
 		}
 		if (y < yMax && left == true) {
-			yMax = (int)(-1*((Math.random()*1000)+500));
+			yMax = (int) (-1 * ((Math.random() * 1000) + 500));
 			left = false;
 			vx = -2;
 			vy = 2;
@@ -62,7 +63,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			y = 300;
 		}
 		if (y < yMax && left == false) {
-			yMax = (int)(-1*((Math.random()*1000)+500));
+			yMax = (int) (-1 * ((Math.random() * 1000) + 500));
 			left = true;
 			vx = 2;
 			vy = 2;
@@ -76,14 +77,14 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			double py = Main.f.getPanel().getGM().getPlayer().getY();
 			double dx = px - x;
 			double dy = py - y;
-		//	Log.info(Math.atan2(dy, dx) + "");
+			// Log.info(Math.atan2(dy, dx) + "");
 			// Log.info(dx + "  " + dy);
 			// GameManager.projectiles.add(new
 			// PlayerShot("uglyPlaceholderProjectile.jpg", x, y, dx, dy, 0 ,
 			// 0));
 			while (bps > ct) {
-				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math.atan2(
-						dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
+				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
+						.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
 				ct++;
 			}
 			ct = 0;
@@ -95,24 +96,31 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	public void updateHitBox() {
 		updateXPoints();
 		updateYPoints();
-		hitBox = new Polygon(xPoints, yPoints, 15);
+		hitBox = new Polygon(xPoints, yPoints, 8);
 
 	}
 
 	@Override
 	public void updateXPoints() {
+		/*
+		 * int radius = this.getImage().getWidth() / 2;
+		 * for (int i = 1; i < 16; i++) {
+		 * xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI *
+		 * 2)));
+		 * }
+		 */
 		int radius = this.getImage().getWidth() / 2;
-		for (int i = 1; i < 16; i++) {
-			xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI * 2)));
+		for (int i = 0; i < 8; i++) {
+			xPoints[i] = (int)(x+ radius*Math.cos((i*45*Math.PI)/180));
 		}
-
 	}
 
 	@Override
 	public void updateYPoints() {
+
 		int radius = this.getImage().getWidth() / 2;
-		for (int i = 1; i < 16; i++) {
-			yPoints[i - 1] = (int) (y + radius * Math.cos((i * 24) / (Math.PI * 2)));
+		for (int i = 0; i < 8; i++) {
+			xPoints[i] = (int)(x+ radius*Math.sin((i*45*Math.PI)/180));
 		}
 
 	}

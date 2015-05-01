@@ -11,6 +11,7 @@ import entities.EntityBase;
 public class ProjectileBase extends EntityBase {
 
 	double ay, ax, vx, vy, angle, speed;
+	protected double damage;
 	protected boolean hasHitTarget = false;
 	protected final String NAME = "ProjectileBase";
 	public Rectangle hitBox;

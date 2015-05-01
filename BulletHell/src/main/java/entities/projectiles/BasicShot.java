@@ -22,6 +22,8 @@ public class BasicShot extends ProjectileBase {
 	
 	public BasicShot(String imageName, double angle, double speed, double x, double y, double ax0, double ay0, boolean toUseAnglesPutABooleanHereThatIsTrue){
 		super(imageName, angle, speed, x, y, ax0, ay0, toUseAnglesPutABooleanHereThatIsTrue);
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
+				.getImage().getWidth(), this.getImage().getHeight());
 	}
 	
 	public String toString(){
