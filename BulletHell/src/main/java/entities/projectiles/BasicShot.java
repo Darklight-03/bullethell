@@ -1,6 +1,7 @@
 package entities.projectiles;
 
 import java.awt.Rectangle;
+import java.awt.Shape;
 
 import reference.Config;
 import util.Log;
@@ -34,10 +35,7 @@ public class BasicShot extends ProjectileBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if(x+(this.getImage().getWidth()/4)>Main.f.getPanel().getGM().getPlayer().getX()-4&&x-(this.getImage().getWidth()/4)<Main.f.getPanel().getGM().getPlayer().getX()+4
-				&&y+(this.getImage().getWidth()/4)>Main.f.getPanel().getGM().getPlayer().getY()-4&&y-(this.getImage().getWidth()/4)<Main.f.getPanel().getGM().getPlayer().getY()+4){
-			Log.info("ded");
-		}
+		
 		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			x = x + vx;
 			y = y + vy;
@@ -47,6 +45,9 @@ public class BasicShot extends ProjectileBase {
 		// System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
 		hitBox = new Rectangle((int) x - (this.getImage().getWidth() / 4), (int) y - (this.getImage().getHeight() / 4),
 				this.getImage().getWidth()/2, this.getImage().getHeight()/2);
+		if(hitBox.intersects((Rectangle)Main.f.getPanel().getGM().getPlayer().getHitBox()))
+			Log.info("ded");
+
 
 		return true;
 	}

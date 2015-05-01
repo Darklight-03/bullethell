@@ -1,6 +1,12 @@
 package main;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import entities.BackgroundObject;
 import entities.EntityBase;
@@ -22,21 +28,31 @@ public class GameManager implements Runnable {
 	public static ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
 	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
-
+	BufferedImage e1;
 	/*
 	 * This should be the class that controls almost every aspect of the game.
 	 * From updating all of the entities on the screen, to creating new
 	 * entities, and other various methods that will be necessary for gameplay.
 	 */
 	public GameManager() {
+		try {
+			e1 = ImageIO.read(new File(Config.IMG_DIR+"EnemyTurret/Ship1Down.png"));
+			
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		gameState = Config.PLAYING; // TODO change this to start out as main
 									// menu, it's like this for testing
+
+		
+
 		player = new Player(Config.PLAYER_IMAGE);
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
-		enemies.add(new BasicEnemy1(Config.ENEMY_PLACEHOLDER,2,50,10,3));
-		enemies.add(new BasicEnemy1(Config.ENEMY_PLACEHOLDER,2,50,10,3));
+		enemies.add(new BasicEnemy1(scale(e1,2,2),2,50,10,3));
 		
 //		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005, .005));
 
@@ -182,4 +198,19 @@ public class GameManager implements Runnable {
 		moveRightDepressed = b;
 	}
 
+	public static BufferedImage scale(BufferedImage img,double horizontalScale,
+  			double verticalScale)
+  	{
+  		if(img!=null){
+  		 int transparency = img.getColorModel().getTransparency();
+  		BufferedImage img2 = new BufferedImage((int)(img.getWidth()*horizontalScale),(int)(img.getHeight()*verticalScale),transparency);
+  		Graphics g = img2.getGraphics();
+  		g.drawImage(img,0,0,(int)((img.getWidth()*horizontalScale)),(int)((img.getHeight()*verticalScale)),0,0,img.getWidth(),img.getHeight(),null);
+  		return img2;
+  		
+  		}
+  		else return null;
+	    
+  	}
+	
 }

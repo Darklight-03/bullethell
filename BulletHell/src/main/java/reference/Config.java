@@ -18,6 +18,7 @@ public class Config {
 	public static double GAME_SPEED = 1;
 	public static final int MAIN_MENU = 0, PAUSED = 1, PLAYING = 2, DEAD = 3, PLAYER_UPS = 100;
 	public static final long UPS = 1000, FPS = 1000;
+	public static final String IMG_DIR = "src/main/resources/";
 
 	// list addresses to all of the images in the game here
 	public static final String PLAYER_IMAGE = "src/main/resources/placeHolder.png";
@@ -28,7 +29,7 @@ public class Config {
 
 	private String SAVELOCATION = "Config.txt", temp;
 	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39,
-			moveSlow = 16;
+			moveSlow = 16,PLAYER_HITBOX_RADIUS = 3;
 	public static double moveSpeed = 1.5, slowMoveSpeed, scrollSpeed = 2;
 	public static char shoot = 'z', dropBombs = 'x', switchWeapons = 'c', extraKeyOne = 'v';
 	public static Color hitBoxColor = Color.RED;

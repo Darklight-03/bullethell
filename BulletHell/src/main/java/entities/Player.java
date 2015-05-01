@@ -1,5 +1,7 @@
 package entities;
 
+import java.awt.Rectangle;
+
 import main.GameManager;
 import entities.projectiles.player.HomingMissile;
 import entities.projectiles.player.PlayerShot;
@@ -15,6 +17,7 @@ public class Player extends EntityBase implements Runnable {
 	private Thread t;
 	boolean now = true;
 	long count = 0;
+	Rectangle hitBox;
 
 	// TODO add method to switch the weapon when the switchweapon method is
 	// called
@@ -113,7 +116,7 @@ public class Player extends EntityBase implements Runnable {
 	// Moves the player in the direction specified --
 	public void move(boolean up, boolean down, boolean left, boolean right, boolean shouldMoveSlow) {
 		double x = 0, y = 0, speed;
-
+		hitBox = new Rectangle((int)this.x-Config.PLAYER_HITBOX_RADIUS, (int)this.y-Config.PLAYER_HITBOX_RADIUS,Config.PLAYER_HITBOX_RADIUS*2,Config.PLAYER_HITBOX_RADIUS*2);
 		if (shouldMoveSlow) speed = Config.slowMoveSpeed;
 		else speed = Config.moveSpeed;
 
@@ -169,5 +172,8 @@ public class Player extends EntityBase implements Runnable {
 
 			}
 		}
+	}
+	public Rectangle getHitBox(){
+		return hitBox;
 	}
 }
