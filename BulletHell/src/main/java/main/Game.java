@@ -16,20 +16,22 @@ import entities.Player;
 import entities.enemies.BasicEnemy1;
 import entities.projectiles.ProjectileBase;
 
-public class Game implements Runnable{
+public class Game implements Runnable {
 
 	public int Gamestate;
 
 	public Player player;
-	public static int gameState;
+	public Thread t;
+	public int gameState;
 	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
-	public static ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
-	public static ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
-	public static ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
+	public ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
+	public ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
+	public ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
 	BufferedImage e1;
+
 	/*
 	 * This should be the class that controls almost every aspect of the game.
 	 * From updating all of the entities on the screen, to creating new
@@ -37,37 +39,39 @@ public class Game implements Runnable{
 	 */
 	public Game() {
 		try {
-			e1 = ImageIO.read(new File(Config.IMG_DIR+"EnemyTurret/Ship1Down.png"));
-			
+			e1 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Down.png"));
+
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		gameState = Config.PLAYING; // TODO change this to start out as main
-									// menu, it's like this for testing
+		gameState = Config.PLAYING;
 
-		
+		t = new Thread(this);
+		t.start();
 
 		player = new Player(Config.PLAYER_IMAGE);
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
-		enemies.add(new BasicEnemy1(scale(e1,2,2),2,50,10,3));
-		
-//		enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005, .005));
+		enemies.add(new BasicEnemy1(scale(e1, 2, 2), 2, 50, 10, 3));
+
+		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
+		// .005));
 	}
-	
+
 	/*
 	 * This thread will call the update methods for all of the existing
 	 * projectiles and entities- besides the player-, in order to make them move
 	 */
 	@Override
 	public void run() {
-		try{
+		try {
 			Thread.sleep(1000);
-		}catch(Exception e){
-			
+		}
+		catch (Exception e) {
+
 		}
 		while (true) {
 			try {
@@ -78,7 +82,7 @@ public class Game implements Runnable{
 					if (count > 999999999) {
 						count = 0;
 					}
-					if (GameManager.count % ((Config.UPS * Config.GAME_SPEED) / 400) == 0) {
+					if (count % ((Config.UPS * Config.GAME_SPEED) / 400) == 0) {
 						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
 								shouldMoveSlow);
 					}
@@ -134,7 +138,7 @@ public class Game implements Runnable{
 	 * EntityBase's x and y values. This method will only return enemies that
 	 * have a higher y value that the object given to it.
 	 */
-	public static EntityBase findNearestEnemy(EntityBase e) {
+	public EntityBase findNearestEnemy(EntityBase e) {
 		// TODO change this to use the entities arraylist once the testing is
 		// complete, right now it uses the background objects
 		double distance = Integer.MAX_VALUE, temp;
@@ -197,19 +201,23 @@ public class Game implements Runnable{
 	public void moveRightDepressed(boolean b) {
 		moveRightDepressed = b;
 	}
+	
+	public int getCount(){
+		return count;
+	}
 
-	public static BufferedImage scale(BufferedImage img,double horizontalScale,
-  			double verticalScale)
-  	{
-  		if(img!=null){
-  		 int transparency = img.getColorModel().getTransparency();
-  		BufferedImage img2 = new BufferedImage((int)(img.getWidth()*horizontalScale),(int)(img.getHeight()*verticalScale),transparency);
-  		Graphics g = img2.getGraphics();
-  		g.drawImage(img,0,0,(int)((img.getWidth()*horizontalScale)),(int)((img.getHeight()*verticalScale)),0,0,img.getWidth(),img.getHeight(),null);
-  		return img2;
-  		
-  		}
-  		else return null;
-	    
-  	}
+	public static BufferedImage scale(BufferedImage img, double horizontalScale, double verticalScale) {
+		if (img != null) {
+			int transparency = img.getColorModel().getTransparency();
+			BufferedImage img2 = new BufferedImage((int) (img.getWidth() * horizontalScale),
+					(int) (img.getHeight() * verticalScale), transparency);
+			Graphics g = img2.getGraphics();
+			g.drawImage(img, 0, 0, (int) ((img.getWidth() * horizontalScale)),
+					(int) ((img.getHeight() * verticalScale)), 0, 0, img.getWidth(), img.getHeight(), null);
+			return img2;
+
+		}
+		else return null;
+
+	}
 }

@@ -17,7 +17,7 @@ public class BackgroundObject extends EntityBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if (GameManager.count % (Config.UPS / 100) == 0) {
+		if (GameManager.getGame().getCount() % (Config.UPS / 100) == 0) {
 			y = y + Config.scrollSpeed;
 			if (y > Config.height + 100) {
 				y = (Math.random() * -500) + 100;

@@ -81,7 +81,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 
 	public boolean update() {
 		updateHitBox();
-		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			physUpdate();
 		}
 		if (y < yMax && left == true) {
@@ -104,9 +104,9 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			x = -100;
 			y = 300;
 		}
-		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / RoF) == 0) {
-			double px = Main.f.getPanel().getGM().getPlayer().getX();
-			double py = Main.f.getPanel().getGM().getPlayer().getY();
+		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / RoF) == 0) {
+			double px = GameManager.getGame().getPlayer().getX();
+			double py = GameManager.getGame().getPlayer().getY();
 			double dx = px - x;
 			double dy = py - y;
 			// Log.info(Math.atan2(dy, dx) + "");
@@ -116,7 +116,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			// 0));
 			while (bps > ct) {
 
-				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
+				GameManager.getGame().projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
 						.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
 				ct++;
 			}

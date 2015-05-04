@@ -32,11 +32,11 @@ public class TestingEnemy extends EntityBase  implements PolygonHitBox{
 
 	public boolean update() {
 		updateHitBox();
-		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			if (isAtDestination) {
 				int i = rand.nextInt(100);
 				if (i < 10) {
-					destinationX = Main.f.getPanel().getGM().getPlayer().getX();
+					destinationX = GameManager.getGame().getPlayer().getX();
 					destinationY = rand.nextInt(Config.height - 300);
 				}
 				else if (i > 10 && i < 30) {
@@ -44,8 +44,8 @@ public class TestingEnemy extends EntityBase  implements PolygonHitBox{
 					destinationX = rand.nextInt(Config.width);
 				}
 				else if (i > 30 && i < 35) {
-					destinationY = Main.f.getPanel().getGM().getPlayer().getY();
-					destinationX = Main.f.getPanel().getGM().getPlayer().getX();
+					destinationY = GameManager.getGame().getPlayer().getY();
+					destinationX = GameManager.getGame().getPlayer().getX();
 				}
 				else {
 					destinationX = rand.nextInt(Config.width);
