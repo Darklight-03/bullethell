@@ -129,14 +129,9 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	public void updateHitBox() {
 		updateXPoints();
 		updateYPoints();
-<<<<<<< HEAD
-		hitBox = new Polygon(xPoints, yPoints, 15);
-		System.out.println("\n\n\n");
-=======
 
 		hitBox = new Rectangle((int)x-18, (int)y-18, 36,36);
 
->>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
 
 	}
 
@@ -150,35 +145,27 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 		 * }
 		 */
 		int radius = this.getImage().getWidth() / 2;
-<<<<<<< HEAD
+
 		for (int i = 1; i < 16; i++) {
 			xPoints[i - 1] = (int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180));
-			System.out.print((int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180))+", ");
-=======
-		for (int i = 0; i < 8; i++) {
-			xPoints[i] = (int) (x + radius * Math.cos((i * 45 * Math.PI) / 180));
->>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+//			System.out.print((int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180))+", ");
+
 		}
-<<<<<<< HEAD
-		System.out.println();
-=======
->>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+
+//		System.out.println();
+
 	}
 
 	@Override
 	public void updateYPoints() {
 
 		int radius = this.getImage().getWidth() / 2;
-<<<<<<< HEAD
 		for (int i = 1; i < 16; i++) {
 			xPoints[i - 1] = (int) (x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180));
-			System.out.print((int)(x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180))+", ");
-=======
-		for (int i = 0; i < 8; i++) {
-			xPoints[i] = (int) (x + radius * Math.sin((i * 45 * Math.PI) / 180));
->>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+//			System.out.print((int)(x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180))+", ");
+
 		}
-		System.out.println();
+//		System.out.println();
 	}
 
 	@Override
