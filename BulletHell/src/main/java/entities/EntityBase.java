@@ -16,8 +16,7 @@ public class EntityBase implements PolygonHitBox{
 	/*
 	 * This is going to be the base for all of the game's entities
 	 */
-	public double x, y;
-	public double ay, ax, vx, vy;
+	public double x, y, ay, ax, vx, vy, health;
 	private BufferedImage image;
 	protected final String NAME = "EntityBase";
 	public Shape hitBox;
@@ -29,6 +28,10 @@ public class EntityBase implements PolygonHitBox{
 		catch (IOException e) {
 			Log.error("Could not load image" + NAME);
 		}
+		hitBox = new Rectangle((int) x, (int) y, 1, 1);
+	}
+	public EntityBase(BufferedImage imageName) {
+		setImage(imageName);
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 	}
 

@@ -1,6 +1,8 @@
 package entities.enemies;
 
 import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import main.GameManager;
 import main.Main;
@@ -8,17 +10,21 @@ import reference.Config;
 import util.Log;
 import entities.EntityBase;
 import entities.PolygonHitBox;
+import entities.projectiles.BasicShot;
 import entities.projectiles.player.PlayerShot;
 
 public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	boolean left;
 	int RoF, bulletSpeed, Spread, bps, ct = 0;
 	int[] xPoints, yPoints;
+	int yMax = 0;
 
 	public BasicEnemy1(String img, int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
 		super(img);
 		x = -100;
 		y = 300;
+
+		yMax = (int) (-1 * ((Math.random() * 1000) + 500));
 		this.bulletSpeed = bulletSpeed;
 		this.bps = bulletsPerShot;
 		this.RoF = RoF;
@@ -43,12 +49,43 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 
 	}
 
+	public BasicEnemy1(BufferedImage img, int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
+		super(img);
+		x = -100;
+		y = 300;
+		yMax = (int) (-1 * ((Math.random() * 1000) + 500));
+		this.bulletSpeed = bulletSpeed;
+		this.bps = bulletsPerShot;
+		this.RoF = RoF;
+		this.Spread = Spread;
+		if (x < Config.width / 2) {
+			left = true;
+			vx = 2;
+			vy = 2;
+			ay = -.02;
+			ax = 0;
+		}
+		else {
+			left = false;
+			vx = -2;
+			vy = 2;
+			ay = -.02;
+			ax = 0;
+		}
+		xPoints = new int[16];
+		yPoints = new int[16];
+		hitBox = new Polygon();
+		health = 100;
+
+	}
+
 	public boolean update() {
 		updateHitBox();
 		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			physUpdate();
 		}
-		if (y < -1000 && left == true) {
+		if (y < yMax && left == true) {
+			yMax = (int) (-1 * ((Math.random() * 1000) + 500));
 			left = false;
 			vx = -2;
 			vy = 2;
@@ -57,7 +94,8 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			x = Config.width + 100;
 			y = 300;
 		}
-		if (y < -1000 && left == false) {
+		if (y < yMax && left == false) {
+			yMax = (int) (-1 * ((Math.random() * 1000) + 500));
 			left = true;
 			vx = 2;
 			vy = 2;
@@ -71,13 +109,15 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			double py = Main.f.getPanel().getGM().getPlayer().getY();
 			double dx = px - x;
 			double dy = py - y;
+			// Log.info(Math.atan2(dy, dx) + "");
 			// Log.info(dx + "  " + dy);
 			// GameManager.projectiles.add(new
 			// PlayerShot("uglyPlaceholderProjectile.jpg", x, y, dx, dy, 0 ,
 			// 0));
 			while (bps > ct) {
-				GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", Math.toDegrees(Math.atan2(
-						dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
+
+				GameManager.projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
+						.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
 				ct++;
 			}
 			ct = 0;
@@ -89,27 +129,54 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 	public void updateHitBox() {
 		updateXPoints();
 		updateYPoints();
+<<<<<<< HEAD
 		hitBox = new Polygon(xPoints, yPoints, 15);
 		System.out.println("\n\n\n");
+=======
+
+		hitBox = new Rectangle((int)x-18, (int)y-18, 36,36);
+
+>>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
 
 	}
 
 	@Override
 	public void updateXPoints() {
+		/*
+		 * int radius = this.getImage().getWidth() / 2;
+		 * for (int i = 1; i < 16; i++) {
+		 * xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI *
+		 * 2)));
+		 * }
+		 */
 		int radius = this.getImage().getWidth() / 2;
+<<<<<<< HEAD
 		for (int i = 1; i < 16; i++) {
 			xPoints[i - 1] = (int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180));
 			System.out.print((int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180))+", ");
+=======
+		for (int i = 0; i < 8; i++) {
+			xPoints[i] = (int) (x + radius * Math.cos((i * 45 * Math.PI) / 180));
+>>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
 		}
+<<<<<<< HEAD
 		System.out.println();
+=======
+>>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
 	}
 
 	@Override
 	public void updateYPoints() {
+
 		int radius = this.getImage().getWidth() / 2;
+<<<<<<< HEAD
 		for (int i = 1; i < 16; i++) {
 			xPoints[i - 1] = (int) (x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180));
 			System.out.print((int)(x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180))+", ");
+=======
+		for (int i = 0; i < 8; i++) {
+			xPoints[i] = (int) (x + radius * Math.sin((i * 45 * Math.PI) / 180));
+>>>>>>> branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
 		}
 		System.out.println();
 	}

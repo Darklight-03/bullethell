@@ -14,10 +14,13 @@ public class PlayerShot extends ProjectileBase {
 		super(imageName, x, y, vx0, vy0, ax0, ay0);
 		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
 				.getImage().getWidth(), this.getImage().getHeight());
+		damage = 10;
 	}
 	
 	public PlayerShot(String imageName, double angle, double speed, double x, double y, double ax0, double ay0, boolean toUseAnglesPutABooleanHereThatIsTrue){
 		super(imageName, angle, speed, x, y, ax0, ay0, toUseAnglesPutABooleanHereThatIsTrue);
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
+				.getImage().getWidth(), this.getImage().getHeight());
 	}
 	
 	public String toString(){

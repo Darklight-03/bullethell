@@ -1,5 +1,7 @@
 package entities;
 
+import java.awt.Rectangle;
+
 import main.GameManager;
 import entities.projectiles.player.HomingMissile;
 import entities.projectiles.player.PlayerShot;
@@ -15,6 +17,7 @@ public class Player extends EntityBase implements Runnable {
 	private Thread t;
 	boolean now = true;
 	long count = 0;
+	Rectangle hitBox;
 
 	// TODO add method to switch the weapon when the switchweapon method is
 	// called
@@ -42,46 +45,46 @@ public class Player extends EntityBase implements Runnable {
 			{
 			case 0:
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, 0, 0, 0, -.1));
+					GameManager.projectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y, 0, 0, 0, -.1));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, 0, 0, 0, -.1));
+					GameManager.projectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y, 0, 0, 0, -.1));
 				}
 				break;
 			case 1:
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 8) == 0) {
-					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -1, 0,
+					GameManager.projectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x - 10, y, 0, -1, 0,
 							-.1));
-					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -1, 0,
+					GameManager.projectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x + 10, y, 0, -1, 0,
 							-.1));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 50) == 0) {
-					GameManager.projectiles.add(new PlayerShot("PlaceholderProjectile.jpg", x - 7, y, -.5, 3, -.005,
+					GameManager.projectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y, -.5, 3, -.005,
 							-.1));
-					GameManager.projectiles
-							.add(new PlayerShot("PlaceholderProjectile.jpg", x + 7, y, .5, 3, .005, -.1));
+					GameManager.projectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y, .5, 3, .005,
+							-.1));
 				}
 				break;
 			case 2:
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 12) == 0) {
-					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, 0, -4, 0,
+					GameManager.projectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x - 10, y, 0, -4, 0,
 							-.1));
-					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 0, -4, 0,
+					GameManager.projectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x + 10, y, 0, -4, 0,
 							-.1));
 				}
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x - 7, y, -.4, -1, 0,
+					GameManager.projectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x - 7, y, -.4, -1, 0,
 							-.05));
-					GameManager.projectiles.add(new HomingMissile("PlaceholderProjectile.jpg", x + 7, y, .4, -1, 0,
+					GameManager.projectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x + 7, y, .4, -1, 0,
 							-.05));
 				}
 				if (count % ((int) ((Config.PLAYER_UPS * Config.GAME_SPEED) / 12)) == 0) {
 
-					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x - 10, y, -1, -4, 0,
-							-.1));
-					GameManager.projectiles.add(new PlayerShot("uglyPlaceholderProjectile.jpg", x + 10, y, 1, -4, 0,
+					GameManager.projectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x - 10, y, -1, -4,
+							0, -.1));
+					GameManager.projectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x + 10, y, 1, -4, 0,
 							-.1));
 				}
 				break;
@@ -113,7 +116,7 @@ public class Player extends EntityBase implements Runnable {
 	// Moves the player in the direction specified --
 	public void move(boolean up, boolean down, boolean left, boolean right, boolean shouldMoveSlow) {
 		double x = 0, y = 0, speed;
-
+		hitBox = new Rectangle((int)this.x-Config.PLAYER_HITBOX_RADIUS, (int)this.y-Config.PLAYER_HITBOX_RADIUS,Config.PLAYER_HITBOX_RADIUS*2,Config.PLAYER_HITBOX_RADIUS*2);
 		if (shouldMoveSlow) speed = Config.slowMoveSpeed;
 		else speed = Config.moveSpeed;
 
@@ -169,5 +172,8 @@ public class Player extends EntityBase implements Runnable {
 
 			}
 		}
+	}
+	public Rectangle getHitBox(){
+		return hitBox;
 	}
 }
