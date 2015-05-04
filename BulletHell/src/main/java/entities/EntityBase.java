@@ -11,13 +11,12 @@ import javax.imageio.ImageIO;
 import reference.Config;
 import util.Log;
 
-public class EntityBase {
+public class EntityBase implements PolygonHitBox{
 
 	/*
 	 * This is going to be the base for all of the game's entities
 	 */
-	public double x, y;
-	public double ay, ax, vx, vy;
+	public double x, y, ay, ax, vx, vy, health;
 	private BufferedImage image;
 	protected final String NAME = "EntityBase";
 	public Shape hitBox;
@@ -103,6 +102,30 @@ public class EntityBase {
 
 	public Shape getHitBox() {
 		return hitBox;
+	}
+
+	@Override
+	public void updateHitBox() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateXPoints() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateYPoints() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int[][] getArrays() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

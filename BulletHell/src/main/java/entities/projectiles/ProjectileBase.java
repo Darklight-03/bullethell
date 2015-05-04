@@ -11,6 +11,7 @@ import entities.EntityBase;
 public class ProjectileBase extends EntityBase {
 
 	double ay, ax, vx, vy, angle, speed;
+	protected double damage;
 	protected boolean hasHitTarget = false;
 	protected final String NAME = "ProjectileBase";
 	public Rectangle hitBox;
@@ -69,11 +70,11 @@ public class ProjectileBase extends EntityBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if(x+(this.getImage().getWidth()/2)>Main.f.getPanel().getGM().getPlayer().getX()-4&&x-(this.getImage().getWidth()/2)<Main.f.getPanel().getGM().getPlayer().getX()+4
-				&&y+(this.getImage().getWidth()/2)>Main.f.getPanel().getGM().getPlayer().getY()-4&&y-(this.getImage().getWidth()/2)<Main.f.getPanel().getGM().getPlayer().getY()+4){
-			Log.debug("ded");
+		if(x+(this.getImage().getWidth()/2)>GameManager.getGame().getPlayer().getX()-4&&x-(this.getImage().getWidth()/2)<GameManager.getGame().getPlayer().getX()+4
+				&&y+(this.getImage().getWidth()/2)>GameManager.getGame().getPlayer().getY()-4&&y-(this.getImage().getWidth()/2)<GameManager.getGame().getPlayer().getY()+4){
+			Log.info("ded");
 		}
-		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			x = x + vx;
 			y = y + vy;
 			vx = vx + ax;

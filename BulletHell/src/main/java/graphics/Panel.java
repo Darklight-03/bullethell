@@ -3,7 +3,6 @@ package graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -43,8 +42,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		setButtons();
 
 		gM = new GameManager();
-		game = new Thread(gM);
-		game.start();
 		Thread t = new Thread(this);
 		t.start();
 
@@ -61,36 +58,42 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		Graphics bg = buffer.getGraphics();
 		bg.setColor(Color.WHITE);
 		bg.fillRect(0, 0, getWidth(), getHeight());
-		for (int i = 0; i < gM.getBackGroundObjects().size(); i++) {
-			bg.drawImage(gM.getBackGroundObjects().get(i).getImage(), gM.getBackGroundObjects().get(i).drawX(), gM
-					.getBackGroundObjects().get(i).drawY(), null);
+		for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
+			bg.drawImage(GameManager.getGame().getBackGroundObjects().get(i).getImage(), GameManager.getGame()
+					.getBackGroundObjects().get(i).drawX(),
+					GameManager.getGame().getBackGroundObjects().get(i).drawY(), null);
 		}
-		for (int i = 0; i < gM.getEnemies().size(); i++) {
-			bg.drawImage(gM.getEnemies().get(i).getImage(), gM.getEnemies().get(i).drawX(), gM.getEnemies().get(i)
-					.drawY(), null);
-			if(Config.DEBUG_MODE){
-			bg.setColor(Color.GREEN);
-			Rectangle r = (Rectangle) gM.getEnemies().get(i).getHitBox();
-			bg.fillRect((int)r.getX(),(int)r.getY(),(int)r.getWidth(),(int)r.getHeight());
+		for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
+			bg.drawImage(GameManager.getGame().getEnemies().get(i).getImage(), GameManager.getGame().getEnemies()
+					.get(i).drawX(), GameManager.getGame().getEnemies().get(i).drawY(), null);
+			if (Config.DEBUG_MODE) {
+				bg.setColor(Color.GREEN);
+				Rectangle r = (Rectangle) GameManager.getGame().getEnemies().get(i).getHitBox();
+				// bg.fillRect((int)r.getX(),(int)r.getY(),(int)r.getWidth(),(int)r.getHeight());
 			}
+
 		}
-		for (int i = 0; i < gM.getProjectiles().size(); i++) {
-			bg.drawImage(gM.getProjectiles().get(i).getImage(), gM.getProjectiles().get(i).drawX(), gM.getProjectiles()
-					.get(i).drawY(), null);
+		for (int i = 0; i < GameManager.getGame().getProjectiles().size(); i++) {
+			bg.drawImage(GameManager.getGame().getProjectiles().get(i).getImage(), GameManager.getGame()
+					.getProjectiles().get(i).drawX(), GameManager.getGame().getProjectiles().get(i).drawY(), null);
 
 			if (Config.DEBUG_MODE) {
 				bg.setColor(Color.RED);
-				bg.fillRect((int) gM.getProjectiles().get(i).getHitBox().getX(), (int) gM.getProjectiles().get(i)
-						.getHitBox().getY(), (int) gM.getProjectiles().get(i).getHitBox().getWidth(), (int) gM
-						.getProjectiles().get(i).getHitBox().getHeight());
+				bg.fillRect((int) GameManager.getGame().getProjectiles().get(i).getHitBox().getX(), (int) GameManager
+						.getGame().getProjectiles().get(i).getHitBox().getY(), (int) GameManager.getGame()
+						.getProjectiles().get(i).getHitBox().getWidth(), (int) GameManager.getGame().getProjectiles()
+						.get(i).getHitBox().getHeight());
 			}
 
 		}
 
-		bg.drawImage(gM.getPlayer().getImage(), gM.getPlayer().drawX(), gM.getPlayer().drawY(), null);
+		bg.drawImage(GameManager.getGame().getPlayer().getImage(), GameManager.getGame().getPlayer().drawX(),
+				GameManager.getGame().getPlayer().drawY(), null);
 		if (shouldMoveSlow) {
 			bg.setColor(Config.hitBoxColor);
-			bg.fillRect((int)gM.getPlayer().getHitBox().getX(),(int)gM.getPlayer().getHitBox().getY(),(int)gM.getPlayer().getHitBox().getWidth(),(int)gM.getPlayer().getHitBox().getWidth());
+			bg.fillRect((int) GameManager.getGame().getPlayer().getHitBox().getX(), (int) GameManager.getGame()
+					.getPlayer().getHitBox().getY(), (int) GameManager.getGame().getPlayer().getHitBox().getWidth(),
+					(int) GameManager.getGame().getPlayer().getHitBox().getWidth());
 		}
 		g.drawImage(buffer, 0, 0, null);
 	}
@@ -110,8 +113,10 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				// in the panel, or at least in the thread that handles
 				// repaints, because the repaint speed currently affects the
 				// speed of which the ship moves.
-				gM.getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
-						shouldMoveSlow);
+				GameManager
+						.getGame()
+						.getPlayer()
+						.move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed, shouldMoveSlow);
 			}
 			catch (InterruptedException e) {
 				repaint();
@@ -131,7 +136,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		switch (gM.gameState)
+		switch (GameManager.getGame().gameState)
 		{
 		case Config.MAIN_MENU:
 			break;
@@ -169,13 +174,13 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// System.out.println(e.getKeyCode());
-		switch (gM.gameState)
+		switch (GameManager.getGame().gameState)
 		{
 		case Config.MAIN_MENU:
 			break;
 		case Config.PAUSED:
 			if (e.getKeyCode() == 27) {
-				gM.gameState = Config.PLAYING;
+				GameManager.getGame().gameState = Config.PLAYING;
 			}
 			break;
 		case Config.PLAYING:
@@ -186,20 +191,20 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				playerShoots = true;
 			}
 			if (e.getKeyCode() == moveSlow) {
-				gM.shouldMoveSlow(true);
-				shouldMoveSlow=true;
+				GameManager.getGame().shouldMoveSlow(true);
+				shouldMoveSlow = true;
 			}
 			if (e.getKeyCode() == moveUp) {
-				gM.moveUpDepressed(true);
+				GameManager.getGame().moveUpDepressed(true);
 			}
 			if (e.getKeyCode() == moveDown) {
-				gM.moveDownDepressed(true);
+				GameManager.getGame().moveDownDepressed(true);
 			}
 			if (e.getKeyCode() == moveLeft) {
-				gM.moveLeftDepressed(true);
+				GameManager.getGame().moveLeftDepressed(true);
 			}
 			if (e.getKeyCode() == moveRight) {
-				gM.moveRightDepressed(true);
+				GameManager.getGame().moveRightDepressed(true);
 			}
 			break;
 		case Config.DEAD:
@@ -220,7 +225,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
-		switch (GameManager.gameState)
+		switch (GameManager.getGame().gameState)
 		{
 		case Config.MAIN_MENU:
 			break;
@@ -231,20 +236,20 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				playerShoots = false;
 			}
 			if (e.getKeyCode() == moveSlow) {
-				gM.shouldMoveSlow(false);
+				GameManager.getGame().shouldMoveSlow(false);
 				shouldMoveSlow = false;
 			}
 			if (e.getKeyCode() == moveUp) {
-				gM.moveUpDepressed(false);
+				GameManager.getGame().moveUpDepressed(false);
 			}
 			if (e.getKeyCode() == moveDown) {
-				gM.moveDownDepressed(false);
+				GameManager.getGame().moveDownDepressed(false);
 			}
 			if (e.getKeyCode() == moveLeft) {
-				gM.moveLeftDepressed(false);
+				GameManager.getGame().moveLeftDepressed(false);
 			}
 			if (e.getKeyCode() == moveRight) {
-				gM.moveRightDepressed(false);
+				GameManager.getGame().moveRightDepressed(false);
 			}
 			break;
 		case Config.DEAD:
@@ -261,7 +266,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 * key again to set the value to false
 	 */
 	public void pauseGame() {
-		GameManager.gameState = Config.PAUSED;
+		GameManager.getGame().gameState = Config.PAUSED;
 		playerShoots = false;
 		moveUpDepressed = false;
 		moveDownDepressed = false;
@@ -290,10 +295,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	public void addNotify() {
 		super.addNotify();
 		requestFocus();
-	}
-
-	public GameManager getGM() {
-		return gM;
 	}
 
 }

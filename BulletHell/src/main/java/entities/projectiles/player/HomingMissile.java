@@ -23,18 +23,18 @@ public class HomingMissile extends ProjectileBase {
 		this.vy = vy0;
 		this.ax = ax0;
 		this.ay = ay0;
-		target = GameManager.findNearestEnemy(this);
+		target = GameManager.getGame().findNearestEnemy(this);
 	}
 
 	public boolean update() {
-		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 50) == 0) {
+		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 50) == 0) {
 			if (!isInBounds(x, y) || hasHitTarget) {
 				return false;
 			}
 			vx = vx + ax / 5;
 			vy = vy + ay / 5;
 			if (target == null) {
-				target = GameManager.findNearestEnemy(this);
+				target = GameManager.getGame().findNearestEnemy(this);
 				x = x + vx;
 				y = y + vy;
 			}
