@@ -68,11 +68,11 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		for (int i = 0; i < gM.getEnemies().size(); i++) {
 			bg.drawImage(gM.getEnemies().get(i).getImage(), gM.getEnemies().get(i).drawX(), gM.getEnemies().get(i)
 					.drawY(), null);
-			
+			if(Config.DEBUG_MODE){
 			bg.setColor(Color.GREEN);
 			Rectangle r = (Rectangle) gM.getEnemies().get(i).getHitBox();
 			bg.fillRect((int)r.getX(),(int)r.getY(),(int)r.getWidth(),(int)r.getHeight());
-			
+			}
 		}
 		for (int i = 0; i < gM.getProjectiles().size(); i++) {
 			bg.drawImage(gM.getProjectiles().get(i).getImage(), gM.getProjectiles().get(i).drawX(), gM.getProjectiles()

@@ -44,7 +44,7 @@ public class BasicShot extends ProjectileBase {
 		hitBox = new Rectangle((int) x - (this.getImage().getWidth() / 4), (int) y - (this.getImage().getHeight() / 4),
 				this.getImage().getWidth()/2, this.getImage().getHeight()/2);
 		if(hitBox.intersects((Rectangle)Main.f.getPanel().getGM().getPlayer().getHitBox()))
-			Log.info("ded");
+			Log.debug("ded");
 
 
 		return true;

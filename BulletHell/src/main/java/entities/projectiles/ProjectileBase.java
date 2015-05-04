@@ -71,7 +71,7 @@ public class ProjectileBase extends EntityBase {
 		}
 		if(x+(this.getImage().getWidth()/2)>Main.f.getPanel().getGM().getPlayer().getX()-4&&x-(this.getImage().getWidth()/2)<Main.f.getPanel().getGM().getPlayer().getX()+4
 				&&y+(this.getImage().getWidth()/2)>Main.f.getPanel().getGM().getPlayer().getY()-4&&y-(this.getImage().getWidth()/2)<Main.f.getPanel().getGM().getPlayer().getY()+4){
-			Log.info("ded");
+			Log.debug("ded");
 		}
 		if (GameManager.count % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			x = x + vx;
