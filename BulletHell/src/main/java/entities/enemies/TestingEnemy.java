@@ -1,15 +1,13 @@
 package entities.enemies;
 
-import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.util.Random;
 
 import reference.Config;
 import main.GameManager;
-import main.Main;
 import entities.EntityBase;
-import entities.PolygonHitBox;
 
-public class TestingEnemy extends EntityBase  implements PolygonHitBox{
+public class TestingEnemy extends EntityBase{
 
 	//TODO this class is possible depracated
 	
@@ -27,7 +25,7 @@ public class TestingEnemy extends EntityBase  implements PolygonHitBox{
 		xPoints = new int[16];
 		yPoints = new int[16];
 
-		hitBox = new Polygon();
+		hitBox = new Rectangle();
 	}
 
 	public boolean update() {

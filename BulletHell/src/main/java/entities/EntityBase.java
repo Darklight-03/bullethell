@@ -1,7 +1,7 @@
 package entities;
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import reference.Config;
 import util.Log;
 
-public class EntityBase implements PolygonHitBox{
+public class EntityBase {
 
 	/*
 	 * This is going to be the base for all of the game's entities
@@ -19,7 +19,7 @@ public class EntityBase implements PolygonHitBox{
 	public double x, y, ay, ax, vx, vy, health;
 	private BufferedImage image;
 	protected final String NAME = "EntityBase";
-	public Shape hitBox;
+	public Rectangle hitBox;
 
 	public EntityBase(String imageName) {
 		try {
@@ -30,6 +30,7 @@ public class EntityBase implements PolygonHitBox{
 		}
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 	}
+
 	public EntityBase(BufferedImage imageName) {
 		setImage(imageName);
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
@@ -96,33 +97,37 @@ public class EntityBase implements PolygonHitBox{
 		return image;
 	}
 
+	public void drawThis(Graphics bg) {
+		bg.drawImage(image, drawX(), drawY(), null);
+	}
+
+	public void drawHitBox(Graphics bg) {
+		bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
+	}
+
 	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
 
-	public Shape getHitBox() {
+	public Rectangle getHitBox() {
 		return hitBox;
 	}
 
-	@Override
 	public void updateHitBox() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	@Override
 	public void updateXPoints() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	@Override
 	public void updateYPoints() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	@Override
 	public int[][] getArrays() {
 		// TODO Auto-generated method stub
 		return null;

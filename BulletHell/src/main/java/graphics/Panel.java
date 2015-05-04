@@ -59,35 +59,27 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		bg.setColor(Color.WHITE);
 		bg.fillRect(0, 0, getWidth(), getHeight());
 		for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
-			bg.drawImage(GameManager.getGame().getBackGroundObjects().get(i).getImage(), GameManager.getGame()
-					.getBackGroundObjects().get(i).drawX(),
-					GameManager.getGame().getBackGroundObjects().get(i).drawY(), null);
+			GameManager.getGame().getBackGroundObjects().get(i).drawThis(bg);
 		}
 		for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
-			bg.drawImage(GameManager.getGame().getEnemies().get(i).getImage(), GameManager.getGame().getEnemies()
-					.get(i).drawX(), GameManager.getGame().getEnemies().get(i).drawY(), null);
-
+			GameManager.getGame().getEnemies().get(i).drawThis(bg);
 			bg.setColor(Color.GREEN);
-			Rectangle r = (Rectangle) GameManager.getGame().getEnemies().get(i).getHitBox();
+//			Rectangle r = (Rectangle) GameManager.getGame().getEnemies().get(i).getHitBox();
 			// bg.fillRect((int)r.getX(),(int)r.getY(),(int)r.getWidth(),(int)r.getHeight());
 
 		}
 		for (int i = 0; i < GameManager.getGame().getProjectiles().size(); i++) {
-			bg.drawImage(GameManager.getGame().getProjectiles().get(i).getImage(), GameManager.getGame()
-					.getProjectiles().get(i).drawX(), GameManager.getGame().getProjectiles().get(i).drawY(), null);
+			
+			GameManager.getGame().getProjectiles().get(i).drawThis(bg);
 
 			if (Config.DEBUG_MODE) {
 				bg.setColor(Color.RED);
-				bg.fillRect((int) GameManager.getGame().getProjectiles().get(i).getHitBox().getX(), (int) GameManager
-						.getGame().getProjectiles().get(i).getHitBox().getY(), (int) GameManager.getGame()
-						.getProjectiles().get(i).getHitBox().getWidth(), (int) GameManager.getGame().getProjectiles()
-						.get(i).getHitBox().getHeight());
+				GameManager.getGame().getProjectiles().get(i).drawHitBox(bg);
 			}
 
 		}
 
-		bg.drawImage(GameManager.getGame().getPlayer().getImage(), GameManager.getGame().getPlayer().drawX(),
-				GameManager.getGame().getPlayer().drawY(), null);
+		GameManager.getGame().getPlayer().drawThis(bg);
 		if (shouldMoveSlow) {
 			bg.setColor(Config.hitBoxColor);
 			bg.fillRect((int) GameManager.getGame().getPlayer().getHitBox().getX(), (int) GameManager.getGame()

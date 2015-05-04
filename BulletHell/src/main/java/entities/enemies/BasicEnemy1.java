@@ -1,23 +1,16 @@
 package entities.enemies;
 
-import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.GameManager;
-import main.Main;
 import reference.Config;
-import util.Log;
 import entities.EntityBase;
-import entities.PolygonHitBox;
 import entities.projectiles.BasicShot;
-import entities.projectiles.player.PlayerShot;
 
-public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
+public class BasicEnemy1 extends EntityBase{
 	boolean left;
-	int RoF, bulletSpeed, Spread, bps, ct = 0;
-	int[] xPoints, yPoints;
-	int yMax = 0;
+	int RoF, bulletSpeed, Spread, bps, ct = 0,yMax = 0;
 
 	public BasicEnemy1(String img, int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
 		super(img);
@@ -43,9 +36,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			ay = -.02;
 			ax = 0;
 		}
-		xPoints = new int[16];
-		yPoints = new int[16];
-		hitBox = new Polygon();
+		hitBox = new Rectangle();
 
 	}
 
@@ -72,9 +63,7 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 			ay = -.02;
 			ax = 0;
 		}
-		xPoints = new int[16];
-		yPoints = new int[16];
-		hitBox = new Polygon();
+		hitBox = new Rectangle();
 		health = 100;
 
 	}
@@ -127,52 +116,8 @@ public class BasicEnemy1 extends EntityBase implements PolygonHitBox {
 
 	@Override
 	public void updateHitBox() {
-		updateXPoints();
-		updateYPoints();
-
 		hitBox = new Rectangle((int)x-18, (int)y-18, 36,36);
 
 
-	}
-
-	@Override
-	public void updateXPoints() {
-		/*
-		 * int radius = this.getImage().getWidth() / 2;
-		 * for (int i = 1; i < 16; i++) {
-		 * xPoints[i - 1] = (int) (x + radius * Math.cos((i * 24) / (Math.PI *
-		 * 2)));
-		 * }
-		 */
-		int radius = this.getImage().getWidth() / 2;
-
-		for (int i = 1; i < 16; i++) {
-			xPoints[i - 1] = (int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180));
-//			System.out.print((int) (x + radius * Math.cos(((i - 1) * 24 * Math.PI) / 180))+", ");
-
-		}
-
-//		System.out.println();
-
-	}
-
-	@Override
-	public void updateYPoints() {
-
-		int radius = this.getImage().getWidth() / 2;
-		for (int i = 1; i < 16; i++) {
-			xPoints[i - 1] = (int) (x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180));
-//			System.out.print((int)(x + radius * Math.sin(((i - 1) * 24 * Math.PI) / 180))+", ");
-
-		}
-//		System.out.println();
-	}
-
-	@Override
-	public int[][] getArrays() {
-		int[][] a = new int[15][2];
-		a[0] = xPoints;
-		a[1] = yPoints;
-		return a;
 	}
 }

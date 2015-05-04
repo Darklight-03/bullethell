@@ -57,6 +57,7 @@ public class Game implements Runnable {
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		enemies.add(new BasicEnemy1(scale(e1, 2, 2), 2, 50, 10, 3));
 
+		
 		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
 		// .005));
 	}
