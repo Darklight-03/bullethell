@@ -4,6 +4,8 @@ import graphics.Frame;
 
 import reference.Config;
 
+//http://cooltext.com/Logo-Design-Legal
+
 public class Main {
 	/*
 	 * Bullet Hell

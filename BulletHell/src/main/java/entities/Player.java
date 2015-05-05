@@ -1,5 +1,6 @@
 package entities;
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import main.GameManager;
@@ -7,7 +8,6 @@ import entities.projectiles.player.HomingMissile;
 import entities.projectiles.player.PlayerShot;
 import graphics.Panel;
 import reference.Config;
-import util.Log;
 
 public class Player extends EntityBase implements Runnable {
 
@@ -45,47 +45,49 @@ public class Player extends EntityBase implements Runnable {
 			{
 			case 0:
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y, 0, 0, 0, -.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y,
+							0, 0, 0, -.1));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y, 0, 0, 0, -.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y,
+							0, 0, 0, -.1));
 				}
 				break;
 			case 1:
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 8) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x - 10, y, 0, -1, 0,
-							-.1));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x + 10, y, 0, -1, 0,
-							-.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+							x - 10, y, 0, -1, 0, -.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+							x + 10, y, 0, -1, 0, -.1));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 50) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y, -.5, 3, -.005,
-							-.1));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y, .5, 3, .005,
-							-.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y,
+							-.5, 3, -.005, -.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y,
+							.5, 3, .005, -.1));
 				}
 				break;
 			case 2:
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 12) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x - 10, y, 0, -4, 0,
-							-.1));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x + 10, y, 0, -4, 0,
-							-.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+							x - 10, y, 0, -4, 0, -.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+							x + 10, y, 0, -4, 0, -.1));
 				}
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.getGame().playerProjectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x - 7, y, -.4, -1, 0,
-							-.05));
-					GameManager.getGame().playerProjectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x + 7, y, .4, -1, 0,
-							-.05));
+					GameManager.getGame().playerProjectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x - 7,
+							y, -.4, -1, 0, -.05));
+					GameManager.getGame().playerProjectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x + 7,
+							y, .4, -1, 0, -.05));
 				}
 				if (count % ((int) ((Config.PLAYER_UPS * Config.GAME_SPEED) / 12)) == 0) {
 
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x - 10, y, -1, -4,
-							0, -.1));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE, x + 10, y, 1, -4, 0,
-							-.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+							x - 10, y, -1, -4, 0, -.1));
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+							x + 10, y, 1, -4, 0, -.1));
 				}
 				break;
 			case 3:
@@ -116,7 +118,8 @@ public class Player extends EntityBase implements Runnable {
 	// Moves the player in the direction specified --
 	public void move(boolean up, boolean down, boolean left, boolean right, boolean shouldMoveSlow) {
 		double x = 0, y = 0, speed;
-		hitBox = new Rectangle((int)this.x-Config.PLAYER_HITBOX_RADIUS, (int)this.y-Config.PLAYER_HITBOX_RADIUS,Config.PLAYER_HITBOX_RADIUS*2,Config.PLAYER_HITBOX_RADIUS*2);
+		hitBox = new Rectangle((int) this.x - Config.PLAYER_HITBOX_RADIUS, (int) this.y - Config.PLAYER_HITBOX_RADIUS,
+				Config.PLAYER_HITBOX_RADIUS * 2, Config.PLAYER_HITBOX_RADIUS * 2);
 		if (shouldMoveSlow) speed = Config.slowMoveSpeed;
 		else speed = Config.moveSpeed;
 
@@ -142,6 +145,11 @@ public class Player extends EntityBase implements Runnable {
 			this.x += x;
 			this.y += y;
 		}
+	}
+
+	public void drawHitBox(Graphics bg) {
+		bg.setColor(Config.hitBoxColor);
+		bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
 	}
 
 	public void increasePower() {
@@ -173,7 +181,8 @@ public class Player extends EntityBase implements Runnable {
 			}
 		}
 	}
-	public Rectangle getHitBox(){
+
+	public Rectangle getHitBox() {
 		return hitBox;
 	}
 }

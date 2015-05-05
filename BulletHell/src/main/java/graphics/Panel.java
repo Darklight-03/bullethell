@@ -65,7 +65,6 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			GameManager.getGame().getEnemies().get(i).drawThis(bg);
 			if (Config.DEBUG_MODE) GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
 
-
 		}
 		for (int i = 0; i < GameManager.getGame().getEnemyProjectiles().size(); i++) {
 
@@ -74,7 +73,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			if (Config.DEBUG_MODE) GameManager.getGame().getEnemyProjectiles().get(i).drawHitBox(bg);
 
 		}
-		
+
 		for (int i = 0; i < GameManager.getGame().getPlayerProjectiles().size(); i++) {
 
 			GameManager.getGame().getPlayerProjectiles().get(i).drawThis(bg);
@@ -84,12 +83,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		}
 
 		GameManager.getGame().getPlayer().drawThis(bg);
-		if (shouldMoveSlow) {
-			bg.setColor(Config.hitBoxColor);
-			bg.fillRect((int) GameManager.getGame().getPlayer().getHitBox().getX(), (int) GameManager.getGame()
-					.getPlayer().getHitBox().getY(), (int) GameManager.getGame().getPlayer().getHitBox().getWidth(),
-					(int) GameManager.getGame().getPlayer().getHitBox().getWidth());
-		}
+		if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
 		g.drawImage(buffer, 0, 0, null);
 	}
 
@@ -261,13 +255,14 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 * key again to set the value to false
 	 */
 	public void pauseGame() {
-		GameManager.getGame().gameState = Config.PAUSED;
 		playerShoots = false;
 		moveUpDepressed = false;
 		moveDownDepressed = false;
 		moveLeftDepressed = false;
 		moveRightDepressed = false;
 		shouldMoveSlow = false;
+		GameManager.getGame().gameState = Config.PAUSED;
+
 	}
 
 	/*

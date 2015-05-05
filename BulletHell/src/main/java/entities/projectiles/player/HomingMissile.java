@@ -24,6 +24,7 @@ public class HomingMissile extends ProjectileBase {
 		this.ax = ax0;
 		this.ay = ay0;
 		target = GameManager.getGame().findNearestEnemy(this);
+		damage = 1;
 	}
 
 	public boolean update() {
@@ -40,8 +41,6 @@ public class HomingMissile extends ProjectileBase {
 			}
 			else if (target.getY() > y + 15) {
 				target = null;
-				// TODO remove when hitboxes are working
-				hasHitTarget = true;
 			}
 			else {
 				double changeInX = target.getX() - x, changeInY = target.getY() - y;

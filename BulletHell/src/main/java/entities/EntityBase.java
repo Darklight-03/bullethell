@@ -130,19 +130,5 @@ public class EntityBase {
 
 	}
 
-	public void updateXPoints() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void updateYPoints() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public int[][] getArrays() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

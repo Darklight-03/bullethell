@@ -100,5 +100,9 @@ public class ProjectileBase extends EntityBase {
 		bg.setColor(Color.RED);
 		bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
 	}
+	
+	public double getDamage(){
+		return damage;
+	}
 
 }

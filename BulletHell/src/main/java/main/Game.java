@@ -106,16 +106,18 @@ public class Game implements Runnable {
 
 	public void checkEnemyCollisions() {
 		for (int i = 0; i < enemies.size(); i++) {
-			EntityBase e = enemies.get(i);
+			EnemyBase e = enemies.get(i);
 			if (e.isInBounds()) {
 				for (int ii = 0; ii < playerProjectiles.size(); ii++) {
 					if (e.getHitBox().intersects(playerProjectiles.get(ii).getHitBox())) {
-						playerProjectiles.remove(ii);
 						// TODO maybe add a little explosion here when the
 						// projectiles hit the enemy?
 						if (e != null) {
-							
+							if(!e.damage(playerProjectiles.get(ii).getDamage())){
+								enemies.remove(i);
+							}
 						}
+						playerProjectiles.remove(ii);
 					}
 				}
 			}
