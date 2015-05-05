@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 
 import reference.Config;
 import main.GameManager;
-import main.Main;
 import util.Log;
 import entities.EntityBase;
 

@@ -65,6 +65,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			GameManager.getGame().getEnemies().get(i).drawThis(bg);
 			if (Config.DEBUG_MODE) GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
 
+
 		}
 		for (int i = 0; i < GameManager.getGame().getEnemyProjectiles().size(); i++) {
 

@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import reference.Config;
 import util.Log;
 import entities.BackgroundObject;
+import entities.EnemyBase;
 import entities.EntityBase;
 import entities.Player;
 import entities.enemies.BasicEnemy1;
@@ -29,7 +30,7 @@ public class Game implements Runnable {
 			moveRightDepressed = false, shouldMoveSlow = false;
 	public ArrayList<ProjectileBase> enemyProjectiles = new ArrayList<ProjectileBase>();
 	public ArrayList<ProjectileBase> playerProjectiles = new ArrayList<ProjectileBase>();
-	public ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
+	public ArrayList<EnemyBase> enemies = new ArrayList<EnemyBase>();
 	public ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
 	BufferedImage e1;
@@ -57,7 +58,7 @@ public class Game implements Runnable {
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
-		enemies.add(new BasicEnemy1(scale(e1, 2, 2), 2, 50, 10, 3));
+		enemies.add(new BasicEnemy1(2, 50, 10, 3));
 
 		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
 		// .005));
@@ -105,11 +106,16 @@ public class Game implements Runnable {
 
 	public void checkEnemyCollisions() {
 		for (int i = 0; i < enemies.size(); i++) {
-			if (enemies.get(i).isInBounds()) {
-				Rectangle r = enemies.get(i).getHitBox();
+			EntityBase e = enemies.get(i);
+			if (e.isInBounds()) {
 				for (int ii = 0; ii < playerProjectiles.size(); ii++) {
-					if(r.intersects(playerProjectiles.get(ii).getHitBox())){
+					if (e.getHitBox().intersects(playerProjectiles.get(ii).getHitBox())) {
 						playerProjectiles.remove(ii);
+						// TODO maybe add a little explosion here when the
+						// projectiles hit the enemy?
+						if (e != null) {
+							
+						}
 					}
 				}
 			}
@@ -200,7 +206,7 @@ public class Game implements Runnable {
 		return playerProjectiles;
 	}
 
-	public ArrayList<EntityBase> getEnemies() {
+	public ArrayList<EnemyBase> getEnemies() {
 		return enemies;
 	}
 
