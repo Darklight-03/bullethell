@@ -1,5 +1,6 @@
 package entities;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -72,6 +73,11 @@ public class EntityBase {
 		this.y = y;
 	}
 
+	public boolean isInBounds() {
+		if (x < -100 || x > Config.width + 100 || y < -100 || y > Config.height + 100) return false;
+		else return true;
+	}
+
 	public boolean isInBounds(double x, double y) {
 		if (x < -100 || x > Config.width + 100 || y < -100 || y > Config.height + 100) return false;
 		else return true;
@@ -102,6 +108,7 @@ public class EntityBase {
 	}
 
 	public void drawHitBox(Graphics bg) {
+		bg.setColor(Color.GREEN);
 		bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
 	}
 

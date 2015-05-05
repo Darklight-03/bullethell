@@ -63,19 +63,22 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		}
 		for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
 			GameManager.getGame().getEnemies().get(i).drawThis(bg);
-			bg.setColor(Color.GREEN);
-//			Rectangle r = (Rectangle) GameManager.getGame().getEnemies().get(i).getHitBox();
-			// bg.fillRect((int)r.getX(),(int)r.getY(),(int)r.getWidth(),(int)r.getHeight());
+			if (Config.DEBUG_MODE) GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
 
 		}
-		for (int i = 0; i < GameManager.getGame().getProjectiles().size(); i++) {
-			
-			GameManager.getGame().getProjectiles().get(i).drawThis(bg);
+		for (int i = 0; i < GameManager.getGame().getEnemyProjectiles().size(); i++) {
 
-			if (Config.DEBUG_MODE) {
-				bg.setColor(Color.RED);
-				GameManager.getGame().getProjectiles().get(i).drawHitBox(bg);
-			}
+			GameManager.getGame().getEnemyProjectiles().get(i).drawThis(bg);
+
+			if (Config.DEBUG_MODE) GameManager.getGame().getEnemyProjectiles().get(i).drawHitBox(bg);
+
+		}
+		
+		for (int i = 0; i < GameManager.getGame().getPlayerProjectiles().size(); i++) {
+
+			GameManager.getGame().getPlayerProjectiles().get(i).drawThis(bg);
+
+			if (Config.DEBUG_MODE) GameManager.getGame().getPlayerProjectiles().get(i).drawHitBox(bg);
 
 		}
 

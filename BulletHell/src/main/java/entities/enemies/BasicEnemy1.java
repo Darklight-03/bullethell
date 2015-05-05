@@ -105,7 +105,7 @@ public class BasicEnemy1 extends EntityBase{
 			// 0));
 			while (bps > ct) {
 
-				GameManager.getGame().projectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
+				GameManager.getGame().enemyProjectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math.toDegrees(Math
 						.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0, 0, true));
 				ct++;
 			}

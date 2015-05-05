@@ -1,5 +1,7 @@
 package entities.projectiles;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import reference.Config;
@@ -93,6 +95,11 @@ public class ProjectileBase extends EntityBase {
 
 	public Rectangle getHitBox() {
 		return hitBox;
+	}
+	
+	public void drawHitBox(Graphics bg) {
+		bg.setColor(Color.RED);
+		bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
 	}
 
 }

@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +27,8 @@ public class Game implements Runnable {
 	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
-	public ArrayList<ProjectileBase> projectiles = new ArrayList<ProjectileBase>();
+	public ArrayList<ProjectileBase> enemyProjectiles = new ArrayList<ProjectileBase>();
+	public ArrayList<ProjectileBase> playerProjectiles = new ArrayList<ProjectileBase>();
 	public ArrayList<EntityBase> enemies = new ArrayList<EntityBase>();
 	public ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
@@ -57,7 +59,6 @@ public class Game implements Runnable {
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		enemies.add(new BasicEnemy1(scale(e1, 2, 2), 2, 50, 10, 3));
 
-		
 		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
 		// .005));
 	}
@@ -87,6 +88,9 @@ public class Game implements Runnable {
 						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
 								shouldMoveSlow);
 					}
+					if (count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+						checkEnemyCollisions();
+					}
 					updatePlayer();
 					updateE();
 					updateP();
@@ -95,6 +99,19 @@ public class Game implements Runnable {
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
+			}
+		}
+	}
+
+	public void checkEnemyCollisions() {
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies.get(i).isInBounds()) {
+				Rectangle r = enemies.get(i).getHitBox();
+				for (int ii = 0; ii < playerProjectiles.size(); ii++) {
+					if(r.intersects(playerProjectiles.get(ii).getHitBox())){
+						playerProjectiles.remove(ii);
+					}
+				}
 			}
 		}
 	}
@@ -122,9 +139,17 @@ public class Game implements Runnable {
 	 * and remove any that have traversed off the edge
 	 */
 	private void updateP() {
-		for (int i = 0; i < projectiles.size(); i++) {
+		for (int i = 0; i < enemyProjectiles.size(); i++) {
 			try {
-				if (!projectiles.get(i).update()) projectiles.remove(i);
+				if (!enemyProjectiles.get(i).update()) enemyProjectiles.remove(i);
+			}
+			catch (Exception e) {
+				Log.error("failed to update a projectile");
+			}
+		}
+		for (int i = 0; i < playerProjectiles.size(); i++) {
+			try {
+				if (!playerProjectiles.get(i).update()) playerProjectiles.remove(i);
 			}
 			catch (Exception e) {
 				Log.error("failed to update a projectile");
@@ -167,8 +192,12 @@ public class Game implements Runnable {
 
 	}
 
-	public ArrayList<ProjectileBase> getProjectiles() {
-		return projectiles;
+	public ArrayList<ProjectileBase> getEnemyProjectiles() {
+		return enemyProjectiles;
+	}
+
+	public ArrayList<ProjectileBase> getPlayerProjectiles() {
+		return playerProjectiles;
 	}
 
 	public ArrayList<EntityBase> getEnemies() {
@@ -202,8 +231,8 @@ public class Game implements Runnable {
 	public void moveRightDepressed(boolean b) {
 		moveRightDepressed = b;
 	}
-	
-	public int getCount(){
+
+	public int getCount() {
 		return count;
 	}
 
