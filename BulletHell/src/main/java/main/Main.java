@@ -1,7 +1,7 @@
 package main;
 
 import graphics.Frame;
-
+import graphics.TextLoader;
 import reference.Config;
 
 //http://design.tutsplus.com/tutorials/how-to-create-a-gorgeous-glassy-text-effect--psd-3013
@@ -16,7 +16,7 @@ public class Main {
 	public static Frame f;
 	
 	public static void main(String[] args) {
-		
+		new TextLoader();
 		new Config();
 		f = new Frame();
 	}

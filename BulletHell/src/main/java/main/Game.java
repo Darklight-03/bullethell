@@ -114,7 +114,12 @@ public class Game implements Runnable {
 						// projectiles hit the enemy?
 						if (e != null) {
 							if(!e.damage(playerProjectiles.get(ii).getDamage())){
-								enemies.remove(i);
+								try {
+									enemies.remove(i);
+								}
+								catch (Exception e1) {
+									e1.printStackTrace();
+								}
 							}
 						}
 						playerProjectiles.remove(ii);
@@ -243,6 +248,10 @@ public class Game implements Runnable {
 	public int getCount() {
 		return count;
 	}
+	
+	public int getGameState(){
+		return gameState;
+	}
 
 	public static BufferedImage scale(BufferedImage img, double horizontalScale, double verticalScale) {
 		if (img != null) {
@@ -256,6 +265,5 @@ public class Game implements Runnable {
 
 		}
 		else return null;
-
 	}
 }

@@ -56,34 +56,46 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	public void paint(Graphics g) {
 		Graphics bg = buffer.getGraphics();
-		bg.setColor(Color.WHITE);
-		bg.fillRect(0, 0, getWidth(), getHeight());
-		for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
-			GameManager.getGame().getBackGroundObjects().get(i).drawThis(bg);
+		switch (GameManager.getGame().getGameState())
+		{
+		case Config.PLAYING:
+			bg.setColor(Color.WHITE);
+			bg.fillRect(0, 0, getWidth(), getHeight());
+			for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
+				GameManager.getGame().getBackGroundObjects().get(i).drawThis(bg);
+			}
+			for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
+				GameManager.getGame().getEnemies().get(i).drawThis(bg);
+				if (Config.DEBUG_MODE) GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
+
+			}
+			for (int i = 0; i < GameManager.getGame().getEnemyProjectiles().size(); i++) {
+
+				GameManager.getGame().getEnemyProjectiles().get(i).drawThis(bg);
+
+				if (Config.DEBUG_MODE) GameManager.getGame().getEnemyProjectiles().get(i).drawHitBox(bg);
+
+			}
+
+			for (int i = 0; i < GameManager.getGame().getPlayerProjectiles().size(); i++) {
+
+				GameManager.getGame().getPlayerProjectiles().get(i).drawThis(bg);
+
+				if (Config.DEBUG_MODE) GameManager.getGame().getPlayerProjectiles().get(i).drawHitBox(bg);
+
+			}
+
+			GameManager.getGame().getPlayer().drawThis(bg);
+			if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
+			break;
+		case Config.MAIN_MENU:
+			bg.drawImage(TextLoader.titleScreen,0,0,null);
+			break;
+		case Config.PAUSED:
+			break;
+		case Config.DEAD:
 		}
-		for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
-			GameManager.getGame().getEnemies().get(i).drawThis(bg);
-			if (Config.DEBUG_MODE) GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
-
-		}
-		for (int i = 0; i < GameManager.getGame().getEnemyProjectiles().size(); i++) {
-
-			GameManager.getGame().getEnemyProjectiles().get(i).drawThis(bg);
-
-			if (Config.DEBUG_MODE) GameManager.getGame().getEnemyProjectiles().get(i).drawHitBox(bg);
-
-		}
-
-		for (int i = 0; i < GameManager.getGame().getPlayerProjectiles().size(); i++) {
-
-			GameManager.getGame().getPlayerProjectiles().get(i).drawThis(bg);
-
-			if (Config.DEBUG_MODE) GameManager.getGame().getPlayerProjectiles().get(i).drawHitBox(bg);
-
-		}
-
-		GameManager.getGame().getPlayer().drawThis(bg);
-		if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
+		
 		g.drawImage(buffer, 0, 0, null);
 	}
 
@@ -125,7 +137,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		switch (GameManager.getGame().gameState)
+		switch (GameManager.getGame().getGameState())
 		{
 		case Config.MAIN_MENU:
 			break;
@@ -163,7 +175,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// System.out.println(e.getKeyCode());
-		switch (GameManager.getGame().gameState)
+		switch (GameManager.getGame().getGameState())
 		{
 		case Config.MAIN_MENU:
 			break;
@@ -214,7 +226,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
-		switch (GameManager.getGame().gameState)
+		switch (GameManager.getGame().getGameState())
 		{
 		case Config.MAIN_MENU:
 			break;
