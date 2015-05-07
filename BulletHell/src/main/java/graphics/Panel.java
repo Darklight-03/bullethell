@@ -1,5 +1,7 @@
 package graphics;
 
+import game.GameManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,7 +12,6 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import main.GameManager;
 import reference.Config;
 import util.Log;
 

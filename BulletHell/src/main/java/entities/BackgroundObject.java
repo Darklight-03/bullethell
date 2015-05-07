@@ -1,6 +1,6 @@
 package entities;
 
-import main.GameManager;
+import game.GameManager;
 import reference.Config;
 
 public class BackgroundObject extends EntityBase {

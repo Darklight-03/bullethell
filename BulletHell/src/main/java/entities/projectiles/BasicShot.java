@@ -5,9 +5,9 @@ import java.awt.Shape;
 
 import reference.Config;
 import util.Log;
-import main.GameManager;
 import main.Main;
 import entities.projectiles.ProjectileBase;
+import game.GameManager;
 
 public class BasicShot extends ProjectileBase {
 

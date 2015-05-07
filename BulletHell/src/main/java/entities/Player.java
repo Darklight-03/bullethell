@@ -3,9 +3,9 @@ package entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import main.GameManager;
 import entities.projectiles.player.HomingMissile;
 import entities.projectiles.player.PlayerShot;
+import game.GameManager;
 import graphics.Panel;
 import reference.Config;
 

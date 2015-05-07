@@ -1,4 +1,4 @@
-package main;
+package game;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -17,6 +17,7 @@ import entities.EntityBase;
 import entities.Player;
 import entities.enemies.BasicEnemy1;
 import entities.projectiles.ProjectileBase;
+import game.stages.Stage1;
 
 public class Game implements Runnable {
 
@@ -53,12 +54,11 @@ public class Game implements Runnable {
 
 		t = new Thread(this);
 		t.start();
-
 		player = new Player(Config.PLAYER_IMAGE);
-		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
-		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
-		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
-		enemies.add(new BasicEnemy1(2, 50, 10, 3));
+		
+		Stage1 stage = new Stage1();
+		
+		
 
 		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
 		// .005));

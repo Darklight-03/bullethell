@@ -8,10 +8,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import main.GameManager;
 import reference.Config;
 import entities.EnemyBase;
 import entities.projectiles.BasicShot;
+import game.GameManager;
 
 public class BasicEnemy1 extends EnemyBase {
 	boolean left;

@@ -3,9 +3,9 @@ package entities.projectiles.player;
 import java.awt.Rectangle;
 
 import reference.Config;
-import main.GameManager;
 import entities.EntityBase;
 import entities.projectiles.ProjectileBase;
+import game.GameManager;
 
 public class HomingMissile extends ProjectileBase {
 
