@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import reference.Config;
-import main.GameManager;
 import util.Log;
 import entities.EntityBase;
+import game.GameManager;
 
 public class ProjectileBase extends EntityBase {
 

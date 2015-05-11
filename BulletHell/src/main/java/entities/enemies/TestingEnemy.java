@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 import reference.Config;
-import main.GameManager;
 import entities.EntityBase;
+import game.GameManager;
 
 public class TestingEnemy extends EntityBase{
 
