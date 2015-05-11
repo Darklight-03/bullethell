@@ -19,18 +19,15 @@ public class Stage1 implements Runnable{
 	
 	public void spawning(){
 		if(count==1){
-			try {
-				wait();
-			}
-			catch (InterruptedException e) {
 				GameManager.getGame().enemies.add(new BasicEnemy1(2, 50, 10, 3));
-			}
 		}
-		GameManager.getGame().enemies.add(new BasicEnemy1(2, 50, 10, 3));
+		if(count==10){
+		GameManager.getGame().enemies.add(new BasicEnemy1(10, 50, 1, 5));
+		}
 	}
 
 	@Override
-	public void run() {
+	synchronized public void run() {
 		// TODO Auto-generated method stub
 		while(true){
 			try{
@@ -39,7 +36,7 @@ public class Stage1 implements Runnable{
 				Log.error("error in Thread: game.stages.Stage1.java:run()");
 			}
 			if(!stop) count++;
-			notifyAll();
+			spawning();
 		}
 	}
 	

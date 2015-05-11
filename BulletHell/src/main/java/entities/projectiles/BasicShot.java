@@ -45,8 +45,8 @@ public class BasicShot extends ProjectileBase {
 		// System.out.println("X: "+x+" Y: "+y+" VX: "+vx+" VY:"+" AX: "+ax+" AY: "+ay);
 		hitBox = new Rectangle((int) x - (this.getImage().getWidth() / 4), (int) y - (this.getImage().getHeight() / 4),
 				this.getImage().getWidth()/2, this.getImage().getHeight()/2);
-		if(hitBox.intersects((Rectangle)GameManager.getGame().getPlayer().getHitBox()))
-			Log.info("ded");
+//		if(hitBox.intersects((Rectangle)GameManager.getGame().getPlayer().getHitBox()))
+//			Log.info("ded");
 
 
 		return true;
