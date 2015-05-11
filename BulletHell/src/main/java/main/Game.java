@@ -23,7 +23,12 @@ public class Game implements Runnable {
 	public int Gamestate;
 
 	public Player player;
-	public Thread t;
+	public Thread mainThread= new Thread(this),projectileCollisions = new Thread(new Runnable()
+	{
+		public void run()
+		{
+		}
+	});
 	public int gameState;
 	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
@@ -51,8 +56,6 @@ public class Game implements Runnable {
 		}
 		gameState = Config.PLAYING;
 
-		t = new Thread(this);
-		t.start();
 
 		player = new Player(Config.PLAYER_IMAGE);
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
@@ -60,8 +63,9 @@ public class Game implements Runnable {
 		backGroundObjects.add(new BackgroundObject(Config.PLACEHOLDER_BACKGROUND_OBJECT));
 		enemies.add(new BasicEnemy1(2, 50, 10, 3));
 
-		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
-		// .005));
+		
+		
+		mainThread.start();
 	}
 
 	/*
@@ -91,8 +95,8 @@ public class Game implements Runnable {
 					}
 					if (count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 						checkEnemyCollisions();
+						checkIfPlayerIsHit();
 					}
-					updatePlayer();
 					updateE();
 					updateP();
 
@@ -129,7 +133,7 @@ public class Game implements Runnable {
 		}
 	}
 
-	private void updatePlayer() {
+	private void checkIfPlayerIsHit() {
 
 	}
 
