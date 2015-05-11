@@ -24,7 +24,33 @@ public class Game implements Runnable {
 	public int Gamestate;
 
 	public Player player;
-	public Thread t;
+	public Thread mainThread = new Thread(this), projectileCollisions = new Thread(new Runnable() {
+		/*
+		 * This Thread is designed to check all of the projectiles arraylists
+		 * and determine whether or not they have hit a target
+		 */
+		public void run() {
+			while (true) {
+				try {
+					Thread.sleep(1000 / Config.UPS);
+
+					if (gameState == Config.PLAYING) {
+						count++;
+						if (count > 999999999) {
+							count = 0;
+						}
+						if (count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+							checkEnemyCollisions();
+							checkIfPlayerIsDamaged();
+						}
+					}
+				}
+				catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	});
 	public int gameState;
 	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
@@ -52,13 +78,11 @@ public class Game implements Runnable {
 		}
 		gameState = Config.PLAYING;
 
-		t = new Thread(this);
-		t.start();
+		mainThread = new Thread(this);
+		mainThread.start();
 		player = new Player(Config.PLAYER_IMAGE);
-		
+
 		Stage1 stage = new Stage1();
-		
-		
 
 		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
 		// .005));
@@ -76,6 +100,7 @@ public class Game implements Runnable {
 		catch (Exception e) {
 
 		}
+		projectileCollisions.start();
 		while (true) {
 			try {
 				Thread.sleep(1000 / Config.UPS);
@@ -104,6 +129,11 @@ public class Game implements Runnable {
 		}
 	}
 
+	/*
+	 * This method will go through every enemy on the screen, and the for every
+	 * enemy that is on the screen, it will go through the playerProjectiles
+	 * arraylist, and determine whether or not the player's bullets have hit it.
+	 */
 	public void checkEnemyCollisions() {
 		for (int i = 0; i < enemies.size(); i++) {
 			EnemyBase e = enemies.get(i);
@@ -113,7 +143,7 @@ public class Game implements Runnable {
 						// TODO maybe add a little explosion here when the
 						// projectiles hit the enemy?
 						if (e != null) {
-							if(!e.damage(playerProjectiles.get(ii).getDamage())){
+							if (!e.damage(playerProjectiles.get(ii).getDamage())) {
 								enemies.remove(i);
 							}
 						}
@@ -122,6 +152,24 @@ public class Game implements Runnable {
 				}
 			}
 		}
+	}
+
+	/*
+	 * This method will go through the arrayList of enemyProjectiles, and
+	 * determine whether or not any of them have hit the Player
+	 */
+	public void checkIfPlayerIsDamaged() {
+
+	}
+
+	/*
+	 * This Method is to be called when the player dies, this is the only method
+	 * that should change the gamestate to dead in order to avoid conflicts.
+	 * Generally, this method will be called by the Player Object
+	 */
+	public void theDeathMethod() {
+		// TODO do more dying stuff here
+		gameState = Config.DEAD;
 	}
 
 	private void updatePlayer() {
@@ -189,6 +237,10 @@ public class Game implements Runnable {
 		}
 		if (posToReturn != -1) return enemies.get(posToReturn);
 		else return null;
+	}
+
+	public int getGameState() {
+		return gameState;
 	}
 
 	public Player getPlayer() {
