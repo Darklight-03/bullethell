@@ -23,6 +23,14 @@ public class Stage1 implements Runnable{
 		}
 		if(count==10){
 		GameManager.getGame().enemies.add(new BasicEnemy1(10, 50, 1, 5));
+		stop = true;
+		}
+		
+	}
+	
+	public void stopCheck(){
+		if(GameManager.getGame().getEnemies().size()==0){
+			stop = false;
 		}
 	}
 
@@ -35,8 +43,12 @@ public class Stage1 implements Runnable{
 			}catch(Exception e){
 				Log.error("error in Thread: game.stages.Stage1.java:run()");
 			}
-			if(!stop) count++;
+			if(!stop){ count++;
 			spawning();
+			}
+			else{
+				stopCheck();
+			}
 		}
 	}
 	
