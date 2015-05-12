@@ -12,10 +12,10 @@ import reference.Config;
 public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
-	int width, height;
+	int width, height;int lives;
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
-	boolean now = true;
+	boolean now = true;boolean dead = false;
 	long count = 0;
 	Rectangle hitBox;
 
@@ -26,13 +26,25 @@ public class Player extends EntityBase implements Runnable {
 		super(imageName);
 		width = getImage().getWidth();
 		height = getImage().getHeight();
+		lives = 3;
 		x = Config.width / 2;
 		y = Config.height / 2;
 
 		t = new Thread(this);
 		t.start();
 	}
+	public void hit(){
+		GameManager.getGame().theDeathMethod();
+		dead = true;
+		lives--;
+		losePower();
+		try{
+		Thread.sleep(1000);
+		}catch(InterruptedException ie){}
+		x = Config.width / 2;
+		y = Config.height / 2;
 
+	}
 	public Thread getThread() {
 		return t;
 	}

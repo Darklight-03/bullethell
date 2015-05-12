@@ -14,7 +14,6 @@ public class Stage1 implements Runnable{
 		stop = false;
 		Thread t = new Thread(this);
 		t.start();	
-		
 	}
 	
 	public void spawning(){
@@ -35,7 +34,7 @@ public class Stage1 implements Runnable{
 	}
 
 	@Override
-	synchronized public void run() {
+	public void run() {
 		// TODO Auto-generated method stub
 		while(true){
 			try{
