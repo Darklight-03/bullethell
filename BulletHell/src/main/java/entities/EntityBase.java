@@ -18,7 +18,7 @@ public class EntityBase {
 	 * This is going to be the base for all of the game's entities
 	 */
 	public double x, y, ay, ax, vx, vy, health;
-	private BufferedImage image;
+	protected BufferedImage image;
 	protected final String NAME = "EntityBase";
 	public Rectangle hitBox;
 
