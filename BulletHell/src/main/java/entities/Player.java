@@ -14,6 +14,7 @@ public class Player extends EntityBase implements Runnable {
 	protected final String NAME = "Player";
 	int width, height;
 	int lives;
+	int invulnTime = 0;
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	private boolean dead = false;
@@ -39,11 +40,20 @@ public class Player extends EntityBase implements Runnable {
 		dead = true;
 		lives--;
 		losePower();
+		try {
+			Thread.sleep(500);
+		}
+		catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		GameManager.getGame().theDeathMethod();
 	}
 
 	public void respawn() {
 		dead = false;
+		//TODO Implement invulnerability.
+		invulnTime = 3;
 		x = Config.width / 2;
 		y = Config.height / 2;
 		GameManager.getGame().gameState = Config.PLAYING;

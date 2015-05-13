@@ -187,10 +187,9 @@ public class Game implements Runnable {
 		// TODO do more dying stuff here
 		gameState = Config.DEAD;
 		try {
-			Thread.sleep(500);
 			player.respawn();
 		}
-		catch (InterruptedException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
