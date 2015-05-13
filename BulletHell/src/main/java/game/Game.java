@@ -171,7 +171,11 @@ public class Game implements Runnable {
 	 * determine whether or not any of them have hit the Player
 	 */
 	public void checkIfPlayerIsDamaged() {
-
+		for (int i = 0; i < enemyProjectiles.size(); i++) {
+			if (enemyProjectiles.get(i).getHitBox().intersects(player.getHitBox())) {
+				player.hit();
+			}
+		}
 	}
 
 	/*
@@ -182,6 +186,22 @@ public class Game implements Runnable {
 	public void theDeathMethod() {
 		// TODO do more dying stuff here
 		gameState = Config.DEAD;
+		try {
+			Thread.sleep(500);
+			player.respawn();
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * This method should only be called when the player has lost all of their
+	 * lives. It will most likely end up creating a high scores screen, and then
+	 * sending the player back to the main menu once they enter their score.
+	 */
+	public void gameOver() {
+		gameState = Config.GAMEOVER;
 	}
 
 	private void updatePlayer() {

@@ -16,7 +16,7 @@ public class Config {
 	public static final String NAME = "Bullet Hell";
 	public static final boolean USE_DIALOGS = true; // TODO implement later
 	public static double GAME_SPEED = 1;
-	public static final int MAIN_MENU = 0, PAUSED = 1, PLAYING = 2, DEAD = 3, PLAYER_UPS = 100;
+	public static final int MAIN_MENU = 0, PAUSED = 1, PLAYING = 2, DEAD = 3, GAMEOVER = 4, PLAYER_UPS = 100;
 	public static final long UPS = 250, FPS = 60;
 	public static final String IMG_DIR = "src/main/resources/";
 

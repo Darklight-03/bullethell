@@ -12,11 +12,12 @@ import reference.Config;
 public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
-	int width, height;int lives;
+	int width, height;
+	int lives;
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
-	boolean now = true;boolean dead = false;
-	private long count = 0;
+	private boolean dead = false;
+	long count = 0;
 	Rectangle hitBox;
 
 	// TODO add method to switch the weapon when the switchweapon method is
@@ -33,19 +34,21 @@ public class Player extends EntityBase implements Runnable {
 		t = new Thread(this);
 		t.start();
 	}
-	public void hit(){
-		GameManager.getGame().theDeathMethod();
+
+	public void hit() {
 		dead = true;
 		lives--;
 		losePower();
-		try{
-		Thread.sleep(1000);
-		}catch(InterruptedException ie){}
+		GameManager.getGame().theDeathMethod();
+	}
+
+	public void respawn() {
+		dead = false;
 		x = Config.width / 2;
 		y = Config.height / 2;
-		dead = false;
-
+		GameManager.getGame().gameState = Config.PLAYING;
 	}
+
 	public Thread getThread() {
 		return t;
 	}
@@ -161,8 +164,15 @@ public class Player extends EntityBase implements Runnable {
 	}
 
 	public void drawHitBox(Graphics bg) {
-		bg.setColor(Config.hitBoxColor);
-		bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
+		if (!dead) {
+			bg.setColor(Config.hitBoxColor);
+			bg.fillRect((int) hitBox.getX(), (int) hitBox.getY(), (int) hitBox.getWidth(), (int) hitBox.getHeight());
+		}
+	}
+
+	public void drawThis(Graphics bg) {
+		if (!dead) bg.drawImage(image, drawX(), drawY(), null);
+
 	}
 
 	public void increasePower() {
