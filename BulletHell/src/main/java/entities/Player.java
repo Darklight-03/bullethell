@@ -16,7 +16,7 @@ public class Player extends EntityBase implements Runnable {
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	boolean now = true;boolean dead = false;
-	long count = 0;
+	private long count = 0;
 	Rectangle hitBox;
 
 	// TODO add method to switch the weapon when the switchweapon method is
@@ -43,6 +43,7 @@ public class Player extends EntityBase implements Runnable {
 		}catch(InterruptedException ie){}
 		x = Config.width / 2;
 		y = Config.height / 2;
+		dead = false;
 
 	}
 	public Thread getThread() {
@@ -174,6 +175,7 @@ public class Player extends EntityBase implements Runnable {
 
 	@Override
 	public void run() {
+		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
 		while (true) {
 
 			try {

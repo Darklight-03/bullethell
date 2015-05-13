@@ -35,6 +35,7 @@ public class Stage1 implements Runnable{
 
 	@Override
 	public void run() {
+		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
 		// TODO Auto-generated method stub
 		while(true){
 			try{

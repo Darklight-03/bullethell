@@ -28,6 +28,7 @@ public class HomingMissile extends ProjectileBase {
 	}
 
 	public boolean update() {
+		//return false;
 		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 50) == 0) {
 			if (!isInBounds(x, y) || hasHitTarget) {
 				return false;

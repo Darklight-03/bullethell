@@ -30,12 +30,13 @@ public class Game implements Runnable {
 		 * and determine whether or not they have hit a target
 		 */
 		public void run() {
+			Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
 			while (true) {
 				try {
 					Thread.sleep(1000 / Config.UPS);
 
 					if (gameState == Config.PLAYING) {
-						count++;
+					//	count++;
 						if (count > 999999999) {
 							count = 0;
 						}
@@ -94,6 +95,7 @@ public class Game implements Runnable {
 	 */
 	@Override
 	public void run() {
+		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
 		try {
 			Thread.sleep(1000);
 		}
@@ -110,11 +112,20 @@ public class Game implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
-					if (count % ((Config.UPS * Config.GAME_SPEED) / 400) == 0) {
+			//		Log.info("count = "+count);
+					
+					
+			//		Log.info("count/this = 400 = "+(Config.UPS*Config.GAME_SPEED)/400);
+			//		Log.info("(400) 0 = "+count%((Config.UPS*Config.GAME_SPEED)/400));
+					
+			//		Log.info("count/this = 1000 = "+Config.UPS/1000);
+			//		Log.info("(1000) 0 = "+count%(Config.UPS/1000));
+					
+					if (count % ((Config.UPS * Config.GAME_SPEED) / 125) == 0) {
 						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
 								shouldMoveSlow);
 					}
-					if (count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
+					if (count % ((Config.UPS * Config.GAME_SPEED) / 125) == 0) {
 						checkEnemyCollisions();
 					}
 					updatePlayer();
@@ -125,6 +136,7 @@ public class Game implements Runnable {
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
+				Log.info("fail");
 			}
 		}
 	}

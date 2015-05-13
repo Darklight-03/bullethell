@@ -107,6 +107,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void run() {
+		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
 		while (true) {
 			try {
 				Thread.sleep(1000 / Config.FPS);
@@ -115,10 +116,10 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 				// in the panel, or at least in the thread that handles
 				// repaints, because the repaint speed currently affects the
 				// speed of which the ship moves.
-				GameManager
-						.getGame()
-						.getPlayer()
-						.move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed, shouldMoveSlow);
+//				GameManager
+//						.getGame()
+//						.getPlayer()
+//						.move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed, shouldMoveSlow);
 			}
 			catch (InterruptedException e) {
 				repaint();

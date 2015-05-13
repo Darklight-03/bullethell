@@ -11,8 +11,8 @@ Move down: 40
 Move left: 37
 Move Right: 39
 
-Move speed: 1.5
-Slow move speed: 0.75
+Move speed: 3.0
+Slow move speed: 1.5
 Scroll speed: 1.0
 RGB value for hitBox: 205, 160, 250, 255
 
