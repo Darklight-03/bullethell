@@ -1,5 +1,6 @@
 package graphics;
 
+import game.Game;
 import game.GameManager;
 
 import java.awt.Color;
@@ -176,10 +177,13 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// System.out.println(e.getKeyCode());
+		//System.out.println(e.getKeyCode());
 		switch (GameManager.getGame().getGameState())
 		{
 		case Config.MAIN_MENU:
+			if(e.getKeyCode() == 10){
+				GameManager.setGame(new Game(true));
+			}
 			break;
 		case Config.PAUSED:
 			if (e.getKeyCode() == 27) {
