@@ -11,7 +11,7 @@ public class Config {
 	PrintWriter writer;
 	Scanner scan, lineScanner;
 
-	public static final boolean DEBUG_MODE = false;
+	public static final boolean DEBUG_MODE = true;
 	public static final boolean LOGGING = true;
 	public static final String NAME = "Bullet Hell";
 	public static final boolean USE_DIALOGS = true; // TODO implement later

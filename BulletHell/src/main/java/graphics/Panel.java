@@ -1,5 +1,6 @@
 package graphics;
 
+import entities.EnemyBase;
 import game.GameManager;
 
 import java.awt.Color;
@@ -61,13 +62,19 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		{
 		case Config.PLAYING:
 			bg.setColor(Color.WHITE);
+			
 			bg.fillRect(0, 0, getWidth(), getHeight());
 			for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
 				GameManager.getGame().getBackGroundObjects().get(i).drawThis(bg);
 			}
 			for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
+				EnemyBase e = GameManager.getGame().getEnemies().get(i);
+				
 				GameManager.getGame().getEnemies().get(i).drawThis(bg);
-				if (Config.DEBUG_MODE) GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
+				if (Config.DEBUG_MODE){ GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
+				bg.setColor(Color.RED);
+				bg.drawString(""+e.getHealth(),e.getX()-20,e.getY()-50);
+				}
 
 			}
 			for (int i = 0; i < GameManager.getGame().getEnemyProjectiles().size(); i++) {
@@ -88,6 +95,9 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 			GameManager.getGame().getPlayer().drawThis(bg);
 			if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
+			bg.setColor(Color.RED);
+			bg.drawString("Lives: "+GameManager.getGame().getPlayer().getLives(),5,15);
+			bg.drawString("Power Level: "+GameManager.getGame().getPlayer().getPower(),Config.width-100,15);
 			break;
 		case Config.MAIN_MENU:
 			bg.drawImage(TextLoader.titleScreen,0,0,null);
@@ -95,6 +105,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		case Config.PAUSED:
 			break;
 		case Config.DEAD:
+			
 		}
 		
 		g.drawImage(buffer, 0, 0, null);

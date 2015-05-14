@@ -8,12 +8,13 @@ import entities.projectiles.player.PlayerShot;
 import game.GameManager;
 import graphics.Panel;
 import reference.Config;
+import util.Log;
 
 public class Player extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
 	int width, height;
-	int lives;
+	int lives = 0;
 	int invulnTime = 0;
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
@@ -34,6 +35,10 @@ public class Player extends EntityBase implements Runnable {
 
 		t = new Thread(this);
 		t.start();
+	}
+
+	public int getLives() {
+		return lives;
 	}
 
 	public void hit() {
@@ -70,36 +75,37 @@ public class Player extends EntityBase implements Runnable {
 			switch (powerLevel)
 			{
 			case 0:
-				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
+				
+				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 100) == 0) {
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y,
-							0, 0, 0, -.1));
+							(Math.random()-.5)*1, -1, 0, -.1,.75));
 				}
-				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
+				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 100) == 0) {
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y,
-							0, 0, 0, -.1));
+							(Math.random()-.5)*1, -1, 0, -.1,.75));
 				}
 				break;
 			case 1:
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 8) == 0) {
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
-							x - 10, y, 0, -1, 0, -.1));
+							x - 10, y, 0, -1, 0, -.1,3));
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
-							x + 10, y, 0, -1, 0, -.1));
+							x + 10, y, 0, -1, 0, -.1,3));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 50) == 0) {
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y,
-							-.5, 3, -.005, -.1));
+							-.5, 3, -.005, -.1,1));
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y,
-							.5, 3, .005, -.1));
+							.5, 3, .005, -.1,1));
 				}
 				break;
 			case 2:
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 12) == 0) {
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
-							x - 10, y, 0, -4, 0, -.1));
+							x - 10, y, 0, -4, 0, -.1,5));
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
-							x + 10, y, 0, -4, 0, -.1));
+							x + 10, y, 0, -4, 0, -.1,5));
 				}
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
@@ -111,9 +117,9 @@ public class Player extends EntityBase implements Runnable {
 				if (count % ((int) ((Config.PLAYER_UPS * Config.GAME_SPEED) / 12)) == 0) {
 
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
-							x - 10, y, -1, -4, 0, -.1));
+							x - 10, y, -1, -4, 0, -.1,5));
 					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
-							x + 10, y, 1, -4, 0, -.1));
+							x + 10, y, 1, -4, 0, -.1,5));
 				}
 				break;
 			case 3:
@@ -185,12 +191,18 @@ public class Player extends EntityBase implements Runnable {
 
 	}
 
+	public int getPower(){
+		return powerLevel;
+	}
+	
 	public void increasePower() {
 		powerLevel++;
 	}
 
 	public void losePower() {
-		powerLevel = 0; // TODO this is too harsh, like your mother
+		int temp = powerLevel;
+		powerLevel = powerLevel/2; // TODO this is too harsh, like your mother
+		if(powerLevel == temp) powerLevel--;
 	}
 
 	@Override

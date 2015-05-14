@@ -25,7 +25,7 @@ public class Frame extends JFrame {
 
 		add(p);
 
-		setUndecorated(true);
+		setUndecorated(false);
 		setVisible(true);
 	}
 	

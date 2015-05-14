@@ -1,5 +1,7 @@
 package entities;
 
+import util.Log;
+
 public class EnemyBase extends EntityBase {
 
 	private double health;
