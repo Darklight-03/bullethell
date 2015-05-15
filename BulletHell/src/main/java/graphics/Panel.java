@@ -103,6 +103,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			bg.setColor(Color.RED);
 			bg.drawString("Lives: "+GameManager.getGame().getPlayer().getLives(),5,15);
 			bg.drawString("Power Level: "+GameManager.getGame().getPlayer().getPower(),Config.WIDTH-100,15);
+			bg.drawString("Time: "+GameManager.getGame().getCurrentStage().getCount(),(Config.WIDTH/2)-50,15);
 			break;
 		case Config.MAIN_MENU:
 			menu.update(g);

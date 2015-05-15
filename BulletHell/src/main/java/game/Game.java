@@ -17,6 +17,7 @@ import entities.EntityBase;
 import entities.Player;
 import entities.enemies.BasicEnemy1;
 import entities.projectiles.ProjectileBase;
+import game.stages.Stage;
 import game.stages.Stage1;
 
 public class Game implements Runnable {
@@ -62,6 +63,7 @@ public class Game implements Runnable {
 	public ArrayList<BackgroundObject> backGroundObjects = new ArrayList<BackgroundObject>();
 	public static int count;
 	BufferedImage e1;
+	Stage currentStage;
 
 	/*
 	 * This should be the class that controls almost every aspect of the game.
@@ -85,7 +87,7 @@ public class Game implements Runnable {
 		mainThread.start();
 		player = new Player(Config.PLAYER_IMAGE);
 
-		Stage1 stage = new Stage1();
+		currentStage = new Stage1();
 	}
 
 	/*
@@ -348,5 +350,9 @@ public class Game implements Runnable {
 		}
 		else return null;
 
+	}
+
+	public Stage getCurrentStage() {
+		return currentStage;
 	}
 }
