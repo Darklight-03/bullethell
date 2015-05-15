@@ -35,19 +35,19 @@ public class TestingEnemy extends EntityBase{
 				int i = rand.nextInt(100);
 				if (i < 10) {
 					destinationX = GameManager.getGame().getPlayer().getX();
-					destinationY = rand.nextInt(Config.height - 300);
+					destinationY = rand.nextInt(Config.HEIGHT - 300);
 				}
 				else if (i > 10 && i < 30) {
 					destinationY = 0;
-					destinationX = rand.nextInt(Config.width);
+					destinationX = rand.nextInt(Config.WIDTH);
 				}
 				else if (i > 30 && i < 35) {
 					destinationY = GameManager.getGame().getPlayer().getY();
 					destinationX = GameManager.getGame().getPlayer().getX();
 				}
 				else {
-					destinationX = rand.nextInt(Config.width);
-					destinationY = rand.nextInt(Config.height - rand.nextInt(500));
+					destinationX = rand.nextInt(Config.WIDTH);
+					destinationY = rand.nextInt(Config.HEIGHT - rand.nextInt(500));
 				}
 				isAtDestination = false;
 				System.out.println(destinationX + ", " + destinationY);

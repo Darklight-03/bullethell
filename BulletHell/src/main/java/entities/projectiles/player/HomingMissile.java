@@ -45,8 +45,8 @@ public class HomingMissile extends ProjectileBase {
 			}
 			else {
 				double changeInX = target.getX() - x, changeInY = target.getY() - y;
-				ay = changeInY / 700;
-				ax = changeInX / 400;
+				ay = changeInY / 100;
+				ax = changeInX / 100;
 				x += vx;
 				y += vy;
 

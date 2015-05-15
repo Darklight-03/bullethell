@@ -145,22 +145,27 @@ public class Game implements Runnable {
 	 * arraylist, and determine whether or not the player's bullets have hit it.
 	 */
 	public void checkEnemyCollisions() {
-		for (int i = 0; i < enemies.size(); i++) {
-			EnemyBase e = enemies.get(i);
-			if (e.isInBounds()) {
-				for (int ii = 0; ii < playerProjectiles.size(); ii++) {
-					if (e.getHitBox().intersects(playerProjectiles.get(ii).getHitBox())) {
-						// TODO maybe add a little explosion here when the
-						// projectiles hit the enemy?
-						if (e != null) {
-							if (!e.damage(playerProjectiles.get(ii).getDamage())) {
-								enemies.remove(i);
+		try {
+			for (int i = 0; i < enemies.size(); i++) {
+				EnemyBase e = enemies.get(i);
+				if (e.isInBounds()) {
+					for (int ii = 0; ii < playerProjectiles.size(); ii++) {
+						if (e.getHitBox().intersects(playerProjectiles.get(ii).getHitBox())) {
+							// TODO maybe add a little explosion here when the
+							// projectiles hit the enemy?
+							if (e != null) {
+								if (!e.damage(playerProjectiles.get(ii).getDamage())) {
+									enemies.remove(i);
+								}
 							}
+							playerProjectiles.remove(ii);
 						}
-						playerProjectiles.remove(ii);
 					}
 				}
 			}
+		}
+		catch (Exception e) {
+			Log.error("Failed to run checkEnemyCollisions()");
 		}
 	}
 
@@ -169,10 +174,15 @@ public class Game implements Runnable {
 	 * determine whether or not any of them have hit the Player
 	 */
 	public void checkIfPlayerIsDamaged() {
-		for (int i = 0; i < enemyProjectiles.size(); i++) {
-			if (enemyProjectiles.get(i).getHitBox().intersects(player.getHitBox())) {
-				player.hit();
+		try {
+			for (int i = 0; i < enemyProjectiles.size(); i++) {
+				if (enemyProjectiles.get(i).getHitBox().intersects(player.getHitBox())) {
+					player.hit();
+				}
 			}
+		}
+		catch (Exception e) {
+			Log.error("Failed to run checkIfPlayerIsDamaged()");
 		}
 	}
 

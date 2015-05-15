@@ -79,12 +79,12 @@ public class EntityBase {
 	}
 
 	public boolean isInBounds() {
-		if (x < -100 || x > Config.width + 100 || y < -100 || y > Config.height + 100) return false;
+		if (x < -100 || x > Config.WIDTH + 100 || y < -100 || y > Config.HEIGHT + 100) return false;
 		else return true;
 	}
 
 	public boolean isInBounds(double x, double y) {
-		if (x < -100 || x > Config.width + 100 || y < -100 || y > Config.height + 100) return false;
+		if (x < -100 || x > Config.WIDTH + 100 || y < -100 || y > Config.HEIGHT + 100) return false;
 		else return true;
 	}
 

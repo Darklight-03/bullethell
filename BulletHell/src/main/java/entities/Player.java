@@ -29,8 +29,8 @@ public class Player extends EntityBase implements Runnable {
 		width = getImage().getWidth();
 		height = getImage().getHeight();
 		lives = 3;
-		x = Config.width / 2;
-		y = Config.height / 2;
+		x = Config.WIDTH / 2;
+		y = Config.HEIGHT / 2 + 200;
 
 		t = new Thread(this);
 		t.start();
@@ -54,8 +54,8 @@ public class Player extends EntityBase implements Runnable {
 		dead = false;
 		//TODO Implement invulnerability.
 		invulnTime = 3;
-		x = Config.width / 2;
-		y = Config.height / 2;
+		x = Config.WIDTH / 2;
+		y = Config.HEIGHT / 2 + 200;
 		GameManager.getGame().gameState = Config.PLAYING;
 	}
 
@@ -153,13 +153,13 @@ public class Player extends EntityBase implements Runnable {
 			if (this.y - height / 2 > 0) y -= speed;
 		}
 		if (down) {
-			if (this.y + height / 2 < Config.height - .75) y += speed;
+			if (this.y + height / 2 < Config.HEIGHT - .75) y += speed;
 		}
 		if (left) {
 			if (this.x - width / 2 > 0) x -= speed;
 		}
 		if (right) {
-			if (this.x + width / 2 < Config.width - .76) x += speed;
+			if (this.x + width / 2 < Config.WIDTH - .76) x += speed;
 		}
 
 		if (x != 0 && y != 0) {
