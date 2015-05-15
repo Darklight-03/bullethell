@@ -30,13 +30,13 @@ public class Game implements Runnable {
 		 * and determine whether or not they have hit a target
 		 */
 		public void run() {
-			Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
+			Thread.currentThread().setPriority((int) (Thread.MAX_PRIORITY * 0.8));
 			while (true) {
 				try {
 					Thread.sleep(1000 / Config.UPS);
 
 					if (gameState == Config.PLAYING) {
-					//	count++;
+						// count++;
 						if (count > 999999999) {
 							count = 0;
 						}
@@ -69,24 +69,23 @@ public class Game implements Runnable {
 	 * entities, and other various methods that will be necessary for gameplay.
 	 */
 	public Game() {
+		gameState = Config.MAIN_MENU;
+	}
+
+	public Game(boolean isRealGame) {
 		try {
 			e1 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Down.png"));
-
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		gameState = Config.PLAYING;
-
 		mainThread = new Thread(this);
 		mainThread.start();
 		player = new Player(Config.PLAYER_IMAGE);
 
 		Stage1 stage = new Stage1();
-
-		// enemies.add(new TestingEnemy("EnemyPlaceholder.png", 300, 450, .005,
-		// .005));
 	}
 
 	/*
@@ -95,7 +94,7 @@ public class Game implements Runnable {
 	 */
 	@Override
 	public void run() {
-		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
+		Thread.currentThread().setPriority((int) (Thread.MAX_PRIORITY * 0.8));
 		try {
 			Thread.sleep(1000);
 		}
@@ -112,15 +111,14 @@ public class Game implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
-			//		Log.info("count = "+count);
-					
-					
-			//		Log.info("count/this = 400 = "+(Config.UPS*Config.GAME_SPEED)/400);
-			//		Log.info("(400) 0 = "+count%((Config.UPS*Config.GAME_SPEED)/400));
-					
-			//		Log.info("count/this = 1000 = "+Config.UPS/1000);
-			//		Log.info("(1000) 0 = "+count%(Config.UPS/1000));
-					
+					// Log.info("count = "+count);
+
+					// Log.info("count/this = 400 = "+(Config.UPS*Config.GAME_SPEED)/400);
+					// Log.info("(400) 0 = "+count%((Config.UPS*Config.GAME_SPEED)/400));
+
+					// Log.info("count/this = 1000 = "+Config.UPS/1000);
+					// Log.info("(1000) 0 = "+count%(Config.UPS/1000));
+
 					if (count % ((Config.UPS * Config.GAME_SPEED) / 125) == 0) {
 						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
 								shouldMoveSlow);
@@ -147,22 +145,27 @@ public class Game implements Runnable {
 	 * arraylist, and determine whether or not the player's bullets have hit it.
 	 */
 	public void checkEnemyCollisions() {
-		for (int i = 0; i < enemies.size(); i++) {
-			EnemyBase e = enemies.get(i);
-			if (e.isInBounds()) {
-				for (int ii = 0; ii < playerProjectiles.size(); ii++) {
-					if (e.getHitBox().intersects(playerProjectiles.get(ii).getHitBox())) {
-						// TODO maybe add a little explosion here when the
-						// projectiles hit the enemy?
-						if (e != null) {
-							if (!e.damage(playerProjectiles.get(ii).getDamage())) {
-								enemies.remove(i);
+		try {
+			for (int i = 0; i < enemies.size(); i++) {
+				EnemyBase e = enemies.get(i);
+				if (e.isInBounds()) {
+					for (int ii = 0; ii < playerProjectiles.size(); ii++) {
+						if (e.getHitBox().intersects(playerProjectiles.get(ii).getHitBox())) {
+							// TODO maybe add a little explosion here when the
+							// projectiles hit the enemy?
+							if (e != null) {
+								if (!e.damage(playerProjectiles.get(ii).getDamage())) {
+									enemies.remove(i);
+								}
 							}
+							playerProjectiles.remove(ii);
 						}
-						playerProjectiles.remove(ii);
 					}
 				}
 			}
+		}
+		catch (Exception e) {
+			Log.error("Failed to run checkEnemyCollisions()");
 		}
 	}
 
@@ -171,10 +174,15 @@ public class Game implements Runnable {
 	 * determine whether or not any of them have hit the Player
 	 */
 	public void checkIfPlayerIsDamaged() {
-		for (int i = 0; i < enemyProjectiles.size(); i++) {
-			if (enemyProjectiles.get(i).getHitBox().intersects(player.getHitBox())) {
-				player.hit();
+		try {
+			for (int i = 0; i < enemyProjectiles.size(); i++) {
+				if (enemyProjectiles.get(i).getHitBox().intersects(player.getHitBox())) {
+					player.hit();
+				}
 			}
+		}
+		catch (Exception e) {
+			Log.error("Failed to run checkIfPlayerIsDamaged()");
 		}
 	}
 

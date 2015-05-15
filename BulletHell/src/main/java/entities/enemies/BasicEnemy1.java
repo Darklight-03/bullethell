@@ -30,7 +30,7 @@ public class BasicEnemy1 extends EnemyBase {
 		this.bps = bulletsPerShot;
 		this.RoF = RoF;
 		this.Spread = Spread;
-		if (x < Config.width / 2) {
+		if (x < Config.WIDTH / 2) {
 			left = true;
 			vx = 2;
 			vy = 2;
@@ -76,7 +76,7 @@ public class BasicEnemy1 extends EnemyBase {
 			vy = 2;
 			ay = -.02;
 			ax = 0;
-			x = Config.width + 100;
+			x = Config.WIDTH + 100;
 			y = 300;
 		}
 		if (y < yMax && left == false) {

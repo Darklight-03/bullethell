@@ -1,6 +1,7 @@
 package main;
 
 import graphics.Frame;
+import graphics.ImageLoader;
 import graphics.TextLoader;
 import reference.Config;
 
@@ -17,6 +18,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		new TextLoader();
+		new ImageLoader();
 		new Config();
 		f = new Frame();
 	}

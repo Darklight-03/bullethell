@@ -11,16 +11,21 @@ public class Config {
 	PrintWriter writer;
 	Scanner scan, lineScanner;
 
-	public static final boolean DEBUG_MODE = true;
+	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
-	public static final String NAME = "Bullet Hell";
+	public static final String NAME = "Death's Abyss";
 	public static final boolean USE_DIALOGS = true; // TODO implement later
 	public static double GAME_SPEED = 1;
 	public static final int MAIN_MENU = 0, PAUSED = 1, PLAYING = 2, DEAD = 3, GAMEOVER = 4, PLAYER_UPS = 100;
 	public static final long UPS = 250, FPS = 60;
-	public static final String IMG_DIR = "src/main/resources/";
+	/*
+	 * These variables are used in order to determine which menu to create when
+	 * making a new Menu
+	 */
+	public static final int TITLESCREEN = 0, PLAY = 1, HIGHSCORES = 2, SETTINGS = 3, ABOUT = 4;
 
 	// list addresses to all of the images in the game here
+	public static final String IMG_DIR = "src/main/resources/";
 	public static final String PLAYER_IMAGE = "src/main/resources/placeHolder.png";
 	public static final String PLACEHOLDER_BACKGROUND_OBJECT = "src/main/resources/placeholderBackgroundObject.jpg";
 	public static final String PLACEHOLDER_PROJECTILE = "src/main/resources/PlaceholderProjectile.jpg";
@@ -28,10 +33,10 @@ public class Config {
 	public static final String ENEMY_PLACEHOLDER = "src/main/resources/EnemyPlaceholder.png";
 
 	private String SAVELOCATION = "Config.txt", temp;
-	public static int width = 600, height = 900, moveUp = 38, moveDown = 40, moveLeft = 37, moveRight = 39,
-			moveSlow = 16,PLAYER_HITBOX_RADIUS = 3;
+	public static int WIDTH = 600, HEIGHT = 900, MOVEUP = 38, MOVEDOWN = 40, MOVELEFT = 37, MOVERIGHT = 39,
+			MOVESLOW = 16, PLAYER_HITBOX_RADIUS = 3;
 	public static double moveSpeed = 1.5, slowMoveSpeed, scrollSpeed = 2;
-	public static char shoot = 'z', dropBombs = 'x', switchWeapons = 'c', extraKeyOne = 'v';
+	public static char SHOOT = 'z', DROPBOMBS = 'x', SWITCHWEAPONS = 'c', EXTRAKEYONE = 'v';
 	public static Color hitBoxColor = Color.RED;
 
 	/*
@@ -144,14 +149,14 @@ public class Config {
 			switch (saveOrLoad)
 			{
 			case "save":
-				writer.println("Resolution: " + width + ", " + height);
+				writer.println("Resolution: " + WIDTH + ", " + HEIGHT);
 				return true;
 			case "load":
 				Scanner scanner = new Scanner(scan.nextLine());
 				lineScanner = scanner.useDelimiter("[:,]");
 				lineScanner.next();
-				width = Integer.parseInt(lineScanner.next().trim());
-				height = Integer.parseInt(lineScanner.next().trim());
+				WIDTH = Integer.parseInt(lineScanner.next().trim());
+				HEIGHT = Integer.parseInt(lineScanner.next().trim());
 				scanner.close();
 				return true;
 			default:
@@ -168,45 +173,45 @@ public class Config {
 			switch (saveOrLoad)
 			{
 			case "save":
-				writer.println("Shoot weapon: " + shoot);
-				writer.println("Drop bombs: " + dropBombs);
-				writer.println("switchWeapons: " + switchWeapons);
-				writer.println("Extra button one: " + extraKeyOne);
-				writer.println("Move up: " + moveUp);
-				writer.println("Move down: " + moveDown);
-				writer.println("Move left: " + moveLeft);
-				writer.println("Move Right: " + moveRight);
+				writer.println("Shoot weapon: " + SHOOT);
+				writer.println("Drop bombs: " + DROPBOMBS);
+				writer.println("switchWeapons: " + SWITCHWEAPONS);
+				writer.println("Extra button one: " + EXTRAKEYONE);
+				writer.println("Move up: " + MOVEUP);
+				writer.println("Move down: " + MOVEDOWN);
+				writer.println("Move left: " + MOVELEFT);
+				writer.println("Move Right: " + MOVERIGHT);
 				return true;
 			case "load":
 				lineScanner = scan.useDelimiter("[:\n]");
 
 				lineScanner.next();
-				shoot = lineScanner.next().trim().charAt(0);
+				SHOOT = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
-				dropBombs = lineScanner.next().trim().charAt(0);
+				DROPBOMBS = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
-				switchWeapons = lineScanner.next().trim().charAt(0);
+				SWITCHWEAPONS = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
-				extraKeyOne = lineScanner.next().trim().charAt(0);
-
-				lineScanner.next();
-				temp = lineScanner.next();
-				moveUp = Integer.parseInt(temp.trim());
+				EXTRAKEYONE = lineScanner.next().trim().charAt(0);
 
 				lineScanner.next();
 				temp = lineScanner.next();
-				moveDown = Integer.parseInt(temp.trim());
+				MOVEUP = Integer.parseInt(temp.trim());
 
 				lineScanner.next();
 				temp = lineScanner.next();
-				moveLeft = Integer.parseInt(temp.trim());
+				MOVEDOWN = Integer.parseInt(temp.trim());
 
 				lineScanner.next();
 				temp = lineScanner.next();
-				moveRight = Integer.parseInt(temp.trim());
+				MOVELEFT = Integer.parseInt(temp.trim());
+
+				lineScanner.next();
+				temp = lineScanner.next();
+				MOVERIGHT = Integer.parseInt(temp.trim());
 				return true;
 			default:
 				return false;

@@ -1,6 +1,7 @@
 package graphics;
 
 import entities.EnemyBase;
+import game.Game;
 import game.GameManager;
 
 import java.awt.Color;
@@ -13,12 +14,15 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import main.menus.BasicMenu;
+import main.menus.VerticalChoices;
 import reference.Config;
 import util.Log;
 
 /*
  * 
  */
+@SuppressWarnings("unused")
 public class Panel extends JPanel implements KeyListener, Runnable {
 
 	Thread game;
@@ -29,6 +33,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			moveRightDepressed = false, shouldMoveSlow = false;
 	public static boolean playerShoots = false;
 	private BufferedImage buffer;
+	public BasicMenu menu = new VerticalChoices(5, Config.TITLESCREEN);
 
 	/*
 	 * This is the panel. It handles all of the painting and graphics of the
@@ -38,7 +43,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	public Panel() {
 		super();
-		setSize(new Dimension(Config.width, Config.height));
+		setSize(new Dimension(Config.WIDTH, Config.HEIGHT));
 		buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
 
 		setButtons();
@@ -97,17 +102,17 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
 			bg.setColor(Color.RED);
 			bg.drawString("Lives: "+GameManager.getGame().getPlayer().getLives(),5,15);
-			bg.drawString("Power Level: "+GameManager.getGame().getPlayer().getPower(),Config.width-100,15);
+			bg.drawString("Power Level: "+GameManager.getGame().getPlayer().getPower(),Config.WIDTH-100,15);
 			break;
 		case Config.MAIN_MENU:
-			bg.drawImage(TextLoader.titleScreen,0,0,null);
+			menu.update(g);
 			break;
 		case Config.PAUSED:
 			break;
 		case Config.DEAD:
 			
 		}
-		
+
 		g.drawImage(buffer, 0, 0, null);
 	}
 
@@ -118,19 +123,11 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	@Override
 	public void run() {
-		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
+		Thread.currentThread().setPriority((int) (Thread.MAX_PRIORITY * 0.8));
 		while (true) {
 			try {
 				Thread.sleep(1000 / Config.FPS);
 				repaint();
-				// TODO make is so that the player.move() method is not called
-				// in the panel, or at least in the thread that handles
-				// repaints, because the repaint speed currently affects the
-				// speed of which the ship moves.
-//				GameManager
-//						.getGame()
-//						.getPlayer()
-//						.move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed, shouldMoveSlow);
 			}
 			catch (InterruptedException e) {
 				repaint();
@@ -191,36 +188,44 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		switch (GameManager.getGame().getGameState())
 		{
 		case Config.MAIN_MENU:
+			if (e.getKeyCode() == 10) menu.enter();
+
+			if (e.getKeyCode() == moveUp) menu.moveUp();
+
+			if (e.getKeyCode() == moveDown) menu.moveDown();
+
+			if (e.getKeyCode() == moveLeft) menu.moveLeft();
+
+			if (e.getKeyCode() == moveRight) menu.moveRight();
+
 			break;
+
 		case Config.PAUSED:
 			if (e.getKeyCode() == 27) {
-				GameManager.getGame().gameState = Config.PLAYING;
+				unpauseGame();
 			}
 			break;
+
 		case Config.PLAYING:
 			if (e.getKeyCode() == 27) {
 				pauseGame();
-			}
-			if (e.getKeyChar() == shoot) {
-				playerShoots = true;
 			}
 			if (e.getKeyCode() == moveSlow) {
 				GameManager.getGame().shouldMoveSlow(true);
 				shouldMoveSlow = true;
 			}
-			if (e.getKeyCode() == moveUp) {
-				GameManager.getGame().moveUpDepressed(true);
-			}
-			if (e.getKeyCode() == moveDown) {
-				GameManager.getGame().moveDownDepressed(true);
-			}
-			if (e.getKeyCode() == moveLeft) {
-				GameManager.getGame().moveLeftDepressed(true);
-			}
-			if (e.getKeyCode() == moveRight) {
-				GameManager.getGame().moveRightDepressed(true);
-			}
+			if (e.getKeyChar() == shoot) playerShoots = true;
+
+			if (e.getKeyCode() == moveUp) GameManager.getGame().moveUpDepressed(true);
+
+			if (e.getKeyCode() == moveDown) GameManager.getGame().moveDownDepressed(true);
+
+			if (e.getKeyCode() == moveLeft) GameManager.getGame().moveLeftDepressed(true);
+
+			if (e.getKeyCode() == moveRight) GameManager.getGame().moveRightDepressed(true);
+
 			break;
+
 		case Config.DEAD:
 			break;
 		}
@@ -243,29 +248,27 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		{
 		case Config.MAIN_MENU:
 			break;
+
 		case Config.PAUSED:
 			break;
+
 		case Config.PLAYING:
-			if (e.getKeyChar() == shoot) {
-				playerShoots = false;
-			}
 			if (e.getKeyCode() == moveSlow) {
 				GameManager.getGame().shouldMoveSlow(false);
 				shouldMoveSlow = false;
 			}
-			if (e.getKeyCode() == moveUp) {
-				GameManager.getGame().moveUpDepressed(false);
-			}
-			if (e.getKeyCode() == moveDown) {
-				GameManager.getGame().moveDownDepressed(false);
-			}
-			if (e.getKeyCode() == moveLeft) {
-				GameManager.getGame().moveLeftDepressed(false);
-			}
-			if (e.getKeyCode() == moveRight) {
-				GameManager.getGame().moveRightDepressed(false);
-			}
+			if (e.getKeyChar() == shoot) playerShoots = false;
+
+			if (e.getKeyCode() == moveUp) GameManager.getGame().moveUpDepressed(false);
+
+			if (e.getKeyCode() == moveDown) GameManager.getGame().moveDownDepressed(false);
+
+			if (e.getKeyCode() == moveLeft) GameManager.getGame().moveLeftDepressed(false);
+
+			if (e.getKeyCode() == moveRight) GameManager.getGame().moveRightDepressed(false);
+
 			break;
+
 		case Config.DEAD:
 			break;
 		}
@@ -287,7 +290,16 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		moveRightDepressed = false;
 		shouldMoveSlow = false;
 		GameManager.getGame().gameState = Config.PAUSED;
+	}
 
+	public void unpauseGame() {
+		playerShoots = false;
+		moveUpDepressed = false;
+		moveDownDepressed = false;
+		moveLeftDepressed = false;
+		moveRightDepressed = false;
+		shouldMoveSlow = false;
+		GameManager.getGame().gameState = Config.PLAYING;
 	}
 
 	/*
@@ -296,15 +308,15 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 * the keyListeners more managable and easier to read.
 	 */
 	public void setButtons() {
-		moveUp = Config.moveUp;
-		moveDown = Config.moveDown;
-		moveLeft = Config.moveLeft;
-		moveRight = Config.moveRight;
-		moveSlow = Config.moveSlow;
-		shoot = Config.shoot;
-		dropBombs = Config.dropBombs;
-		switchWeapons = Config.switchWeapons;
-		extraKeyOne = Config.extraKeyOne;
+		moveUp = Config.MOVEUP;
+		moveDown = Config.MOVEDOWN;
+		moveLeft = Config.MOVELEFT;
+		moveRight = Config.MOVERIGHT;
+		moveSlow = Config.MOVESLOW;
+		shoot = Config.SHOOT;
+		dropBombs = Config.DROPBOMBS;
+		switchWeapons = Config.SWITCHWEAPONS;
+		extraKeyOne = Config.EXTRAKEYONE;
 	}
 
 	public void addNotify() {
