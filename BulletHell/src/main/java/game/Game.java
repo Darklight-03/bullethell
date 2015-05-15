@@ -22,8 +22,6 @@ import game.stages.Stage1;
 
 public class Game implements Runnable {
 
-	public int Gamestate;
-
 	public Player player;
 	public Thread mainThread = new Thread(this), projectileCollisions = new Thread(new Runnable() {
 		/*

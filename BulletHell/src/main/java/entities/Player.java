@@ -202,7 +202,7 @@ public class Player extends EntityBase implements Runnable {
 	public void losePower() {
 		int temp = powerLevel;
 		powerLevel = powerLevel/2; // TODO this is too harsh, like your mother
-		if(powerLevel == temp) powerLevel--;
+		if(powerLevel == temp && powerLevel != 0) powerLevel--;
 	}
 
 	@Override
