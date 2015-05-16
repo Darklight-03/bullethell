@@ -2,11 +2,12 @@ package main.menus;
 
 import graphics.ImageLoader;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class BasicMenu {
 
-	public void update(Graphics g) {
+	public void update(Graphics2D g) {
+		
 		g.drawImage(ImageLoader.background, 0, 0, null);
 	}
 

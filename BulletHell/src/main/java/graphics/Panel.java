@@ -4,9 +4,11 @@ import entities.EnemyBase;
 import game.Game;
 import game.GameManager;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -27,12 +29,13 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	Thread game;
 	GameManager gM;
+	private float faded = .05f;
 	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private char shoot, dropBombs, switchWeapons, extraKeyOne;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
 	public static boolean playerShoots = false;
-	private BufferedImage buffer;
+	private BufferedImage buffer, lastUsedImage;
 	public BasicMenu menu = new VerticalChoices(5, Config.TITLESCREEN);
 
 	/*
@@ -62,23 +65,29 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
-		Graphics bg = buffer.getGraphics();
+
+		Graphics2D bg = (Graphics2D) buffer.getGraphics();
+		g = (Graphics2D) g;
+
 		switch (GameManager.getGame().getGameState())
 		{
 		case Config.PLAYING:
+			bg.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, faded));
+			// TODO remove the white rectangle once there is a working
+			// background
 			bg.setColor(Color.WHITE);
-			
 			bg.fillRect(0, 0, getWidth(), getHeight());
 			for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
 				GameManager.getGame().getBackGroundObjects().get(i).drawThis(bg);
 			}
 			for (int i = 0; i < GameManager.getGame().getEnemies().size(); i++) {
 				EnemyBase e = GameManager.getGame().getEnemies().get(i);
-				
+
 				GameManager.getGame().getEnemies().get(i).drawThis(bg);
-				if (Config.DEBUG_MODE){ GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
-				bg.setColor(Color.RED);
-				bg.drawString(""+e.getHealth(),e.getX()-20,e.getY()-50);
+				if (Config.DEBUG_MODE) {
+					GameManager.getGame().getEnemies().get(i).drawHitBox(bg);
+					bg.setColor(Color.RED);
+					bg.drawString("" + e.getHealth(), e.getX() - 20, e.getY() - 50);
 				}
 
 			}
@@ -101,16 +110,22 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			GameManager.getGame().getPlayer().drawThis(bg);
 			if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
 			bg.setColor(Color.RED);
-			bg.drawString("Lives: "+GameManager.getGame().getPlayer().getLives(),5,15);
-			bg.drawString("Power Level: "+GameManager.getGame().getPlayer().getPower(),Config.WIDTH-100,15);
+			bg.drawString("Lives: " + GameManager.getGame().getPlayer().getLives(), 5, 15);
+			bg.drawString("Power Level: " + GameManager.getGame().getPlayer().getPower(), Config.WIDTH - 100, 15);
+
+			if (faded + .01 <= 1) faded += .01;
+			lastUsedImage = buffer;
 			break;
 		case Config.MAIN_MENU:
-			menu.update(g);
+			bg.drawImage(lastUsedImage, 0, 0, null);
+			menu.update(bg);
 			break;
 		case Config.PAUSED:
+			bg.drawImage(lastUsedImage, 0, 0, null);
+			menu.update(bg);
 			break;
 		case Config.DEAD:
-			
+
 		}
 
 		g.drawImage(buffer, 0, 0, null);
@@ -209,6 +224,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		case Config.PLAYING:
 			if (e.getKeyCode() == 27) {
 				pauseGame();
+				menu = new BasicMenu();
 			}
 			if (e.getKeyCode() == moveSlow) {
 				GameManager.getGame().shouldMoveSlow(true);
@@ -284,22 +300,25 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	 */
 	public void pauseGame() {
 		playerShoots = false;
-		moveUpDepressed = false;
-		moveDownDepressed = false;
-		moveLeftDepressed = false;
-		moveRightDepressed = false;
+		GameManager.getGame().moveUpDepressed(false);
+		GameManager.getGame().moveDownDepressed(false);
+		GameManager.getGame().moveLeftDepressed(false);
+		GameManager.getGame().moveRightDepressed(false);
+		GameManager.getGame().shouldMoveSlow(false);
 		shouldMoveSlow = false;
 		GameManager.getGame().gameState = Config.PAUSED;
 	}
 
 	public void unpauseGame() {
 		playerShoots = false;
-		moveUpDepressed = false;
-		moveDownDepressed = false;
-		moveLeftDepressed = false;
-		moveRightDepressed = false;
+		GameManager.getGame().moveUpDepressed(false);
+		GameManager.getGame().moveDownDepressed(false);
+		GameManager.getGame().moveLeftDepressed(false);
+		GameManager.getGame().moveRightDepressed(false);
+		GameManager.getGame().shouldMoveSlow(false);
 		shouldMoveSlow = false;
 		GameManager.getGame().gameState = Config.PLAYING;
+		faded = .05f;
 	}
 
 	/*

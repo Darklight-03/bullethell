@@ -4,9 +4,10 @@ import game.Game;
 import game.GameManager;
 import graphics.TextLoader;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import reference.Config;
+import reference.ConfigLoader;
 
 public class VerticalChoices extends BasicMenu {
 
@@ -17,7 +18,7 @@ public class VerticalChoices extends BasicMenu {
 		this.menuType = menuType;
 	}
 
-	public void update(Graphics g) {
+	public void update(Graphics2D g) {
 		super.update(g);
 
 		switch (menuType)
@@ -39,6 +40,7 @@ public class VerticalChoices extends BasicMenu {
 	}
 
 	public void enter() {
+
 		switch (menuType)
 		{
 		case Config.TITLESCREEN:
@@ -55,9 +57,14 @@ public class VerticalChoices extends BasicMenu {
 			case 3:
 				break;
 			case 4:
+				ConfigLoader.getConfig().save();
+				System.exit(0);
 				break;
 			}
 
+			break;
+
+		case Config.PAUSESCREEN:
 			break;
 		}
 	}

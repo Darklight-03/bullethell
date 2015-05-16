@@ -22,7 +22,7 @@ public class Config {
 	 * These variables are used in order to determine which menu to create when
 	 * making a new Menu
 	 */
-	public static final int TITLESCREEN = 0, PLAY = 1, HIGHSCORES = 2, SETTINGS = 3, ABOUT = 4;
+	public static final int TITLESCREEN = 0, PLAY = 1, HIGHSCORES = 2, SETTINGS = 3, ABOUT = 4, PAUSESCREEN = 5;
 
 	// list addresses to all of the images in the game here
 	public static final String IMG_DIR = "src/main/resources/";
