@@ -6,8 +6,7 @@ import reference.Config;
 import util.Log;
 
 
-public class Stage1 implements Runnable{
-	int count;
+public class Stage1 extends Stage implements Runnable{
 	boolean stop;
 	public Stage1(){
 		count = 0;
@@ -51,5 +50,7 @@ public class Stage1 implements Runnable{
 			}
 		}
 	}
+
+
 	
 }

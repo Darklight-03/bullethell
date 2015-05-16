@@ -112,9 +112,11 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			bg.setColor(Color.RED);
 			bg.drawString("Lives: " + GameManager.getGame().getPlayer().getLives(), 5, 15);
 			bg.drawString("Power Level: " + GameManager.getGame().getPlayer().getPower(), Config.WIDTH - 100, 15);
+			bg.drawString("Time: "+GameManager.getGame().getCurrentStage().getCount(),(Config.WIDTH/2)-50,15);
 
 			if (faded + .01 <= 1) faded += .01;
 			lastUsedImage = buffer;
+
 			break;
 		case Config.MAIN_MENU:
 			bg.drawImage(lastUsedImage, 0, 0, null);
