@@ -126,7 +126,7 @@ public class EntityBase {
 	}
 
 	public void updateHitBox() {
-		// TODO Auto-generated method stub
+		
 
 	}
 

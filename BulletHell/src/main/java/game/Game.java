@@ -77,7 +77,7 @@ public class Game implements Runnable {
 			e1 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Down.png"));
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		gameState = Config.PLAYING;

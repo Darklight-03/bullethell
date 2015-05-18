@@ -23,7 +23,7 @@ public class PlayerShot extends ProjectileBase {
 		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
 				.getImage().getWidth(), this.getImage().getHeight());
 		this.damage = damage;
-		//TODO Make damage in constructor (EASY)
+		
 	}
 
 	public String toString() {

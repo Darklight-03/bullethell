@@ -35,7 +35,7 @@ public class Stage1 extends Stage implements Runnable{
 	@Override
 	public void run() {
 		Thread.currentThread().setPriority((int)(Thread.MAX_PRIORITY*0.8));
-		// TODO Auto-generated method stub
+		
 		while(true){
 			try{
 				Thread.sleep((int)(1000/(1*Config.GAME_SPEED)));

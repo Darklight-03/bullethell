@@ -58,7 +58,7 @@ public class BasicEnemy1 extends EnemyBase {
 
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 

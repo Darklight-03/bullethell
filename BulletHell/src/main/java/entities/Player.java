@@ -16,6 +16,7 @@ public class Player extends EntityBase implements Runnable {
 	int width, height;
 	int lives = 0;
 	int invulnTime = 0;
+	long iEnd = 0;
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	private boolean dead = false;
@@ -42,6 +43,7 @@ public class Player extends EntityBase implements Runnable {
 	}
 
 	public void hit() {
+		if(invulnTime == 0){
 		dead = true;
 		lives--;
 		losePower();
@@ -49,12 +51,13 @@ public class Player extends EntityBase implements Runnable {
 			Thread.sleep(500);
 		}
 		catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		GameManager.getGame().theDeathMethod();
-	}
 
+		}
+	}
 	public void respawn() {
 		dead = false;
 		//TODO Implement invulnerability.
@@ -69,6 +72,9 @@ public class Player extends EntityBase implements Runnable {
 	}
 
 	public void attack() {
+		if(invulnTime>0){
+			invulnTime = 0;
+		}
 		switch (weapon)
 		{
 		case 0:
@@ -201,7 +207,7 @@ public class Player extends EntityBase implements Runnable {
 
 	public void losePower() {
 		int temp = powerLevel;
-		powerLevel = powerLevel/2; // TODO this is too harsh, like your mother
+		powerLevel = powerLevel/2;
 		if(powerLevel == temp && powerLevel != 0) powerLevel--;
 	}
 
@@ -211,8 +217,16 @@ public class Player extends EntityBase implements Runnable {
 		while (true) {
 
 			try {
-
+				
 				Thread.sleep(1000 / Config.PLAYER_UPS);
+				
+				if(invulnTime>0&&iEnd == 0){
+					iEnd = count+(Config.PLAYER_UPS*invulnTime);
+				}
+				if(iEnd>0&&count>iEnd){
+					iEnd = 0;
+					invulnTime = 0;
+				}
 				count++;
 				if (count > 999999999) {
 					count = 0;
