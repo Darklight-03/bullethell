@@ -10,6 +10,7 @@ import util.Log;
 public class Config {
 	PrintWriter writer;
 	Scanner scan, lineScanner;
+	
 
 	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
@@ -29,7 +30,7 @@ public class Config {
 	public static final String PLAYER_IMAGE = "src/main/resources/placeHolder.png";
 	public static final String PLACEHOLDER_BACKGROUND_OBJECT = "src/main/resources/placeholderBackgroundObject.jpg";
 	public static final String PLACEHOLDER_PROJECTILE = "src/main/resources/PlaceholderProjectile.jpg";
-	public static final String UGLY_PLACEHOLDER_PROJECTILE = "src/main/resources/uglyPlaceholderProjectile.jpg";
+	public static final String  UGLY_PLACEHOLDER_PROJECTILE= "src/main/resources/uglyPlaceholderProjectile.jpg";
 	public static final String ENEMY_PLACEHOLDER = "src/main/resources/EnemyPlaceholder.png";
 
 	private String SAVELOCATION = "Config.txt", temp;
