@@ -12,8 +12,9 @@ import reference.Config;
 import entities.EnemyBase;
 import entities.projectiles.BasicShot;
 import game.GameManager;
+import graphics.ImageLoader;
 
-public class BasicEnemy1 extends EnemyBase {
+public class SmallTurretEnemy extends EnemyBase {
 	boolean left;
 	int RoF, bulletSpeed, Spread, bps, ct = 0;
 	int[] xPoints, yPoints;
@@ -21,7 +22,7 @@ public class BasicEnemy1 extends EnemyBase {
 	int yMax = 0;
 	BufferedImage i1, i2, i3, i4, i5, i6, i7, i8;
 
-	public BasicEnemy1(int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
+	public SmallTurretEnemy(int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
 		super(100);
 		x = -100;
 		y = 300;
@@ -44,24 +45,6 @@ public class BasicEnemy1 extends EnemyBase {
 			ay = -.02;
 			ax = 0;
 		}
-
-		hitBox = new Rectangle();
-		try {
-			i1 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Right.png"));
-			i2 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1UpRight.png"));
-			i3 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Up.png"));
-			i4 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1UpLeft.png"));
-			i5 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Left.png"));
-			i6 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1DownLeft.png"));
-			i7 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Down.png"));
-			i8 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1DownRight.png"));
-
-		}
-		catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-
 	}
 
 	public boolean update() {
@@ -102,35 +85,35 @@ public class BasicEnemy1 extends EnemyBase {
 			double deg = Math.toDegrees(Math.atan2(dy, dx));
 			// Log.warn(deg+"");
 			if (deg <= 22.5 && deg > -22.5) {
-				setImage(scale(i1, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy0Degrees, 2, 2));
 				// Log.info("1");
 			}
 			if (deg < -22.5 && deg >= -67.5) {
-				setImage(scale(i2, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy45Degrees, 2, 2));
 				// Log.info("2");
 			}
 			if (deg < -67.5 && deg >= -112.5) {
-				setImage(scale(i3, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy90Degrees, 2, 2));
 				// Log.info("3");
 			}
 			if (deg < -112.5 && deg >= -157.5) {
-				setImage(scale(i4, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy135Degrees, 2, 2));
 				// Log.info("4");
 			}
 			if (deg < -157.5 && deg >= -180 || deg <= 180 && deg > 157.5) {
-				setImage(scale(i5, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy180Degrees, 2, 2));
 				// Log.info("5");
 			}
 			if (deg > 112.5 && deg <= 157.5) {
-				setImage(scale(i6, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy225Degrees, 2, 2));
 				// Log.info("6");
 			}
 			if (deg > 67.5 && deg <= 112.5) {
-				setImage(scale(i7, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy270Degrees, 2, 2));
 				// Log.info("7");
 			}
 			if (deg > 22.5 && deg <= 67.5) {
-				setImage(scale(i8, 2, 2));
+				setImage(scale(ImageLoader.smallTurretEnemy315Degrees, 2, 2));
 				// Log.info("8");
 			}
 			while (bps > ct) {

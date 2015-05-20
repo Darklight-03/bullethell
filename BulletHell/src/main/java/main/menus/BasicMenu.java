@@ -8,7 +8,7 @@ public class BasicMenu {
 
 	public void update(Graphics2D g) {
 		
-		g.drawImage(ImageLoader.background, 0, 0, null);
+		g.drawImage(ImageLoader.menuBackground, 0, 0, null);
 	}
 
 	public void moveLeft() {

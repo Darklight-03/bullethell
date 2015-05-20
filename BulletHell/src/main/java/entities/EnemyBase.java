@@ -11,7 +11,10 @@ public class EnemyBase extends EntityBase {
 		this.health = health;
 	}
 
-	public EnemyBase(int health) {
+	/*
+	 * Gives the enemy the amount of health specified in the constructor
+	 */
+	public EnemyBase(double health) {
 		super();
 		this.health = health;
 	}

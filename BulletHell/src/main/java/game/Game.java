@@ -15,7 +15,7 @@ import entities.BackgroundObject;
 import entities.EnemyBase;
 import entities.EntityBase;
 import entities.Player;
-import entities.enemies.BasicEnemy1;
+import entities.enemies.SmallTurretEnemy;
 import entities.projectiles.ProjectileBase;
 import game.stages.Stage;
 import game.stages.Stage1;
@@ -72,13 +72,9 @@ public class Game implements Runnable {
 	}
 
 	public Game(boolean isRealGame) {
-		try {
-			e1 = ImageIO.read(new File(Config.IMG_DIR + "EnemyTurret/Ship1Down.png"));
-		}
-		catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		
+		
+		
 		gameState = Config.PLAYING;
 		mainThread = new Thread(this);
 		mainThread.start();
