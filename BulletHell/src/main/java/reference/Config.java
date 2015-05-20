@@ -27,7 +27,7 @@ public class Config {
 
 	// list addresses to all of the images in the game here
 	public static final String IMG_DIR = "src/main/resources/";
-	public static final String PLAYER_IMAGE = "src/main/resources/placeHolder.png";
+	public static final String PLAYER_IMAGE = "src/main/resources/players/placeHolder.png";
 	public static final String PLACEHOLDER_BACKGROUND_OBJECT = "src/main/resources/placeholderBackgroundObject.jpg";
 	public static final String PLACEHOLDER_PROJECTILE = "src/main/resources/PlaceholderProjectile.jpg";
 	public static final String  UGLY_PLACEHOLDER_PROJECTILE= "src/main/resources/uglyPlaceholderProjectile.jpg";

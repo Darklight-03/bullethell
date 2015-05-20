@@ -9,7 +9,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import reference.Config;
-import entities.EnemyBase;
 import entities.projectiles.BasicShot;
 import game.GameManager;
 import graphics.ImageLoader;

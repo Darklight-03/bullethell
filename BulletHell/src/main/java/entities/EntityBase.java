@@ -32,11 +32,6 @@ public class EntityBase {
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 	}
 
-	public EntityBase(BufferedImage imageName) {
-		setImage(imageName);
-		hitBox = new Rectangle((int) x, (int) y, 1, 1);
-	}
-
 	public EntityBase() {
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 		image = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);

@@ -1,6 +1,6 @@
 package graphics;
 
-import entities.EnemyBase;
+import entities.enemies.EnemyBase;
 import game.Game;
 import game.GameManager;
 
@@ -109,24 +109,29 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 			GameManager.getGame().getPlayer().drawThis(bg);
 			if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
+
 			bg.setColor(Color.RED);
 			bg.drawString("Lives: " + GameManager.getGame().getPlayer().getLives(), 5, 15);
 			bg.drawString("Power Level: " + GameManager.getGame().getPlayer().getPower(), Config.WIDTH - 100, 15);
-			bg.drawString("Time: "+GameManager.getGame().getCurrentStage().getCount(),(Config.WIDTH/2)-50,15);
+			bg.drawString("Time: " + GameManager.getGame().getCurrentStage().getCount(), (Config.WIDTH / 2) - 50, 15);
 
-			if (fade + .01 <= 1) fade += .01;
+			if (fade + .015 <= 1) fade += .015;
 			lastUsedImage = buffer;
 
 			break;
+
 		case Config.MAIN_MENU:
 			bg.drawImage(lastUsedImage, 0, 0, null);
 			menu.update(bg);
 			break;
+
 		case Config.PAUSED:
 			bg.drawImage(lastUsedImage, 0, 0, null);
 			menu.update(bg);
 			break;
+
 		case Config.DEAD:
+			break;
 
 		}
 

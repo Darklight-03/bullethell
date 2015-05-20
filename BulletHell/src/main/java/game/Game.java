@@ -1,28 +1,22 @@
 package game;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 
 import reference.Config;
 import util.Log;
 import entities.BackgroundObject;
-import entities.EnemyBase;
 import entities.EntityBase;
-import entities.Player;
-import entities.enemies.SmallTurretEnemy;
+import entities.enemies.EnemyBase;
+import entities.players.PlayerBase;
 import entities.projectiles.ProjectileBase;
 import game.stages.Stage;
 import game.stages.Stage1;
 
 public class Game implements Runnable {
 
-	public Player player;
+	public PlayerBase player;
 	public Thread mainThread = new Thread(this), projectileCollisions = new Thread(new Runnable() {
 		/*
 		 * This Thread is designed to check all of the projectiles arraylists
@@ -41,7 +35,7 @@ public class Game implements Runnable {
 						}
 						if (count % ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 							checkEnemyCollisions();
-							checkIfPlayerIsDamaged();
+							checkIfPlayerIsHit();
 						}
 					}
 				}
@@ -72,13 +66,11 @@ public class Game implements Runnable {
 	}
 
 	public Game(boolean isRealGame) {
-		
-		
-		
+
 		gameState = Config.PLAYING;
 		mainThread = new Thread(this);
 		mainThread.start();
-		player = new Player(Config.PLAYER_IMAGE);
+		player = new PlayerBase();
 
 		currentStage = new Stage1();
 	}
@@ -168,7 +160,7 @@ public class Game implements Runnable {
 	 * This method will go through the arrayList of enemyProjectiles, and
 	 * determine whether or not any of them have hit the Player
 	 */
-	public void checkIfPlayerIsDamaged() {
+	public void checkIfPlayerIsHit() {
 		try {
 			for (int i = 0; i < enemyProjectiles.size(); i++) {
 				if (enemyProjectiles.get(i).getHitBox().intersects(player.getHitBox())) {
@@ -277,11 +269,11 @@ public class Game implements Runnable {
 		return gameState;
 	}
 
-	public Player getPlayer() {
+	public PlayerBase getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	public void setPlayer(PlayerBase player) {
 		this.player = player;
 
 	}

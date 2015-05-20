@@ -1,43 +1,42 @@
-package entities;
+package entities.players;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
+import entities.EntityBase;
 import entities.projectiles.player.HomingMissile;
 import entities.projectiles.player.PlayerShot;
 import game.GameManager;
+import graphics.ImageLoader;
 import graphics.Panel;
 import reference.Config;
-import util.Log;
 
-public class Player extends EntityBase implements Runnable {
+public class PlayerBase extends EntityBase implements Runnable {
 
 	protected final String NAME = "Player";
-	int width, height;
-	int lives = 0;
-	int invulnTime = 0;
+	int width, height,lives = 0,invulnTime = 0;
 	long iEnd = 0;
 	public int weapon = 0, powerLevel = 2;
 	private Thread t;
 	private boolean dead = false;
 	long count = 0;
 	Rectangle hitBox;
+	ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 
 	// TODO add method to switch the weapon when the switchweapon method is
 	// called
 
-	public Player(String imageName) {
-		super(imageName);
-		width = getImage().getWidth();
-		height = getImage().getHeight();
+	public PlayerBase() {
+		super();
+		setImages();
 		lives = 3;
-		x = Config.WIDTH / 2;
-		y = Config.HEIGHT / 2 + 200;
-
+		respawn();
 		t = new Thread(this);
 		t.start();
 	}
-
+	
 	public int getLives() {
 		return lives;
 	}
@@ -63,7 +62,7 @@ public class Player extends EntityBase implements Runnable {
 		//TODO Implement invulnerability.
 		invulnTime = 3;
 		x = Config.WIDTH / 2;
-		y = Config.HEIGHT / 2 + 200;
+		y = Config.HEIGHT / 2 + 300;
 		GameManager.getGame().gameState = Config.PLAYING;
 	}
 
@@ -244,5 +243,11 @@ public class Player extends EntityBase implements Runnable {
 
 	public Rectangle getHitBox() {
 		return hitBox;
+	}
+	
+	public void setImages(){
+		setImage(ImageLoader.player);
+		width = getImage().getWidth();
+		height = getImage().getHeight();
 	}
 }

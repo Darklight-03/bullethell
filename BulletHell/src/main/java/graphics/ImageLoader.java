@@ -5,7 +5,6 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import reference.Config;
 import util.Log;
 
 public class ImageLoader {
@@ -31,9 +30,9 @@ public class ImageLoader {
 	}
 
 	public void permLoaded() throws Exception {
-		menuBackground = ImageIO.read(new File(IMG_DIR+"permLoaded/MenuBackground.png"));
-		tully = ImageIO.read(new File(IMG_DIR+"permLoaded/Tully.png"));
-		player = ImageIO.read(new File("src/main/resources/placeHolder.png"));
+		menuBackground = ImageIO.read(new File(IMG_DIR+"permLoaded/menuBackground.png"));
+		tully = ImageIO.read(new File(IMG_DIR+"permLoaded/tully.png"));
+		player = ImageIO.read(new File("src/main/resources/players/placeHolder.png"));
 	}
 	
 

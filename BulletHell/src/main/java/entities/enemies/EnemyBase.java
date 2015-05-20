@@ -1,5 +1,6 @@
-package entities;
+package entities.enemies;
 
+import entities.EntityBase;
 import util.Log;
 
 public class EnemyBase extends EntityBase {
