@@ -52,7 +52,6 @@ public class Game implements Runnable {
 		}
 	});
 	public int gameState;
-	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
 	public ArrayList<ProjectileBase> enemyProjectiles = new ArrayList<ProjectileBase>();

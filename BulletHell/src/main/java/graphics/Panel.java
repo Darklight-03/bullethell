@@ -29,7 +29,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 
 	Thread game;
 	GameManager gM;
-	private float faded = .05f;
+	private float fade = .05f;
 	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
 	private char shoot, dropBombs, switchWeapons, extraKeyOne;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
@@ -72,7 +72,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		switch (GameManager.getGame().getGameState())
 		{
 		case Config.PLAYING:
-			bg.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, faded));
+			bg.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, fade));
 			// TODO remove the white rectangle once there is a working
 			// background
 			bg.setColor(Color.WHITE);
@@ -114,7 +114,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			bg.drawString("Power Level: " + GameManager.getGame().getPlayer().getPower(), Config.WIDTH - 100, 15);
 			bg.drawString("Time: "+GameManager.getGame().getCurrentStage().getCount(),(Config.WIDTH/2)-50,15);
 
-			if (faded + .01 <= 1) faded += .01;
+			if (fade + .01 <= 1) fade += .01;
 			lastUsedImage = buffer;
 
 			break;
@@ -320,7 +320,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		GameManager.getGame().shouldMoveSlow(false);
 		shouldMoveSlow = false;
 		GameManager.getGame().gameState = Config.PLAYING;
-		faded = .05f;
+		fade = .05f;
 	}
 
 	/*
