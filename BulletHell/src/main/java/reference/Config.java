@@ -1,6 +1,10 @@
 package reference;
 
+import game.GameManager;
+import graphics.ImageLoader;
+
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -47,6 +51,17 @@ public class Config {
 	 */
 	public Config() {
 		load();
+	}
+	
+	public static BufferedImage getBackground(){
+		int stage = GameManager.getGame().getStage();
+		switch(stage){
+		case 1:
+			return ImageLoader.Background1;
+		default: return null;
+		}
+		
+		
 	}
 
 	/*

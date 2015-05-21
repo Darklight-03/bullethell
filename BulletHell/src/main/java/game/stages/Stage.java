@@ -8,6 +8,9 @@ public class Stage {
 		count = 0;
 		Log.debug("new stage");
 	}
+	public int getStage(){
+		return 0;
+	}
 	public int getCount() {
 		return count;
 	}

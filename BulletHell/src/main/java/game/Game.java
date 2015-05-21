@@ -45,7 +45,7 @@ public class Game implements Runnable {
 			}
 		}
 	});
-	public int gameState;
+	public int gameState, bY = 0;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
 	public ArrayList<ProjectileBase> enemyProjectiles = new ArrayList<ProjectileBase>();
@@ -75,6 +75,12 @@ public class Game implements Runnable {
 		currentStage = new Stage1();
 	}
 
+	public int getYPos(){
+		return bY;
+	}
+	public int getStage(){
+		return currentStage.getStage();
+	}
 	/*
 	 * This thread will call the update methods for all of the existing
 	 * projectiles and entities- besides the player-, in order to make them move
@@ -98,13 +104,12 @@ public class Game implements Runnable {
 					if (count > 999999999) {
 						count = 0;
 					}
-					// Log.info("count = "+count);
-
-					// Log.info("count/this = 400 = "+(Config.UPS*Config.GAME_SPEED)/400);
-					// Log.info("(400) 0 = "+count%((Config.UPS*Config.GAME_SPEED)/400));
-
-					// Log.info("count/this = 1000 = "+Config.UPS/1000);
-					// Log.info("(1000) 0 = "+count%(Config.UPS/1000));
+					if((int)count%Math.ceil(((double)Config.UPS/120))==0){
+						if(bY<32)
+							bY++;
+						else
+							bY = 0;
+					}
 
 					if (count % ((Config.UPS * Config.GAME_SPEED) / 125) == 0) {
 						getPlayer().move(moveUpDepressed, moveDownDepressed, moveLeftDepressed, moveRightDepressed,
@@ -121,7 +126,7 @@ public class Game implements Runnable {
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
-				Log.info("fail");
+				Log.error("Game:run() was interrupted");
 			}
 		}
 	}
