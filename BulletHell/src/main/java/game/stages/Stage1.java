@@ -15,6 +15,10 @@ public class Stage1 extends Stage implements Runnable{
 		t.start();	
 	}
 	
+	public int getStage(){
+		return 1;
+	}
+	
 	public void spawning(){
 		if(count==1){
 				GameManager.getGame().enemies.add(new SmallTurretEnemy(2, 50, 10, 3));
@@ -40,7 +44,7 @@ public class Stage1 extends Stage implements Runnable{
 			try{
 				Thread.sleep((int)(1000/(1*Config.GAME_SPEED)));
 			}catch(Exception e){
-				Log.error("error in Thread: game.stages.Stage1.java:run()");
+				Log.error("error in Thread: game.stages.Stage1:run()");
 			}
 			if(!stop){ count++;
 			spawning();

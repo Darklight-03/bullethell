@@ -84,40 +84,40 @@ public class SmallTurretEnemy extends EnemyBase {
 			double deg = Math.toDegrees(Math.atan2(dy, dx));
 			// Log.warn(deg+"");
 			if (deg <= 22.5 && deg > -22.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy0Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy0Degrees, 2, 2));
 				// Log.info("1");
 			}
 			if (deg < -22.5 && deg >= -67.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy45Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy45Degrees, 2, 2));
 				// Log.info("2");
 			}
 			if (deg < -67.5 && deg >= -112.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy90Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy90Degrees, 2, 2));
 				// Log.info("3");
 			}
 			if (deg < -112.5 && deg >= -157.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy135Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy135Degrees, 2, 2));
 				// Log.info("4");
 			}
 			if (deg < -157.5 && deg >= -180 || deg <= 180 && deg > 157.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy180Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy180Degrees, 2, 2));
 				// Log.info("5");
 			}
 			if (deg > 112.5 && deg <= 157.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy225Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy225Degrees, 2, 2));
 				// Log.info("6");
 			}
 			if (deg > 67.5 && deg <= 112.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy270Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy270Degrees, 2, 2));
 				// Log.info("7");
 			}
 			if (deg > 22.5 && deg <= 67.5) {
-				setImage(scale(ImageLoader.smallTurretEnemy315Degrees, 2, 2));
+				setImage(Config.scale(ImageLoader.smallTurretEnemy315Degrees, 2, 2));
 				// Log.info("8");
 			}
 			while (bps > ct) {
 
-				GameManager.getGame().enemyProjectiles.add(new BasicShot(Config.UGLY_PLACEHOLDER_PROJECTILE, Math
+				GameManager.getGame().enemyProjectiles.add(new BasicShot(Config.scale(ImageLoader.pBul0,2,2), Math
 						.toDegrees(Math.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0,
 						0, true));
 
@@ -133,18 +133,5 @@ public class SmallTurretEnemy extends EnemyBase {
 		hitBox = new Rectangle((int) x - 18, (int) y - 18, 36, 36);
 	}
 
-	public static BufferedImage scale(BufferedImage img, double horizontalScale, double verticalScale) {
-		if (img != null) {
-			int transparency = img.getColorModel().getTransparency();
-			BufferedImage img2 = new BufferedImage((int) (img.getWidth() * horizontalScale),
-					(int) (img.getHeight() * verticalScale), transparency);
-			Graphics g = img2.getGraphics();
-			g.drawImage(img, 0, 0, (int) ((img.getWidth() * horizontalScale)),
-					(int) ((img.getHeight() * verticalScale)), 0, 0, img.getWidth(), img.getHeight(), null);
-			return img2;
-
-		}
-		else return null;
-
-	}
+	
 }

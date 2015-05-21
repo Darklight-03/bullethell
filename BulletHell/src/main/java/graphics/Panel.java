@@ -30,7 +30,8 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 	Thread game;
 	GameManager gM;
 	private float fade = .05f;
-	private int moveUp, moveDown, moveLeft, moveRight, moveSlow;
+	private long count = 0;
+	private int moveUp, moveDown, moveLeft, moveRight, moveSlow, bY =0;
 	private char shoot, dropBombs, switchWeapons, extraKeyOne;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
@@ -76,7 +77,12 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			// TODO remove the white rectangle once there is a working
 			// background
 			bg.setColor(Color.WHITE);
-			bg.fillRect(0, 0, getWidth(), getHeight());
+			for(int y = -32;y<=Config.HEIGHT+64;y+=32){
+				for(int x = -32; x<=Config.WIDTH+32 ; x+=32){
+					bg.drawImage(Config.getBackground(),x,y+GameManager.getGame().getYPos(),null);
+				}
+			}
+			
 			for (int i = 0; i < GameManager.getGame().getBackGroundObjects().size(); i++) {
 				GameManager.getGame().getBackGroundObjects().get(i).drawThis(bg);
 			}
@@ -149,11 +155,13 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 		while (true) {
 			try {
 				Thread.sleep(1000 / Config.FPS);
+				count++;
+				
 				repaint();
 			}
 			catch (InterruptedException e) {
 				repaint();
-				Log.error("Failed at repainting");
+				Log.fatal("Panel:run() was interrupted");
 			}
 		}
 

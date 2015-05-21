@@ -22,12 +22,17 @@ public class EntityBase {
 	protected final String NAME = "EntityBase";
 	public Rectangle hitBox;
 
+	public EntityBase(BufferedImage image) {
+			setImage(image);
+		hitBox = new Rectangle((int) x, (int) y, 1, 1);
+	}
+	
 	public EntityBase(String imageName) {
 		try {
 			setImage(ImageIO.read(new File(imageName)));
 		}
 		catch (IOException e) {
-			Log.error("Could not load image" + NAME);
+			Log.error("EntityBase:CONSTRUCTOR Could not load image" + NAME);
 		}
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 	}
