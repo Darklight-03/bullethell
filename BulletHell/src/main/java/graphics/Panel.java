@@ -161,7 +161,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			}
 			catch (InterruptedException e) {
 				repaint();
-				Log.error("Failed at repainting");
+				Log.fatal("Panel:run() was interrupted");
 			}
 		}
 

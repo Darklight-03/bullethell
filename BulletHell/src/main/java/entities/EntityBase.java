@@ -27,7 +27,7 @@ public class EntityBase {
 			setImage(ImageIO.read(new File(imageName)));
 		}
 		catch (IOException e) {
-			Log.error("Could not load image" + NAME);
+			Log.error("EntityBase:CONSTRUCTOR Could not load image" + NAME);
 		}
 		hitBox = new Rectangle((int) x, (int) y, 1, 1);
 	}

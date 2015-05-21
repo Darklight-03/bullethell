@@ -41,6 +41,7 @@ public class Game implements Runnable {
 				}
 				catch (InterruptedException e) {
 					e.printStackTrace();
+					Log.fatal("Game:run() was interrupted");
 				}
 			}
 		}
@@ -92,7 +93,7 @@ public class Game implements Runnable {
 			Thread.sleep(1000);
 		}
 		catch (Exception e) {
-
+			Log.error("error in Game:run()");
 		}
 		projectileCollisions.start();
 		while (true) {
@@ -126,7 +127,7 @@ public class Game implements Runnable {
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
-				Log.error("Game:run() was interrupted");
+				Log.fatal("Game:run() was interrupted");
 			}
 		}
 	}
@@ -157,7 +158,7 @@ public class Game implements Runnable {
 			}
 		}
 		catch (Exception e) {
-			Log.error("Failed to run checkEnemyCollisions()");
+			Log.error("Failed to run Game:checkEnemyCollisions()");
 		}
 	}
 
@@ -174,7 +175,7 @@ public class Game implements Runnable {
 			}
 		}
 		catch (Exception e) {
-			Log.error("Failed to run checkIfPlayerIsDamaged()");
+			Log.error("Failed to run Game:checkIfPlayerIsDamaged()");
 		}
 	}
 
@@ -191,6 +192,7 @@ public class Game implements Runnable {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			Log.error("Failed to run Game:theDeathMethod()");
 		}
 	}
 
@@ -231,7 +233,7 @@ public class Game implements Runnable {
 				if (!enemyProjectiles.get(i).update()) enemyProjectiles.remove(i);
 			}
 			catch (Exception e) {
-				Log.error("failed to update a projectile");
+				Log.warn("failed to update a projectile in Game:updateP()");
 			}
 		}
 		for (int i = 0; i < playerProjectiles.size(); i++) {
@@ -239,7 +241,7 @@ public class Game implements Runnable {
 				if (!playerProjectiles.get(i).update()) playerProjectiles.remove(i);
 			}
 			catch (Exception e) {
-				Log.error("failed to update a projectile");
+				Log.warn("failed to update a projectile in Game:updateP()");
 			}
 		}
 	}

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import util.Log;
+
 public class TextLoader {
 
 	public static BufferedImage titleScreen, TS_AboutSelected, TS_ExitSelected, TS_HighScoresSelected, TS_PlaySelected,
@@ -30,6 +32,7 @@ public class TextLoader {
 		}
 		catch (IOException e) {
 			e.printStackTrace();
+			Log.error("Some main menu text failed to load (TextLoader:CONSTRUCTOR)");
 		}
 	}
 

@@ -72,21 +72,22 @@ public class Config {
 		try {
 			scan = new Scanner(new File(SAVELOCATION));
 
-			if (!location("load")) Log.error("Failed to load the save location for the Config.txt file");
+			if (!location("load")) Log.warn("Failed to load the save location for the Config.txt file");
 			space("load");
 
-			if (!resolution("load")) Log.error("Failed to load the resolution");
+			if (!resolution("load")) Log.warn("Failed to load the resolution");
 			space("load");
 
-			if (!buttons("load")) Log.error("Failed to load the button configuration");
+			if (!buttons("load")) Log.warn("Failed to load the button configuration");
 			space("load");
 
-			if (!playerData("load")) Log.error("Failed to load the PlayerData");
+			if (!playerData("load")) Log.warn("Failed to load the PlayerData");
 			space("load");
 
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			Log.warn("Something happened at Config:load()");
 		}
 	}
 
@@ -98,21 +99,22 @@ public class Config {
 		try {
 			writer = new PrintWriter(SAVELOCATION + "", "UTF-8");
 
-			if (!location("save")) Log.error("Failed to save the save location for the Config.txt file");
+			if (!location("save")) Log.warn("Failed to save the save location for the Config.txt file");
 			space("save");
 
-			if (!resolution("save")) Log.error("Failed to save the resolution");
+			if (!resolution("save")) Log.warn("Failed to save the resolution");
 			space("save");
 
-			if (!buttons("save")) Log.error("Failed to save the button configuration");
+			if (!buttons("save")) Log.warn("Failed to save the button configuration");
 			space("save");
 
-			if (!playerData("save")) Log.error("Failed to save the PlayerData");
+			if (!playerData("save")) Log.warn("Failed to save the PlayerData");
 			space("save");
 
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			Log.warn("Something happened at Config:save()");
 		}
 		writer.close();
 	}

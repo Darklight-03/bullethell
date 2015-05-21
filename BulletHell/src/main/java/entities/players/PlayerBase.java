@@ -12,6 +12,7 @@ import game.GameManager;
 import graphics.ImageLoader;
 import graphics.Panel;
 import reference.Config;
+import util.Log;
 
 public class PlayerBase extends EntityBase implements Runnable {
 
@@ -52,6 +53,7 @@ public class PlayerBase extends EntityBase implements Runnable {
 		catch (InterruptedException e) {
 			
 			e.printStackTrace();
+			Log.error("PlayerBase:hit() was interrupted");
 		}
 		GameManager.getGame().theDeathMethod();
 
@@ -236,7 +238,7 @@ public class PlayerBase extends EntityBase implements Runnable {
 			}
 			catch (InterruptedException e) {
 				e.printStackTrace();
-
+				Log.error("PlayerBase:run() was interrupted");
 			}
 		}
 	}

@@ -26,7 +26,7 @@ public class ImageLoader {
 			loadStageOne();
 		}
 		catch (Exception e) {
-			Log.error("Failed to load the images");
+			Log.error("Failed to load the images (ImageLoader:CONSTRUCTOR)");
 		}
 	}
 
