@@ -25,6 +25,10 @@ public class Config {
 	 */
 	public static final int TITLESCREEN = 0, PLAY = 1, HIGHSCORES = 2, SETTINGS = 3, ABOUT = 4, PAUSESCREEN = 5;
 
+	/*
+	 * These variables are used in order to remember what player was selected
+	 */
+	public static final int MURICA = 0;
 	// list addresses to all of the images in the game here
 	public static final String IMG_DIR = "src/main/resources/";
 	public static final String PLAYER_IMAGE = "src/main/resources/players/placeHolder.png";

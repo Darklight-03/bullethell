@@ -246,7 +246,7 @@ public class PlayerBase extends EntityBase implements Runnable {
 	}
 	
 	public void setImages(){
-		setImage(ImageLoader.player);
+		ImageLoader.loadPlayer(GameManager.getGame().chosenPlayer);
 		width = getImage().getWidth();
 		height = getImage().getHeight();
 	}

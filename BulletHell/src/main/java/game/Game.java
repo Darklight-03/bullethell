@@ -45,7 +45,7 @@ public class Game implements Runnable {
 			}
 		}
 	});
-	public int gameState;
+	public int gameState, chosenPlayer = Config.MURICA;
 	private boolean moveUpDepressed = false, moveDownDepressed = false, moveLeftDepressed = false,
 			moveRightDepressed = false, shouldMoveSlow = false;
 	public ArrayList<ProjectileBase> enemyProjectiles = new ArrayList<ProjectileBase>();
