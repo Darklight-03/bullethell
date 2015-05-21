@@ -12,7 +12,7 @@ public class ImageLoader {
 	private final String IMG_DIR = "src/main/resources/";
 	private String nextImage = "none";
 	// permLoaded
-	public static BufferedImage menuBackground, player, tully, basicPlayerShot;
+	public static BufferedImage menuBackground, player, tully, basicPlayerShot, pBul0, pBul1, pBul2, pBul3;
 
 	// StageOne
 	public static BufferedImage smallTurretEnemy0Degrees, smallTurretEnemy45Degrees, smallTurretEnemy90Degrees,
@@ -41,6 +41,13 @@ public class ImageLoader {
 			
 			nextImage = "player";
 			player = ImageIO.read(new File("src/main/resources/players/placeHolder.png"));
+			
+			nextImage = "bullets";
+			pBul0 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul0.png"));
+			pBul1 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul1.png"));
+			pBul2 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul2.png"));
+			pBul3 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul3.png"));
+			
 		
 		}catch(Exception e){
 			Log.warn(nextImage+" failed to load in ImageLoader:permLoaded()");

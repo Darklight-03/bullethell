@@ -4,6 +4,7 @@ import game.GameManager;
 import graphics.ImageLoader;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.PrintWriter;
@@ -62,6 +63,21 @@ public class Config {
 		}
 		
 		
+	}
+	
+	public static BufferedImage scale(BufferedImage img, double horizontalScale, double verticalScale) {
+		if (img != null) {
+			int transparency = img.getColorModel().getTransparency();
+			BufferedImage img2 = new BufferedImage((int) (img.getWidth() * horizontalScale),
+					(int) (img.getHeight() * verticalScale), transparency);
+			Graphics g = img2.getGraphics();
+			g.drawImage(img, 0, 0, (int) ((img.getWidth() * horizontalScale)),
+					(int) ((img.getHeight() * verticalScale)), 0, 0, img.getWidth(), img.getHeight(), null);
+			return img2;
+
+		}
+		else return null;
+
 	}
 
 	/*

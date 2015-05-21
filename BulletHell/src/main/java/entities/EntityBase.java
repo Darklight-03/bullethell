@@ -22,6 +22,11 @@ public class EntityBase {
 	protected final String NAME = "EntityBase";
 	public Rectangle hitBox;
 
+	public EntityBase(BufferedImage image) {
+			setImage(image);
+		hitBox = new Rectangle((int) x, (int) y, 1, 1);
+	}
+	
 	public EntityBase(String imageName) {
 		try {
 			setImage(ImageIO.read(new File(imageName)));

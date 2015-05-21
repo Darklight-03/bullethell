@@ -3,6 +3,7 @@ package entities.projectiles;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import reference.Config;
 import util.Log;
@@ -17,6 +18,50 @@ public class ProjectileBase extends EntityBase {
 	protected final String NAME = "ProjectileBase";
 	public Rectangle hitBox;
 
+	
+	/*
+	 * this constructor accepts the directory of the image, starting x position,
+	 * starting y position, starting x velocity, starting y velocity,
+	 * acceleration of x, acceleration of y
+	 */
+	public ProjectileBase(BufferedImage image, double x, double y, double vx0, double vy0, double ax0, double ay0) {
+		super(image);
+		this.x = x;
+		this.y = y;
+		this.vx = vx0;
+		this.vy = vy0;
+		this.ax = ax0;
+		this.ay = ay0;
+
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
+				.getImage().getWidth(), this.getImage().getHeight());
+	}
+
+	/*
+	 * this constructor accepts the directory of the image, the angle that the
+	 * image will be fired at, the speed at which the bullet will travel at, the
+	 * starting x position, the starting y position, the acceleration in the x
+	 * axis, the acceleraton in the y axis, as well as a boolean to
+	 * differentiate the two constructors(the boolean should always be set to
+	 * true
+	 */
+	public ProjectileBase(BufferedImage image, double angle, double speed, double x, double y, double ax0, double ay0,
+			boolean toUseAnglesPutABooleanHereThatIsTrue) {
+		super(image);
+		if (!toUseAnglesPutABooleanHereThatIsTrue)
+			Log.warn("Something attempted to create a projectile that didn't use angles, but is using angles!! (remove the false at the end of the parameters.)");
+		this.angle = angle;
+		this.speed = speed;
+		this.x = x;
+		this.y = y;
+		this.ax = ax0;
+		this.ay = ay0;
+		this.vx = Math.cos(Math.toRadians(angle))*speed;
+		this.vy = Math.sin(Math.toRadians(angle))*speed;
+		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
+				.getImage().getWidth(), this.getImage().getHeight());
+	}
+	
 	/*
 	 * this constructor accepts the directory of the image, starting x position,
 	 * starting y position, starting x velocity, starting y velocity,

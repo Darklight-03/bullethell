@@ -84,48 +84,48 @@ public class PlayerBase extends EntityBase implements Runnable {
 			case 0:
 				
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 100) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(ImageLoader.pBul3, x - 7, y,
 							(Math.random()-.5)*1, -1, 0, -.1,.75));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 100) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(ImageLoader.pBul3, x + 7, y,
 							(Math.random()-.5)*1, -1, 0, -.1,.75));
 				}
 				break;
 			case 1:
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 8) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.scale(ImageLoader.pBul2,2,2),
 							x - 10, y, 0, -1, 0, -.1,3));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.scale(ImageLoader.pBul2,2,2),
 							x + 10, y, 0, -1, 0, -.1,3));
 				}
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 50) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x - 7, y,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(ImageLoader.pBul3, x - 7, y,
 							-.5, 3, -.005, -.1,1));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.PLACEHOLDER_PROJECTILE, x + 7, y,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(ImageLoader.pBul3, x + 7, y,
 							.5, 3, .005, -.1,1));
 				}
 				break;
 			case 2:
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 12) == 0) {
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.scale(ImageLoader.pBul0,2,2),
 							x - 10, y, 0, -4, 0, -.1,5));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.scale(ImageLoader.pBul0,2,2),
 							x + 10, y, 0, -4, 0, -.1,5));
 				}
 
 				if (count % (int) (Config.PLAYER_UPS * Config.GAME_SPEED / 5) == 0) {
-					GameManager.getGame().playerProjectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x - 7,
+					GameManager.getGame().playerProjectiles.add(new HomingMissile(ImageLoader.pBul3, x - 7,
 							y, -.4, -1, 0, -.05));
-					GameManager.getGame().playerProjectiles.add(new HomingMissile(Config.PLACEHOLDER_PROJECTILE, x + 7,
+					GameManager.getGame().playerProjectiles.add(new HomingMissile(ImageLoader.pBul3, x + 7,
 							y, .4, -1, 0, -.05));
 				}
 				if (count % ((int) ((Config.PLAYER_UPS * Config.GAME_SPEED) / 12)) == 0) {
 
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.scale(ImageLoader.pBul1,2,2),
 							x - 10, y, -1, -4, 0, -.1,5));
-					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.UGLY_PLACEHOLDER_PROJECTILE,
+					GameManager.getGame().playerProjectiles.add(new PlayerShot(Config.scale(ImageLoader.pBul1,2,2),
 							x + 10, y, 1, -4, 0, -.1,5));
 				}
 				break;
