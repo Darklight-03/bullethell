@@ -28,6 +28,7 @@ public class HomingMissile extends ProjectileBase {
 		damage = 1;
 	}
 	//DEPRECATED ( NO MORE STRINGS FOR IMAGES ANDREW )
+	@Deprecated
 	public HomingMissile(String imageName, double x, double y, double vx0, double vy0, double ax0, double ay0) {
 		// TODO possibly make is so that the bullets fired from the right side
 		// of the ship won't be able to cross the center of the ship

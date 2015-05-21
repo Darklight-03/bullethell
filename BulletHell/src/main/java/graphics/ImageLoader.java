@@ -30,7 +30,7 @@ public class ImageLoader {
 	public static BufferedImage smallTurretEnemy0Degrees, smallTurretEnemy45Degrees, smallTurretEnemy90Degrees,
 			smallTurretEnemy135Degrees, smallTurretEnemy180Degrees, smallTurretEnemy225Degrees,
 			smallTurretEnemy270Degrees, smallTurretEnemy315Degrees, Background1, bigPlane0, bigPlane1, bigPlane2,
-			bigPlane3;
+			bigPlane3, roundLargeBullet;
 
 	public ImageLoader() {
 		try {
@@ -56,7 +56,7 @@ public class ImageLoader {
 			pBul1 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul1.png"));
 			pBul2 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul2.png"));
 			pBul3 = ImageIO.read(new File(IMG_DIR+"permLoaded/Bullets/Player/Bul3.png"));
-			
+			roundLargeBullet = ImageIO.read(new File(IMG_DIR+"permloaded/Bullets/Enemies/RoundBulletLarge.png"));
 		
 		}catch(Exception e){
 			Log.warn(nextImage+" failed to load in ImageLoader:permLoaded()");
