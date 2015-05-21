@@ -18,6 +18,7 @@ public class EntityBase {
 	 * This is going to be the base for all of the game's entities
 	 */
 	public double x, y, ay, ax, vx, vy, health;
+	protected int width,height;
 	protected BufferedImage image;
 	protected final String NAME = "EntityBase";
 	public Rectangle hitBox;
@@ -63,11 +64,11 @@ public class EntityBase {
 	}
 
 	public int drawX() {
-		return (int) x - image.getWidth() / 2;
+		return (int) x - width / 2;
 	}
 
 	public int drawY() {
-		return (int) y - image.getHeight() / 2;
+		return (int) y - height / 2;
 	}
 
 	public int getY() {
@@ -119,6 +120,8 @@ public class EntityBase {
 
 	public void setImage(BufferedImage image) {
 		this.image = image;
+		width = image.getWidth();
+		height = image.getHeight();
 	}
 
 	public Rectangle getHitBox() {

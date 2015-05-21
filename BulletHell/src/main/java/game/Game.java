@@ -9,6 +9,7 @@ import util.Log;
 import entities.BackgroundObject;
 import entities.EntityBase;
 import entities.enemies.EnemyBase;
+import entities.players.Murica;
 import entities.players.PlayerBase;
 import entities.projectiles.ProjectileBase;
 import game.stages.Stage;
@@ -70,11 +71,12 @@ public class Game implements Runnable {
 	public Game(boolean isRealGame) {
 
 		gameState = Config.PLAYING;
+		currentStage = new Stage1();
 		mainThread = new Thread(this);
 		mainThread.start();
-		player = new PlayerBase();
-
-		currentStage = new Stage1();
+		
+		GameManager.setGame(this);
+		player = new Murica();
 	}
 
 	public int getYPos(){

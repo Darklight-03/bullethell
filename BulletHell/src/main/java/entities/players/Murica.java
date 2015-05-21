@@ -1,9 +1,11 @@
 package entities.players;
 
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+import graphics.ImageLoader;
 
-public class Murica extends PlayerBase{
+import java.awt.Graphics;
+
+
+public class Murica extends PlayerBase {
 
 	protected final String NAME = "Murica";
 	
@@ -11,8 +13,9 @@ public class Murica extends PlayerBase{
 		super();
 	}
 	
-	public void setImages(){
-		
+	public void drawThis(Graphics bg) {
+		int i = (int)count %4;
+		if (!dead) bg.drawImage(ImageLoader.player.get(i), drawX(), drawY(), null);
 	}
 
 }
