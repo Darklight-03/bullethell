@@ -6,7 +6,8 @@ import util.Log;
 public class EnemyBase extends EntityBase {
 
 	private double health;
-
+	
+	@Deprecated
 	public EnemyBase(String imageName, int health) {
 		super(imageName);
 		this.health = health;

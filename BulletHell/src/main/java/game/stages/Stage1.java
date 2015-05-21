@@ -1,5 +1,6 @@
 package game.stages;
 
+import entities.enemies.BigPlane;
 import entities.enemies.SmallTurretEnemy;
 import game.GameManager;
 import reference.Config;
@@ -20,13 +21,16 @@ public class Stage1 extends Stage implements Runnable{
 	}
 	
 	public void spawning(){
-		if(count==1){
-				GameManager.getGame().enemies.add(new SmallTurretEnemy(2, 50, 10, 3));
+		if(count == 1){
+			GameManager.getGame().enemies.add(new BigPlane(500));
 		}
-		if(count==10){
-		GameManager.getGame().enemies.add(new SmallTurretEnemy(10, 50, 1, 5));
-		stop = true;
-		}
+//		if(count==1){
+//				GameManager.getGame().enemies.add(new SmallTurretEnemy(2, 50, 10, 3));
+//		}
+//		if(count==10){
+//		GameManager.getGame().enemies.add(new SmallTurretEnemy(10, 50, 1, 5));
+//		stop = true;
+//		}
 		
 	}
 	
