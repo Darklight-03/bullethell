@@ -31,7 +31,7 @@ public class ImageLoader {
 	public static BufferedImage smallTurretEnemy0Degrees, smallTurretEnemy45Degrees, smallTurretEnemy90Degrees,
 			smallTurretEnemy135Degrees, smallTurretEnemy180Degrees, smallTurretEnemy225Degrees,
 			smallTurretEnemy270Degrees, smallTurretEnemy315Degrees, Background1, bigPlane0, bigPlane1, bigPlane2,
-			bigPlane3, roundLargeBullet;
+			bigPlane3, roundLargeBullet, roundSmallBullet;
 
 	public ImageLoader() {
 		try {
@@ -45,7 +45,6 @@ public class ImageLoader {
 
 	public void permLoaded() {
 		try {
-
 			nextImage = "menuBackground";
 			menuBackground = ImageIO.read(new File(IMG_DIR + "permLoaded/menuBackground.png"));
 
@@ -126,7 +125,7 @@ public class ImageLoader {
 					+ "stageOne/smallTurretEnemy/smallTurretEnemy315Degrees.png"));
 
 			nextImage = "Background1";
-			Background1 = ImageIO.read(new File(IMG_DIR + "stageOne/background32/Background.bmp"));
+			Background1 = ImageIO.read(new File(IMG_DIR + "stageOne/background32/Background.png"));
 
 			nextImage = "bigPlane";
 			bigPlane0 = ImageIO.read(new File(IMG_DIR + "stageOne/bigPlaneEnemy/bigPlane0000.png"));
