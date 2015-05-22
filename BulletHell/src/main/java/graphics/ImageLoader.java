@@ -32,6 +32,7 @@ public class ImageLoader {
 			smallTurretEnemy135Degrees, smallTurretEnemy180Degrees, smallTurretEnemy225Degrees,
 			smallTurretEnemy270Degrees, smallTurretEnemy315Degrees, Background1, bigPlane0, bigPlane1, bigPlane2,
 			bigPlane3, roundLargeBullet, roundSmallBullet;
+	public static ArrayList<BufferedImage> bigPlane = new ArrayList<BufferedImage>();
 
 	public ImageLoader() {
 		try {
@@ -132,7 +133,10 @@ public class ImageLoader {
 			bigPlane1 = ImageIO.read(new File(IMG_DIR + "stageOne/bigPlaneEnemy/bigPlane0001.png"));
 			bigPlane2 = ImageIO.read(new File(IMG_DIR + "stageOne/bigPlaneEnemy/bigPlane0002.png"));
 			bigPlane3 = ImageIO.read(new File(IMG_DIR + "stageOne/bigPlaneEnemy/bigPlane0003.png"));
-
+			bigPlane.add(bigPlane0);
+			bigPlane.add(bigPlane1);
+			bigPlane.add(bigPlane2);
+			bigPlane.add(bigPlane3);
 		}
 		catch (Exception e) {
 			Log.warn(nextImage + " failed to load in ImageLoader:loadStageOne()");
