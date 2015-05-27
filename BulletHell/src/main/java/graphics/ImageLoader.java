@@ -58,6 +58,7 @@ public class ImageLoader {
 			pBul2 = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Player/Bul2.png"));
 			pBul3 = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Player/Bul3.png"));
 			roundLargeBullet = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/RoundBulletLarge.png"));
+			roundSmallBullet = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/RoundBulletSmall.png"));
 
 		}
 		catch (Exception e) {

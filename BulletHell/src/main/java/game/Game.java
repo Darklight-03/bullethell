@@ -236,7 +236,8 @@ public class Game implements Runnable {
 				if (!enemyProjectiles.get(i).update()) enemyProjectiles.remove(i);
 			}
 			catch (Exception e) {
-				Log.warn("failed to update a projectile in Game:updateP()");
+				Log.warn("failed to update a enemy projectile in Game:updateP(), removing...");
+				enemyProjectiles.remove(i);
 			}
 		}
 		for (int i = 0; i < playerProjectiles.size(); i++) {
@@ -244,7 +245,8 @@ public class Game implements Runnable {
 				if (!playerProjectiles.get(i).update()) playerProjectiles.remove(i);
 			}
 			catch (Exception e) {
-				Log.warn("failed to update a projectile in Game:updateP()");
+				Log.warn("failed to update a player projectile in Game:updateP(), removing...");
+				playerProjectiles.remove(i);
 			}
 		}
 	}
