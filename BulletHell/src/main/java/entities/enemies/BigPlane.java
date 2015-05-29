@@ -14,6 +14,7 @@ public class BigPlane extends EnemyBase{
 	
 	public static final double RoF=.75;
 	public static final int numBullets = 16;
+	int nRot = 0;
 	int i = 0;
 	
 	public BigPlane(int x){
@@ -39,7 +40,8 @@ public class BigPlane extends EnemyBase{
 			if(GameManager.getGame().getCount()%(int) ((Config.UPS*Config.GAME_SPEED)/RoF) == 0){
 				int angleN = 360/numBullets;
 				for (int n = 0;n<numBullets;n++)
-				GameManager.getGame().enemyProjectiles.add(new BasicShot(Config.scale(ImageLoader.roundLargeBullet,3,3),(angleN*n),0.5,x,y,0,0,true));
+				GameManager.getGame().enemyProjectiles.add(new BasicShot(Config.scale(ImageLoader.roundLargeBullet,3,3),(angleN*n+nRot),0.5,x,y,0,0,true));
+				nRot++;
 			}
 		}
 		

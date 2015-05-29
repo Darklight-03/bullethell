@@ -17,6 +17,7 @@ public class ProjectileBase extends EntityBase {
 	protected boolean hasHitTarget = false;
 	protected final String NAME = "ProjectileBase";
 	public Rectangle hitBox;
+	int count = 0;
 
 	
 	/*
@@ -148,6 +149,10 @@ public class ProjectileBase extends EntityBase {
 	
 	public double getDamage(){
 		return damage;
+	}
+	
+	public void drawCount(Graphics bg) {
+		//bg.drawString(count+"",(int)x,(int)y-10);
 	}
 
 }

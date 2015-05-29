@@ -27,7 +27,7 @@ public class Stage1 extends Stage implements Runnable {
 				GameManager.getGame().enemies.add(new SmallTurretEnemy(2, 50, 10, 3));
 		}
 		if(count==10){
-		GameManager.getGame().enemies.add(new SmallTurretEnemy(10, 50, 1, 5));
+		GameManager.getGame().enemies.add(new SmallTurretEnemy(10, 50, 1, 4));
 		stop = true;
 		}
 		if(count == 11){

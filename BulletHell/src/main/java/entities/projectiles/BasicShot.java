@@ -27,6 +27,7 @@ public class BasicShot extends ProjectileBase {
 		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
 				.getImage().getWidth(), this.getImage().getHeight());
 	}
+	
 	//DEPRECATED ( NO MORE STRINGS FOR IMAGES ANDREW )
 	@Deprecated
 	public BasicShot(String imageName, double x, double y, double vx0, double vy0, double ax0, double ay0){
@@ -47,9 +48,11 @@ public class BasicShot extends ProjectileBase {
 	}
 	
 	public boolean update() {
+		count++;
 		if (!isInBounds(x, y)) {
 			return false;
 		}
+		if(count>1000) return false;
 		
 		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			x = x + vx;
@@ -65,6 +68,14 @@ public class BasicShot extends ProjectileBase {
 
 
 		return true;
+	}
+
+	
+
+	public void addV(double vx, double vy) {
+		this.vx +=vx;
+		this.vy +=vy;
+		
 	}
 
 }

@@ -116,10 +116,11 @@ public class SmallTurretEnemy extends EnemyBase {
 				// Log.info("8");
 			}
 			while (bps > ct) {
-
-				GameManager.getGame().enemyProjectiles.add(new BasicShot(Config.scale(ImageLoader.roundSmallBullet,2,2), Math
+				BasicShot shot = new BasicShot(Config.scale(ImageLoader.roundSmallBullet,2,2), Math
 						.toDegrees(Math.atan2(dy, dx)) + (Math.random() * Spread) - (Spread / 2), bulletSpeed, x, y, 0,
-						0, true));
+						0, true);
+				shot.addV(vx,vy);
+				GameManager.getGame().enemyProjectiles.add(shot);
 
 				ct++;
 			}
