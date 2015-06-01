@@ -1,14 +1,17 @@
 package entities.projectiles;
 
 import game.GameManager;
+import graphics.ImageLoader;
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import reference.Config;
 
 public class Bomb extends ProjectileBase{
-
+	boolean boom=false;
+	double exploScale = .1;
 	public Bomb(BufferedImage image, double x, double y, double vx0, double vy0, double ax0, double ay0, BufferedImage explosionImage) {
 		super(image, x, y, vx0, vy0, ax0, ay0);
 		hitBox = new Rectangle((int) x - this.getImage().getWidth() / 2, (int) y - this.getImage().getHeight(), this
@@ -22,6 +25,14 @@ public class Bomb extends ProjectileBase{
 
 	public boolean update() {
 		count++;
+		if(boom){
+			if(count%(int)(Config.UPS/10)==0){
+				exploScale += .1;
+			}
+		}
+		if(exploScale == 1.1){
+			return false;
+		}
 		if (!isInBounds(x, y)) {
 			return false;
 		}
@@ -40,7 +51,14 @@ public class Bomb extends ProjectileBase{
 		return true;
 	}
 	
+	public void drawThis(Graphics bg){
+		if(boom){
+			bg.drawImage(Config.scale(ImageLoader.explode,exploScale,exploScale),(int)x,(int)y,null);
+		}
+		bg.drawImage(ImageLoader.missile,(int)x,(int)y,null);
+	}
+	
 	public void explode(){
-		
+		boom = true;
 	}
 }

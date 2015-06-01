@@ -25,7 +25,7 @@ public class ImageLoader {
 	public static BufferedImage basicPlayerShot, pBul0, pBul1, pBul2, pBul3;
 
 	// permLoaded
-	public static BufferedImage menuBackground, tully;
+	public static BufferedImage menuBackground, tully, missile, explode;
 
 	// StageOne
 	public static BufferedImage smallTurretEnemy0Degrees, smallTurretEnemy45Degrees, smallTurretEnemy90Degrees,
@@ -59,6 +59,19 @@ public class ImageLoader {
 			pBul3 = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Player/Bul3.png"));
 			roundLargeBullet = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/RoundBulletLarge.png"));
 			roundSmallBullet = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/RoundBulletSmall.png"));
+			missile = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/Missile1.png"));
+			
+			
+			if(Config.tullyMode){
+				menuBackground = tully;
+				pBul0 = tully;
+				pBul1 = tully;
+				pBul2 = tully;
+				pBul3 = tully;
+				roundLargeBullet = tully;
+				roundSmallBullet = tully;
+				missile = tully;
+			}
 
 		}
 		catch (Exception e) {
@@ -138,6 +151,23 @@ public class ImageLoader {
 			bigPlane.add(bigPlane1);
 			bigPlane.add(bigPlane2);
 			bigPlane.add(bigPlane3);
+			if(Config.tullyMode){
+				smallTurretEnemy0Degrees = tully;
+				smallTurretEnemy45Degrees = tully;
+				smallTurretEnemy90Degrees =tully;
+				smallTurretEnemy135Degrees=tully;
+				smallTurretEnemy180Degrees = tully;
+				smallTurretEnemy225Degrees = tully;
+				smallTurretEnemy270Degrees = tully;
+				smallTurretEnemy315Degrees = tully;
+				Background1 = tully;
+				bigPlane0 = tully;
+				bigPlane1 = tully;
+				bigPlane2 = tully;
+				bigPlane3 = tully;
+				
+				
+			}
 		}
 		catch (Exception e) {
 			Log.warn(nextImage + " failed to load in ImageLoader:loadStageOne()");

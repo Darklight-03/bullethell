@@ -17,7 +17,8 @@ public class Config {
 	Scanner scan, lineScanner;
 	
 
-	public static final boolean DEBUG_MODE = true;
+	public static final boolean tullyMode = true;
+	public static final boolean DEBUG_MODE = false;
 	public static final boolean LOGGING = true;
 	public static final String NAME = "Death's Abyss";
 	public static final boolean USE_DIALOGS = true; // TODO implement later
