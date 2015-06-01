@@ -25,13 +25,13 @@ public class ImageLoader {
 	public static BufferedImage basicPlayerShot, pBul0, pBul1, pBul2, pBul3;
 
 	// permLoaded
-	public static BufferedImage menuBackground, tully;
+	public static BufferedImage menuBackground, tully, roundLargeBullet, roundSmallBullet;
 
 	// StageOne
 	public static BufferedImage smallTurretEnemy0Degrees, smallTurretEnemy45Degrees, smallTurretEnemy90Degrees,
 			smallTurretEnemy135Degrees, smallTurretEnemy180Degrees, smallTurretEnemy225Degrees,
 			smallTurretEnemy270Degrees, smallTurretEnemy315Degrees, Background1, bigPlane0, bigPlane1, bigPlane2,
-			bigPlane3, roundLargeBullet, roundSmallBullet;
+			bigPlane3, smallBoat0,smallBoat1,smallBoat2,smallBoat3,smallBoat4,smallBoat5;
 	public static ArrayList<BufferedImage> bigPlane = new ArrayList<BufferedImage>();
 
 	public ImageLoader() {
@@ -138,6 +138,14 @@ public class ImageLoader {
 			bigPlane.add(bigPlane1);
 			bigPlane.add(bigPlane2);
 			bigPlane.add(bigPlane3);
+			
+			nextImage = "smallBoat";
+			smallBoat0 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0000.png"));
+			smallBoat1 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0001.png"));
+			smallBoat2 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0002.png"));
+			smallBoat3 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0003.png"));
+			smallBoat4 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0004.png"));
+			smallBoat5 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0005.png"));
 		}
 		catch (Exception e) {
 			Log.warn(nextImage + " failed to load in ImageLoader:loadStageOne()");
