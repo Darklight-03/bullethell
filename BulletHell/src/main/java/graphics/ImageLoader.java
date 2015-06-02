@@ -22,16 +22,16 @@ public class ImageLoader {
 	public static ArrayList<BufferedImage> player = new ArrayList<BufferedImage>();
 
 	// projectiles
-	public static BufferedImage basicPlayerShot, pBul0, pBul1, pBul2, pBul3;
+	public static BufferedImage basicPlayerShot, pBul0, pBul1, pBul2, pBul3, roundSmallBullet, missile, explode;
 
 	// permLoaded
-	public static BufferedImage menuBackground, tully, missile, explode;
+	public static BufferedImage menuBackground, tully, roundLargeBullet;
 
 	// StageOne
 	public static BufferedImage smallTurretEnemy0Degrees, smallTurretEnemy45Degrees, smallTurretEnemy90Degrees,
 			smallTurretEnemy135Degrees, smallTurretEnemy180Degrees, smallTurretEnemy225Degrees,
 			smallTurretEnemy270Degrees, smallTurretEnemy315Degrees, Background1, bigPlane0, bigPlane1, bigPlane2,
-			bigPlane3, roundLargeBullet, roundSmallBullet;
+			bigPlane3, smallBoat0,smallBoat1,smallBoat2,smallBoat3,smallBoat4,smallBoat5;
 	public static ArrayList<BufferedImage> bigPlane = new ArrayList<BufferedImage>();
 
 	public ImageLoader() {
@@ -151,6 +151,7 @@ public class ImageLoader {
 			bigPlane.add(bigPlane1);
 			bigPlane.add(bigPlane2);
 			bigPlane.add(bigPlane3);
+<<<<<<< HEAD
 			if(Config.tullyMode){
 				smallTurretEnemy0Degrees = tully;
 				smallTurretEnemy45Degrees = tully;
@@ -168,6 +169,16 @@ public class ImageLoader {
 				
 				
 			}
+=======
+			
+			nextImage = "smallBoat";
+			smallBoat0 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0000.png"));
+			smallBoat1 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0001.png"));
+			smallBoat2 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0002.png"));
+			smallBoat3 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0003.png"));
+			smallBoat4 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0004.png"));
+			smallBoat5 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0005.png"));
+>>>>>>> 9aed857d2d45825774ff9006c7f5736ff1fcba43
 		}
 		catch (Exception e) {
 			Log.warn(nextImage + " failed to load in ImageLoader:loadStageOne()");

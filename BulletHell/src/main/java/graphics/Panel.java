@@ -117,7 +117,7 @@ public class Panel extends JPanel implements KeyListener, Runnable {
 			}
 
 			GameManager.getGame().getPlayer().drawThis(bg);
-			if (shouldMoveSlow) GameManager.getGame().getPlayer().drawHitBox(bg);
+			if (shouldMoveSlow || Config.DEBUG_MODE) GameManager.getGame().getPlayer().drawHitBox(bg);
 
 			bg.setColor(Color.RED);
 			bg.drawString("Lives: " + GameManager.getGame().getPlayer().getLives(), 5, 15);
