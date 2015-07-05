@@ -24,10 +24,10 @@ public class Stage1 extends Stage implements Runnable {
 	public void spawning(){
 		
 		if(count==1){
-				GameManager.getGame().enemies.add(new SmallTurretEnemy(2, 50, 10, 3));
+				GameManager.getGame().enemies.add(new SmallTurretEnemy(2, 50, 10, 2));
 		}
 		if(count==10){
-		GameManager.getGame().enemies.add(new SmallTurretEnemy(10, 50, 1, 4));
+		GameManager.getGame().enemies.add(new SmallTurretEnemy(10, 50, 1, 3));
 		stop = true;
 		}
 		if(count == 11){

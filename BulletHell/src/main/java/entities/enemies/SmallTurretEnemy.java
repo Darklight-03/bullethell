@@ -15,13 +15,14 @@ import graphics.ImageLoader;
 
 public class SmallTurretEnemy extends EnemyBase {
 	boolean left;
-	int RoF, bulletSpeed, Spread, bps, ct = 0;
+	int RoF, Spread, bps, ct = 0;
+	double bulletSpeed;
 	int[] xPoints, yPoints;
 
 	int yMax = 0;
 	BufferedImage i1, i2, i3, i4, i5, i6, i7, i8;
 
-	public SmallTurretEnemy(int RoF, int Spread, int bulletsPerShot, int bulletSpeed) {
+	public SmallTurretEnemy(int RoF, int Spread, int bulletsPerShot, double bulletSpeed) {
 		super(100);
 		x = -100;
 		y = 300;

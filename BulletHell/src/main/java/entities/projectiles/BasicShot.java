@@ -52,7 +52,7 @@ public class BasicShot extends ProjectileBase {
 		if (!isInBounds(x, y)) {
 			return false;
 		}
-		if(count>1000) return false;
+		if(count>20000) return false;
 		
 		if (GameManager.getGame().getCount() % (int) ((Config.UPS * Config.GAME_SPEED) / 100) == 0) {
 			x = x + vx;
