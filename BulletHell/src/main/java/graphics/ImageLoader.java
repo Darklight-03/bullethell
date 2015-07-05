@@ -151,7 +151,15 @@ public class ImageLoader {
 			bigPlane.add(bigPlane1);
 			bigPlane.add(bigPlane2);
 			bigPlane.add(bigPlane3);
-<<<<<<< HEAD
+			
+			nextImage = "smallBoat";
+			smallBoat0 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0000.png"));
+			smallBoat1 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0001.png"));
+			smallBoat2 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0002.png"));
+			smallBoat3 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0003.png"));
+			smallBoat4 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0004.png"));
+			smallBoat5 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0005.png"));
+			
 			if(Config.tullyMode){
 				smallTurretEnemy0Degrees = tully;
 				smallTurretEnemy45Degrees = tully;
@@ -166,19 +174,16 @@ public class ImageLoader {
 				bigPlane1 = tully;
 				bigPlane2 = tully;
 				bigPlane3 = tully;
+				smallBoat0 = tully;
+				smallBoat1= tully;
+				smallBoat2 = tully;
+				smallBoat3 = tully;
+				smallBoat4 = tully;
+				smallBoat5 = tully;
 				
 				
 			}
-=======
 			
-			nextImage = "smallBoat";
-			smallBoat0 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0000.png"));
-			smallBoat1 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0001.png"));
-			smallBoat2 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0002.png"));
-			smallBoat3 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0003.png"));
-			smallBoat4 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0004.png"));
-			smallBoat5 = ImageIO.read(new File(IMG_DIR +"stageOne/smallBoat/smallBoat0005.png"));
->>>>>>> 9aed857d2d45825774ff9006c7f5736ff1fcba43
 		}
 		catch (Exception e) {
 			Log.warn(nextImage + " failed to load in ImageLoader:loadStageOne()");
