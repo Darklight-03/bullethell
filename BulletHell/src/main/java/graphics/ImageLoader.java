@@ -57,25 +57,28 @@ public class ImageLoader {
 			pBul1 = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Player/Bul1.png"));
 			pBul2 = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Player/Bul2.png"));
 			pBul3 = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Player/Bul3.png"));
-			roundLargeBullet = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/RoundBulletLarge.png"));
-			roundSmallBullet = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/RoundBulletSmall.png"));
-			missile = ImageIO.read(new File(IMG_DIR + "permloaded/Bullets/Enemies/Missile1.png"));
+			nextImage = "roundbullets";
+			roundLargeBullet = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Enemies/RoundBulletLarge.png"));
+			roundSmallBullet = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Enemies/RoundBulletSmall.png"));
+			nextImage = "missile";
+			missile = ImageIO.read(new File(IMG_DIR + "permLoaded/Bullets/Enemies/Missile1.png"));
 			
-			
-			if(Config.tullyMode){
-				menuBackground = tully;
-				pBul0 = tully;
-				pBul1 = tully;
-				pBul2 = tully;
-				pBul3 = tully;
-				roundLargeBullet = tully;
-				roundSmallBullet = tully;
-				missile = tully;
-			}
+//			
+//			if(Config.tullyMode){
+//				menuBackground = tully;
+//				pBul0 = tully;
+//				pBul1 = tully;
+//				pBul2 = tully;
+//				pBul3 = tully;
+//				roundLargeBullet = tully;
+//				roundSmallBullet = tully;
+//				missile = tully;
+//			}
 
 		}
 		catch (Exception e) {
 			Log.warn(nextImage + " failed to load in ImageLoader:permLoaded()");
+			e.printStackTrace();
 		}
 
 	}

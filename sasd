@@ -1,0 +1,1261 @@
+[33mcommit 2919b7ccd7ed8d12a7a6f8f51b7ea92cff2fb555[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Jul 4 20:14:57 2015 -0500
+
+    made bullets from first 2 enemies a much more managable speed, and made bullets have a MUCH (200x) longer decay speed because they were dissapearing very quickly on the big planes.
+
+[33mcommit db7ab27baf1badde959946773b5727ea9b1adf5d[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Jul 4 20:08:09 2015 -0500
+
+    fixed conflicts from a long time ago that apparantly were never fixed because somebody is an idiot.
+
+[33mcommit 683fd0d5ba8361dcef769e2394fdaf29ceba3159[m
+Merge: c6f6ddb 9aed857
+Author: Darklight <bo.corman@gmail.com>
+Date:   Tue Jun 2 07:23:59 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/graphics/ImageLoader.java
+    	BulletHell/src/main/java/reference/Config.java
+
+[33mcommit c6f6ddb834304ec7b3a1174e98790efbeba06e31[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Jun 1 08:20:25 2015 -0500
+
+    added tully mode
+
+[33mcommit 9aed857d2d45825774ff9006c7f5736ff1fcba43[m
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Mon Jun 1 08:18:55 2015 -0500
+
+    row row row your boat through the bullet hell!
+
+[33mcommit 9d96619bd2dbb5c27f5a41949b3926a7ea8f3097[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri May 29 08:18:53 2015 -0500
+
+    don't remember what i did, but started making bomb projectile
+
+[33mcommit ae173aa93ae02c0bca8f13d991b74ba4dc77387a[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 27 07:58:23 2015 -0500
+
+    made all enemy types spawn in stage, possibly fixed null projectile causing crash
+
+[33mcommit 384bb9d5b911e46fbaca373444aad94573e23db4[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri May 22 08:21:52 2015 -0500
+
+    made bigPlane work
+
+[33mcommit 8da9ba49b81c906a59151827418fca4e81490c3c[m
+Merge: 100c7b4 876887c
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Fri May 22 07:41:26 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/game/stages/Stage1.java
+    	BulletHell/src/main/java/graphics/ImageLoader.java
+
+[33mcommit 100c7b4ac9882bfb0a51dbe69fed167360515385[m
+Author: andrew <andrewkennedyftw@gmail.com>
+Date:   Thu May 21 08:17:52 2015 -0500
+
+    finished addign the new player
+
+[33mcommit 876887cd2c1e9e8e267ff1b9ccdab11c958ec213[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 21 08:17:47 2015 -0500
+
+    added new enemy, need to fix transparency
+
+[33mcommit 18bc610bf97fb28602dc5c08f1853fcddbd5c4b1[m
+Merge: 3e15921 75d97cf
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Thu May 21 07:27:40 2015 -0500
+
+    Merge branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+
+[33mcommit 3e15921b70be92634c8ea1b88e535b612127bb15[m
+Merge: 34c2b88 9ed0732
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Thu May 21 07:27:20 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/game/Game.java
+    	BulletHell/src/main/java/graphics/ImageLoader.java
+
+[33mcommit 75d97cf5afb4f33625a5445534114dbc2e9367bb[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 21 07:27:16 2015 -0500
+
+    actually deprecated andrew's methods now
+
+[33mcommit 83860435ad860750018231ef29e2d663ab5fc38e[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 21 07:24:52 2015 -0500
+
+    added enemy bullet and used it for turreted enemy
+
+[33mcommit 34c2b888be149100186eb6485d3ced8749f13971[m
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Thu May 21 07:21:06 2015 -0500
+
+    worked on loading images and the player class
+
+[33mcommit 9ed0732584236e99a3199e76584ffd99e3f1e7be[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 21 00:42:30 2015 -0500
+
+    implemented new projectiles, fixed andrew's stupid projectile adding methods that involved strings, and left him deprecated messages next to them. NEED TO MAKE ENEMIES SHOOT PROJECTILES THAT FACE THE RIGHT WAY
+
+[33mcommit b13241dc507f72ddcdc558e8f366784e4c545dab[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 21 00:10:56 2015 -0500
+
+    added 4 player bullet images
+
+[33mcommit d7139410432bac824b05c78f1e85ec8c562e92a1[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 20 23:41:26 2015 -0500
+
+    added power+ powerup image
+
+[33mcommit 50b32ddb0a28ff5c16abe737396f3927a87cff7d[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 20 23:26:33 2015 -0500
+
+    redid most error messages, now displays class and method that they occur in , also added an error/warn/fatal to all catches
+
+[33mcommit 25d8a573ceb0bb2c3c399935328253f1dc4dcfef[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 20 23:07:18 2015 -0500
+
+    added and implemented scrolling background, fixed some image loading stuff and made image loading log which image failed to load if one of them does. Also made the bigPlane face the correct direction.
+
+[33mcommit db20b9151038d426db0a59f7d0fd678610c11554[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 20 21:50:24 2015 -0500
+
+    added bigPlane images, making more images now maybe while listening to music and bored.
+
+[33mcommit 93aeed315400b384770b9b67089b360a061da449[m
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Wed May 20 08:20:30 2015 -0500
+
+    worked on adding our first actual player, modified the image loading a
+    tiny bit
+
+[33mcommit e24e68c6cb5221fab647861ca1c0ad18403ddc19[m
+Merge: 8b05ef7 e22de8a
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Wed May 20 07:44:15 2015 -0500
+
+    Merge branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+
+[33mcommit 8b05ef7214f3bcabe37cc06d12d6f2d332529ce0[m
+Author: andrew <andrewkennedyftw@gmail.com>
+Date:   Wed May 20 07:44:03 2015 -0500
+
+    worked on loading images
+
+[33mcommit e22de8ac762255a7ee745e8bc56e118f57983efc[m
+Merge: ce99ab4 d193d3f
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 20 07:42:22 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit ce99ab4521d7c05d70c108d78caf91db855bd1b6[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 20 07:41:50 2015 -0500
+
+    Added Pro-Peller plane images with ROTATING PROPELLERS
+
+[33mcommit d193d3faf91d6e8822f515b1aa7e6bfb337a13b6[m
+Author: andrew <andrewkennedyftw@gmail.com>
+Date:   Tue May 19 07:47:23 2015 -0500
+
+    removed the Testing enemy which was mostly broken, began working on a
+    new image loading system
+
+[33mcommit 6e1079b27ebf7ea587c1928b63c12697beea758b[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon May 18 08:17:58 2015 -0500
+
+    player is now invincible for 3 seconds after dying unless they shoot.
+
+[33mcommit 1613659d6ea020d2cb4136054413ee24f00e2a69[m
+Merge: 5884fff 1cb5eac
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Fri May 15 21:21:58 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/graphics/Panel.java
+
+[33mcommit 5884fff456b8fa6108c40c8197fbc477eac34055[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Fri May 15 21:20:54 2015 -0500
+
+    Menu screens now fade out: all of my work for the day! nah, just
+    kidding.. I changed everything to use Graphics2D instead of Graphics, as
+    well as some other misc. changes to the menu system.
+
+[33mcommit 1cb5eaccab4cfe56bc164378c2d693440fabbd19[m
+Merge: 0bc89e1 a109a6f
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri May 15 08:21:38 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 0bc89e1162efa5ca667ed3b4f879987dcc0ad2e9[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri May 15 08:15:10 2015 -0500
+
+    added timer
+
+[33mcommit a109a6f31b17058c39805fc7d0c8f7de36e026bd[m
+Author: othscs285 <othscs285@T155205.oths.katyisd.org>
+Date:   Fri May 15 08:04:44 2015 -0500
+
+    made the panel movable while undecorated
+
+[33mcommit 6b0a5eccb10e1c45f4b50cd38c85fba1926efc9e[m
+Merge: 8c1300d fd13e7a
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri May 15 07:25:46 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/graphics/Frame.java
+    	BulletHell/src/main/java/graphics/Panel.java
+    	BulletHell/src/main/java/reference/Config.java
+
+[33mcommit fd13e7a258bf126126d3e9c2b3da9c72d0d2fc27[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Thu May 14 21:39:40 2015 -0500
+
+    got the basic framework for a menu system, as well as added a main menu!
+    Currently, the only option you can select though is the "Play" option.
+
+[33mcommit 797b03a70b70c8637acefc41746b39c99ed4c99c[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Thu May 14 18:49:00 2015 -0500
+
+    worked on the menu screen a tiny bit
+
+[33mcommit 8c1300d7009cda39fb1118de418c77ef0b844755[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 14 08:18:01 2015 -0500
+
+    added life counter, power counter and debug options. Redid power level 0 and changed the way power level is reduced.
+
+[33mcommit e849c1d26b44e1891515fd966d66f1084479e579[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 13 08:21:06 2015 -0500
+
+    fixed respawning (no longer halts game), still need to add invulnerability to respawning.
+
+[33mcommit 888d789fdeca1a2e7f42c57c069992414324ac8a[m
+Merge: 64da25a 08287e1
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 13 08:15:40 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/Player.java
+    	BulletHell/src/main/java/reference/Config.java
+
+[33mcommit 64da25a0dc6978837ae5ca10c955e41e6269fa34[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed May 13 08:13:25 2015 -0500
+
+    Extreme optimization, no more laggy everything for now.
+
+[33mcommit 08287e19b6ef53e834fa77702e000a8a2301a72c[m
+Author: LegitCookie <O0309505@T155205.oths.katyisd.org>
+Date:   Tue May 12 08:10:51 2015 -0500
+
+    Changing threading stuff, made a semi working death method
+
+[33mcommit 0de6e3fa78fd5b91d6950613ef995a593f95da36[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Tue May 12 07:53:27 2015 -0500
+
+    added like nothing
+
+[33mcommit 084365b2a2303da5279e92e30825def647df06ea[m
+Merge: 8877c61 7ef279c
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon May 11 08:21:47 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 8877c6147fbddd77bfc30746d56b568da941901f[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon May 11 08:21:26 2015 -0500
+
+    added ability to stop spawning until all enemies ded
+
+[33mcommit 7ef279c13af3a571fe294bb159bd48fb56b0afbd[m
+Merge: 0631313 9e25440
+Author: andrew <andrewkennedyftw@gmail.com>
+Date:   Mon May 11 08:13:16 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+
+[33mcommit 0631313a35e7a8100dfd71e099b84993deea79a3[m
+Author: LegitCookie <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 11 08:12:58 2015 -0500
+
+    Changed the threading system a bit more and added methods for checking
+    if the player has been hit- they currently aren't working
+
+[33mcommit 9e25440aedd1d5468b50951c44f1e539d80108e6[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon May 11 08:12:46 2015 -0500
+
+    fixed lag, added stage, added 2 enemies
+
+[33mcommit 2931a605f8f0b9fb7976dbee2cdd771b9621b226[m
+Merge: c5f85c0 63d4a2a
+Author: LegitCookie <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 11 07:53:55 2015 -0500
+
+    Merge branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/main/Game.java
+
+[33mcommit c5f85c0863f320b0a99e289515a3a0d58e20e00d[m
+Author: LegitCookie <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 11 07:47:24 2015 -0500
+
+    modified the threads in Game a tiny bit
+
+[33mcommit 63d4a2a9cef80f9a5987afceb975a7dd4fc11571[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu May 7 08:17:57 2015 -0500
+
+    reorganized files and added Stage files (incomplete)
+
+[33mcommit 60c797c1b9001cb40bd87782dee95f2365c2d27f[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Tue May 5 21:50:46 2015 -0500
+
+    worked on the title screen: seems finished but may need some slight
+    enhancements
+
+[33mcommit 8da2e4582789a22fb17e6cf13a3a77f0b6bfbd73[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon May 4 23:26:40 2015 -0500
+
+    Created a title screen, as well as uploaded some possible stuff for
+    text(that we likely won't use), also found out that Bo's opinion is 100%
+    invalid, no matter what the scenario is.
+
+[33mcommit 47ac864b55dd6193ae5d7004efeb4a017c40269f[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon May 4 20:54:17 2015 -0500
+
+    Renamed the Code to Death's abyss
+
+[33mcommit 281a9a85afd1ea5542ac1aa6ae38e7530e709cb3[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon May 4 20:53:12 2015 -0500
+
+    Added a set of images to be used for the menues/ misc text throughout
+    the program
+
+[33mcommit c2b3efb75da64bcabbf2266660d69ce362e6ecc4[m
+Merge: 3895b2e cb6aa09
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon May 4 20:02:24 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/enemies/BasicEnemy1.java
+    	BulletHell/src/main/java/graphics/Panel.java
+
+[33mcommit 3895b2ee92f9c5085ffd30e9e1839d329c189a01[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon May 4 19:35:34 2015 -0500
+
+    Got collision detection working for enemies
+
+[33mcommit be3e61858314992930dc9a6a1b5e8a3673243d28[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 4 08:23:05 2015 -0500
+
+    removed polygot hitboxes, and added a nicer way of painting everything
+    on the screen
+
+[33mcommit cb6aa09ea11c478b10b68fa4e81ef97425ab7ed8[m
+Merge: 8c9d2a7 aaf34cf
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon May 4 08:22:44 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/enemies/BasicEnemy1.java
+    	BulletHell/src/main/java/entities/projectiles/BasicShot.java
+    	BulletHell/src/main/java/entities/projectiles/ProjectileBase.java
+    	BulletHell/src/main/java/graphics/Panel.java
+
+[33mcommit 8c9d2a7d9d0e47e007848301adfc1582ceedccaf[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon May 4 08:19:35 2015 -0500
+
+    made barrel rotate of BasicEnemy1 (do a barrel roll)
+
+[33mcommit aaf34cf3f7a9af69b70227e57896a623c8e3cba4[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 4 08:00:00 2015 -0500
+
+    Fixed all issues resulting from swapping Game and GameManager, and
+    changing a lot of static variables.
+
+[33mcommit 809da9796e44e40b13b10a85caf7eaa8ab8dcf4c[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 4 07:34:44 2015 -0500
+
+    swapping GameManager and game files
+
+[33mcommit 67275d96e39a77165ce861cd9e0a40eec235009b[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 4 07:09:54 2015 -0500
+
+    fixed even more conflicts after pulling the code
+
+[33mcommit 9dd412ddacf9698fc891f661261990bfd5a968eb[m
+Merge: a11f103 d9be8cd
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon May 4 07:08:10 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/enemies/BasicEnemy1.java
+    	BulletHell/src/main/java/graphics/Panel.java
+
+[33mcommit d9be8cdd282c1ce128a0383ff8aefe5a51ac8bdd[m
+Author: unknown <O0309505@T155205.oths.katyisd.org>
+Date:   Fri May 1 08:21:05 2015 -0500
+
+    fixed derp errors in code
+
+[33mcommit d28cf2f0e17ac244e73d18632557f394e682b406[m
+Merge: 32928e3 5fce1ff
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri May 1 08:17:40 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/enemies/BasicEnemy1.java
+
+[33mcommit 32928e3f3a9f04f3607fee431a5fda44ad79a7e9[m
+Author: unknown <O0309505@T155205.oths.katyisd.org>
+Date:   Fri May 1 08:16:14 2015 -0500
+
+    Git bash is really fun to use
+
+[33mcommit 5fce1ff482a0e47e8c354c01e56b7236235e7548[m
+Merge: 6a96e01 be51312
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri May 1 08:13:45 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/enemies/BasicEnemy1.java
+    	BulletHell/src/main/java/entities/projectiles/BasicShot.java
+    	BulletHell/src/main/java/main/GameManager.java
+    	BulletHell/src/main/java/reference/Config.java
+
+[33mcommit 6a96e01a816080668d960fe578b4926d8f41e8ff[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu Apr 30 08:09:20 2015 -0500
+
+    reduced enemy bullet hitbox size for less omgwtfbbq moments
+
+[33mcommit be5131209c80a10619a063929296ae083d2fcc74[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri May 1 07:51:31 2015 -0500
+
+    fixed an issue where the bullets loading their images was crashing the
+    game
+
+[33mcommit 731c703ac35d0466a587aaacf6bd1649f0312fc3[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri May 1 07:47:10 2015 -0500
+
+    de-hard coded image locations: they are now saved as directories in the
+    Config class
+
+[33mcommit eb85252de2750b585b7982151d25b2ec89c1c1bf[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu Apr 30 08:09:20 2015 -0500
+
+    reduced enemy bullet hitbox size for less omgwtfbbq moments
+
+[33mcommit 4af87ce28f6218dd9b0e4eedfc8a0e1837df8ee6[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu Apr 30 07:53:47 2015 -0500
+
+    added preferences and stupid testing hitbox checks
+
+[33mcommit a11f103feb0aab2c3cc22c6e90dca5381d0f15a9[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 29 08:21:04 2015 -0500
+
+    worked on hitboxes some more
+
+[33mcommit a9d352f92649a55f0c14aaac4b93f355459b2798[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 29 08:20:16 2015 -0500
+
+    added image for ship with rotating turret
+
+[33mcommit 02d94b23b57cecb4aa984aad07f316384ce08cc5[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 29 07:52:39 2015 -0500
+
+    added an interface to help make creating Polygon hitboxes easier
+
+[33mcommit ab103976caa59f0cff883c6bcffcab3eb0abff2a[m
+Merge: f9898e2 64b2281
+Author: Darklight <bo.corman@gmail.com>
+Date:   Tue Apr 28 08:19:59 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/projectiles/ProjectileBase.java
+    	BulletHell/src/main/java/main/GameManager.java
+
+[33mcommit f9898e2dc677fe09f460bcb1c115c780afe7f922[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Tue Apr 28 08:18:32 2015 -0500
+
+    completed-ish basicEnemy1
+
+[33mcommit 64b2281d74e010ebaeec991a1c9ce8f07e0dee6a[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Tue Apr 28 08:15:18 2015 -0500
+
+    worked on the hitboxes, got them to work for the projectiles, still a
+    work in progress for the enemies
+
+[33mcommit 3b1969a1c32244bdc7ce84940e0ea88085ec44b6[m
+Merge: 5d705b9 9475618
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 27 08:21:36 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 5d705b99bed5072e8f657a3ecc6065c344005c90[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 27 08:21:28 2015 -0500
+
+    working on new enemy
+
+[33mcommit 9475618a3e7c41167495f523673720680fc6e4a1[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 27 08:18:21 2015 -0500
+
+    fixed the AI for testingEnemy somewhat, also believe that I may have
+    somehow broken the shooting mechanic!
+
+[33mcommit 7ddbeb08289b099919bca89e8919ea120dadfd19[m
+Merge: 5db1911 973687d
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 27 07:57:19 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/Player.java
+
+[33mcommit 5db191158d7151d014367bfd31bb8c6e801b0f30[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 27 07:55:15 2015 -0500
+
+    modified some of the threads to work with the new thread system
+
+[33mcommit 973687d64b33fbdf0b735c7092586c9840ec62f9[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 27 07:53:10 2015 -0500
+
+    fixed bug with player shots not firing
+
+[33mcommit e8709f758914e554c0fc805517bc9ccb6c349193[m
+Merge: 92d207c bf1ac27
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 27 07:36:35 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 92d207cf1f074dc08cdc52d96cae5085cc36de8d[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 27 07:36:22 2015 -0500
+
+    probably did something?
+
+[33mcommit bf1ac27fdca50e8dca7c5a04415a2361b5d51d19[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 24 08:20:22 2015 -0500
+
+    modified the findNearestEnemy() method so that it now works with the
+    enemies, and not the backGround objects
+
+[33mcommit b7c146f0a881ed794e18cb5a26c80d1f0f267b23[m
+Merge: ac4c12c 27e1a6d
+Author: unknown <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 24 08:14:03 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/main/GameManager.java
+
+[33mcommit ac4c12cf3bcab86e219f1fe41611bc7cfe9bf3ea[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 24 08:12:26 2015 -0500
+
+    worked on the enemy AI
+
+[33mcommit 27e1a6d6ba6e2b45610f2ab895b35e25527e0026[m
+Merge: 5626783 2e2e329
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 24 08:07:40 2015 -0500
+
+    Merge branch 'newThreadSystem'
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/enemies/BasicEnemy1.java
+    	BulletHell/src/main/java/main/GameManager.java
+
+[33mcommit 2e2e32997988aa7904840168ae690b5e287fb080[m
+Merge: 777dc86 b26f1d7
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 24 08:01:57 2015 -0500
+
+    Merge branch 'newThreadSystem' of https://bitbucket.org/cs2games/bullet-hell into newThreadSystem
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/BackgroundObject.java
+    	BulletHell/src/main/java/graphics/Panel.java
+    	BulletHell/src/main/java/main/GameManager.java
+
+[33mcommit 777dc863ae0cc410e2c8ed1091474dda2a30aa66[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 24 07:48:39 2015 -0500
+
+    rebased with current master and fixed minor issues
+
+[33mcommit 9c2e4f37113fa5a2dae53c0c8371ec882a8b0b05[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 24 07:24:56 2015 -0500
+
+    fixed player move speed
+
+[33mcommit e8070d94ab4a79d4ce93a981046290f66c1261de[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 20 08:22:10 2015 -0500
+
+    fixed fps, moved playermove into gamemanager, now need to fix move speed
+
+[33mcommit 56267836dc1e2f00d96af39129251ed5f5a85051[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 24 07:34:40 2015 -0500
+
+    fixed repaint order, changed getEntities() to getEnemies()
+
+[33mcommit 02da74d7147234ebbddb167385b6acba56382ead[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 20 07:52:59 2015 -0500
+
+    reworked thread -- needs testing
+
+[33mcommit b1a1164a0c3df0a2380291486cfab276d8eabf75[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 24 07:30:07 2015 -0500
+
+    Misc. changes, added a testing image for enemies
+
+[33mcommit b26f1d777b7c23f3e05a0ed0dcc859404ea39b6e[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 24 07:24:56 2015 -0500
+
+    fixed player move speed
+
+[33mcommit 1532b0b524742b8181d0ded8dd05e4e04e79fb15[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 24 07:12:48 2015 -0500
+
+    added a toString() method to some of the entities
+
+[33mcommit 61de62144505be8c3199a468e5a5e95da88fa158[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 22 08:21:19 2015 -0500
+
+    added a ton of commentary, I think that I got the homing missiles to
+    work as well
+
+[33mcommit bf218be14578e19d7b49c32152ef2f83a77ea1e3[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Tue Apr 21 08:21:21 2015 -0500
+
+    worked on the homing misile
+
+[33mcommit 07ac38b702c6bacd5bd8bd61ad8e30a6d0dd15da[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 20 08:22:10 2015 -0500
+
+    fixed fps, moved playermove into gamemanager, now need to fix move speed
+
+[33mcommit 96074873e2bf21cac8974f3762d2799637ba693b[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 20 08:21:10 2015 -0500
+
+    worked on the homing missile
+
+[33mcommit 70fd553696a340dfbd4e401b7e41c053f270f545[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 20 07:56:20 2015 -0500
+
+    added format file
+
+[33mcommit a1347d22ca2347c9b1567efa7021b8296b389210[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 20 07:52:59 2015 -0500
+
+    reworked thread -- needs testing
+
+[33mcommit 14cdd13778ad1964d3ef09cfb1f2de987a7f8fab[m
+Merge: 9e9c039 a90c343
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 20 07:30:12 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/Player.java
+
+[33mcommit 9e9c039f31f4b37ac22c287cfdc8f54110486790[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 20 07:21:51 2015 -0500
+
+    fixed issue where the player won't shoot after pausing
+
+[33mcommit acb6d69b070f177486d0219e23f0f8b1081d2888[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Mon Apr 20 07:06:49 2015 -0500
+
+    Trying to fix errors with pulling the code
+
+[33mcommit a90c343b5c71374675abc4c7b0790e9d5f4086af[m
+Merge: b4894a0 27f681f
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 19:52:03 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/Player.java
+    	BulletHell/src/main/java/reference/Config.java
+
+[33mcommit b4894a0dbe02e3595ed74c2e612fb3311c6a73de[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 19:43:33 2015 -0500
+
+    reworked player thread
+
+[33mcommit 27f681fcb44f470724ecdbba9dd87e4b497d543e[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Sat Apr 18 19:35:37 2015 -0500
+
+    added slow movement to the player when they hold down the shift key,
+    other misc. changes
+
+[33mcommit 1fa4fd1a89900602df104fae5f1fefe5f5dd1486[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 17:53:53 2015 -0500
+
+    moved some files, probably did something else too...
+
+[33mcommit f14659bf2de9ee4d1d0c6194585993f5282ab238[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 17:53:46 2015 -0500
+
+    moved some files, probably did something else too...
+
+[33mcommit 5a587f60c9682f05987479cd7f3582e55b89772f[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 17:34:17 2015 -0500
+
+    fixed bullets dissapearing off the edge
+
+[33mcommit fd63a1d72f0f5b469b19165688e4c5d005017881[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 17:31:48 2015 -0500
+
+    reworked projectiles?
+
+[33mcommit a2260f3ebe5fbc39ea588cd3fc874b0e5f5fa3f4[m
+Merge: 830852d 9f03d63
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 17:31:17 2015 -0500
+
+    reworked projectiles
+
+[33mcommit 830852d8c788eebf2e88325360d7c3aca697a3e3[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Sat Apr 18 17:13:44 2015 -0500
+
+    reworking ProjectileBase
+
+[33mcommit 9f03d638e2064216f269389eb80c4f4af5711954[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Sat Apr 18 17:06:23 2015 -0500
+
+    Updated image, did a lot of other things as well
+
+[33mcommit 30f763829b5b2e0c949bac6a685d31f89fea7999[m
+Merge: 1f0cede 017cda7
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Sat Apr 18 15:39:26 2015 -0500
+
+    Merge branch 'master' of https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+
+[33mcommit 1f0cede11fa60098f877401d2a0219e4a4f327f4[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Sat Apr 18 15:38:43 2015 -0500
+
+    added the scroll speed of background objects to the config file, and
+    started to work on different projectile setting for different
+    powerLevels
+
+[33mcommit 017cda776a2c407f18e111c2f339223b9a7b1c2b[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 08:00:41 2015 -0500
+
+    pretty much nothing
+
+[33mcommit 98f55ff853988b0bc9f7c763598e039f6334a74e[m
+Merge: 1132010 4194221
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:57:34 2015 -0500
+
+    pretty much nothing
+
+[33mcommit 11320105dc422e5d1c5ca303f91427d3ce4c0fb2[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:56:55 2015 -0500
+
+    pretty much nothing
+
+[33mcommit 4194221c6ab7f2cca6ba7001cc45c73246d7edb1[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 17 07:55:54 2015 -0500
+
+    new shooting mechanic is sort of working
+
+[33mcommit 31f2eeb2777024565175633fefd92758b02bb008[m
+Merge: 307176b ee90078
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:53:14 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 307176bc3025f1c55c0427a4df6b70f79c1fad1b[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:53:06 2015 -0500
+
+    added ugly projectile
+
+[33mcommit ee90078174b90179052881bb9f8aff7d8a8026df[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 17 07:51:27 2015 -0500
+
+    major changes to the shooting mechanic, not done though
+
+[33mcommit 8e81eb5c0338a2bc3d16636f4e71b1c34322fe31[m
+Merge: db052a8 7a937ce
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 17 07:38:05 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/graphics/Panel.java
+
+[33mcommit db052a8a4cabe3dc81a2ce0ba1e0f5b313e9d8ec[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 17 07:34:25 2015 -0500
+
+    made the paint method draw everything to a bufferedImage, then draw the
+    bufferedImage to the panel
+
+[33mcommit 7a937ced1354723d920d2a94deb6c32c543fb4b8[m
+Merge: 19da1ef 68029e9
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:34:15 2015 -0500
+
+    Merge branch 'master' of
+    https://bdc3142@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/Shot.java
+
+[33mcommit 19da1ef25b504c250abc3aafefe6faa04a6c0a86[m
+Merge: 2ecd543 3704cf2
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:28:40 2015 -0500
+
+    Resolved Conflicts:
+    	BulletHell/src/main/java/graphics/Panel.java
+
+[33mcommit 68029e964bddd42e7496fc1d5a0864f542370089[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Fri Apr 17 07:29:59 2015 -0500
+
+    removed bullets after they leave the screen
+
+[33mcommit 2ecd5434db8a6535dd1fff5872915b04d7c42a32[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Fri Apr 17 07:23:51 2015 -0500
+
+    I'm not even sure what i did
+
+[33mcommit 3704cf260e43ec15b7abf44ca5ae42619c536555[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Thu Apr 16 08:17:51 2015 -0500
+
+    added projectiles!!!
+
+[33mcommit 02eb7d782ee62bb5e884480c028e5716388e116e[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu Apr 16 07:47:08 2015 -0500
+
+    finnished background object v1.0
+
+[33mcommit 79476758dbe6ee0e5351a5e7262621b877858900[m
+Merge: f275f89 66a54d8
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu Apr 16 07:41:28 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit f275f891918aa95bc16f32b31dcc73c4c181b2cf[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Thu Apr 16 07:41:20 2015 -0500
+
+    working on printing
+
+[33mcommit 66a54d8b56f3cbd14255fa10c023a8996556d705[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Thu Apr 16 07:40:11 2015 -0500
+
+    misc. changes. Added getters and setters for the arraylists in
+    GameManager
+
+[33mcommit 746b9fe2bf00d04fc75ca4abadb227f602c1e5c6[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Thu Apr 16 07:23:39 2015 -0500
+
+    pushing minor changes
+
+[33mcommit f502fe75c8e7f8e7a6e08b9d5012019215e94c4e[m
+Merge: 321c12f e998f92
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Wed Apr 15 19:50:54 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/entities/Player.java
+
+[33mcommit 321c12f17e8880e91b08abf6e872d1f8e3d85ab0[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Wed Apr 15 19:50:02 2015 -0500
+
+    more updates to the movement methods for the player, some updates to the
+    projectiles
+
+[33mcommit d5929d99dbddaee1c4088b8a0082645474c7f502[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Wed Apr 15 19:15:42 2015 -0500
+
+    updated moving methods, works even better now!
+
+[33mcommit e998f92884b5992a2af1ea7843876ba369562d5b[m
+Merge: 1c07399 0c66f23
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 08:22:25 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 1c0739962542769428234e8363fa38219ca1239b[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 08:22:04 2015 -0500
+
+    working on background stuff
+
+[33mcommit 0c66f2390904342558c6875f14f29741b6dc1b28[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 08:21:10 2015 -0500
+
+    added three classes for the projectiles
+
+[33mcommit cc4c8af867232592dc62fdb727d24539d7e04da8[m
+Merge: 3a2dbef 519fb79
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 08:12:08 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+
+[33mcommit 3a2dbefa829a344fa86b268ae805d343b723d54b[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 08:11:53 2015 -0500
+
+    added width and height variables
+
+[33mcommit 519fb7935a0df24bb89af7f53e96febdcbdb5b32[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 08:10:31 2015 -0500
+
+    fixing an error made in the last commit
+
+[33mcommit e33fa0073a6442e8beb22031643253745c06be98[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 08:09:31 2015 -0500
+
+    updated entity base to not draw the left corner of the image in the
+    center of the entity
+
+[33mcommit f46130b5c83455f7f4fda37cf815cf9ab37d0f52[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 08:02:05 2015 -0500
+
+    used isInBounds (maybe works)
+
+[33mcommit a31d7e57be3e6338403124cf8433a94e5230a5af[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 08:00:21 2015 -0500
+
+    modified isInBounds to use doubles
+
+[33mcommit ec997589eb6824c7581b913ca7fe1b830bd5d5a0[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 07:57:15 2015 -0500
+
+    fixed isInBounds in the entityBase class
+
+[33mcommit 03707e901b483c7210db589cb599a38e02ed36ea[m
+Merge: 416d5e2 c2697d7
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 07:50:53 2015 -0500
+
+    finished isInBounds()
+
+[33mcommit 416d5e2f0aac956aeea96075a0c2c8e50c66737f[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 07:50:38 2015 -0500
+
+    finished isInBounds
+
+[33mcommit c2697d7b2f4ae505defc6037d2f4cca2527d18c8[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 07:50:19 2015 -0500
+
+    moveSpeed should now work with doubles
+
+[33mcommit bc79f89b6895c56775c5ae955c99ca8c7ed6e40a[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 07:47:43 2015 -0500
+
+    changed movespeeds
+
+[33mcommit 4377f3ea950f69649968938bc8bc4a5b6fd34aa1[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Wed Apr 15 07:40:43 2015 -0500
+
+    removed pointless workspace
+
+[33mcommit 6d3dbe8a0ff2fd86d92f06eea1a1b3c514eff6c2[m
+Merge: 7161e5a f8888ad
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Wed Apr 15 07:25:05 2015 -0500
+
+    Merge branch 'master' of https://bitbucket.org/cs2games/bullet-hell
+    
+    Conflicts:
+    	BulletHell/src/main/java/main/GameManager.java
+
+[33mcommit 7161e5ad1d82e3aee2d9c89b90283e396be8f040[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Tue Apr 14 22:00:55 2015 -0500
+
+    maybe commit is broken....
+
+[33mcommit 4b6e0e167220dc20dd8953ad1eed35f8f4370fdd[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Tue Apr 14 21:59:29 2015 -0500
+
+    commiting: working movement
+
+[33mcommit 1a2ecf8eead24045b77fc96042401031b1c2b808[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Tue Apr 14 21:53:14 2015 -0500
+
+    player is now moving!
+
+[33mcommit 359834e7ede8e2909f8472ebcc28629c1696cebe[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Tue Apr 14 20:57:11 2015 -0500
+
+    pushing so Bo can see progress
+
+[33mcommit 2eb610ed942af0a78ef1c45ff8b33de901661dde[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Tue Apr 14 19:40:02 2015 -0500
+
+    updating my work for the day
+
+[33mcommit 3064f92637965ff97f808675f85722f06060d517[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Tue Apr 14 08:16:29 2015 -0500
+
+    comp sci class is over
+
+[33mcommit 294e560a8554a67ad0306ba152f6ca7228771185[m
+Merge: ad34b1e d5b14bb
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Tue Apr 14 07:34:56 2015 -0500
+
+    Merge branch 'master' of
+    https://legitcookie@bitbucket.org/cs2games/bullet-hell.git
+    
+    Conflicts:
+    	BulletHell/src/main/java/reference/Config.java
+
+[33mcommit f8888add019d3b32552fcc9415fc335e61ae9747[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Tue Apr 14 07:33:42 2015 -0500
+
+    Fixed bug caused by fixing capitalization of final variables
+
+[33mcommit ad34b1ef9a4ba1082154c9a685bb437d36e998c6[m
+Author: O0309505 <O0309505@T155205.oths.katyisd.org>
+Date:   Tue Apr 14 07:33:18 2015 -0500
+
+    commiting before pulling
+
+[33mcommit d5b14bb6f65c119d339965f7661a8abcb66db5bc[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Tue Apr 14 07:33:01 2015 -0500
+
+    fixed Capitalization of final variables
+
+[33mcommit 17306bc36db8c95416181b480a684851d7b4f273[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon Apr 13 21:35:56 2015 -0500
+
+    updating for the night
+
+[33mcommit ae979a773dbfedf411f371fdb11ea6edea9fa605[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 21:16:42 2015 -0500
+
+    cleaned up logging file
+
+[33mcommit a70a432f51491a21fa72c2b166237109cc377917[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 21:12:54 2015 -0500
+
+    Config + Logging updated
+
+[33mcommit 64998f0eb46851141fd710d73ee8b5ed3c370cb6[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 21:09:13 2015 -0500
+
+    added logging
+
+[33mcommit db5a1572c9e8118a7a353e1d6364a27958e0c25f[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon Apr 13 21:07:33 2015 -0500
+
+    pushing
+
+[33mcommit 709fa6303d93c439f2461fe916fd458a49dbade7[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon Apr 13 21:02:10 2015 -0500
+
+    even more changes!
+
+[33mcommit a0ee70e7cae6488f3f139ff9dcb228ce46096d93[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon Apr 13 20:40:42 2015 -0500
+
+    file reading and writing is working
+
+[33mcommit ca4d395e843dbecb319116a9cf7371f24743228f[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon Apr 13 20:13:55 2015 -0500
+
+    minor changes, bo requested an update
+
+[33mcommit 963a29dce02e7097b7f07814a4b76d837b3eb9e5[m
+Author: Andrew <Andrew@10.0.0.74>
+Date:   Mon Apr 13 19:45:47 2015 -0500
+
+    changed several temp files
+
+[33mcommit 4e339ab277f6b1bc9e3605171db464b357297b67[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 19:44:23 2015 -0500
+
+    added files
+
+[33mcommit d504f2a98e8b96ad308ee10e804f4d76fd507f01[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 19:42:25 2015 -0500
+
+    added stuff (i think)
+
+[33mcommit da825363ffbcce089ce6ca0f32e2b3b668e7a191[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 19:36:35 2015 -0500
+
+    added project (i think)
+
+[33mcommit 00f1f17251a77f718562786f0be0c68bbb50973f[m
+Author: Darklight <bo.corman@gmail.com>
+Date:   Mon Apr 13 19:35:02 2015 -0500
+
+    Initial commit with test file
